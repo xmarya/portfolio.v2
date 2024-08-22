@@ -9,7 +9,6 @@ const MainContainer = styled.main`
     flex-direction: column;
     margin: 0 auto;
 
-    /* counter-reset: section-heading 1; */
 `;
 
 export default function AppLayout() {

@@ -3,7 +3,6 @@ import { tools } from "../data/toolsData";
 
 
 const CardList = styled.ul`
-    width: 80%;
     padding: 4rem;
     margin: 0 auto;
 
@@ -12,7 +11,7 @@ const CardList = styled.ul`
     justify-content: center;
     flex-wrap: wrap;
     flex-grow: 0;
-    gap: 2.6rem;
+    gap: 2rem;
 `;
 
 const Card = styled.li`

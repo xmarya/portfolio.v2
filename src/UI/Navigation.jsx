@@ -37,12 +37,12 @@ export default function Navigation() {
     return (
         <StyledNavigation>
             <NavItem>
-                <NavLink href="#about">
+                <NavLink href="#who-i-am">
                     who I am ?
                 </NavLink>
             </NavItem>
             <NavItem>
-                <NavLink>
+                <NavLink href="#what-i-offer">
                     what I offer ?
                 </NavLink>
             </NavItem>
