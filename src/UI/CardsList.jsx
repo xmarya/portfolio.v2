@@ -14,7 +14,7 @@ const CardList = styled.ul`
     gap: 2rem;
 `;
 
-const Card = styled.li`
+export const Card = styled.li`
     --themeColour: ${(props) => `var(${props.themeColour})`};
     width: 25rem;
     height: 10rem;
@@ -30,6 +30,8 @@ const Card = styled.li`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 
     &:hover {
         color: var(--colour-grey-100);

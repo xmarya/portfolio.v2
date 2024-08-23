@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --colour-grey-0: #fff;
   --colour-grey-50: #f9fafb;
@@ -15,6 +19,7 @@
   --neon-light-purple: #d580ff;
   --neon-blue: #58a6ff;
   --neon-skyblue: #00e5ff;
+  --neon-react: #61DAFB;
   --neon-green: #39ff14;
   --neon-calm-green: #00FF7F;
   --neon-dark-green: #006400;

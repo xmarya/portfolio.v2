@@ -37,4 +37,5 @@ export const SectionHeading = styled.h2`
 
 export const SectionSubHeading = styled.h3`
     font-size: var(--xxl-text);
+    margin-bottom: 3rem;
 `;
