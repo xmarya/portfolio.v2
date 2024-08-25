@@ -14,7 +14,7 @@ export default function Home() {
       <Hero/>
       <About/>
       <Tools/>
-      {/* <Offer/> */}
+      <Offer/>
 
     </StyledHome>
   );

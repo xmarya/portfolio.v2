@@ -25,8 +25,7 @@ export default function Hero() {
           <GradiantText>Marya Alharbi!</GradiantText>
         </HeroHeading>
         <p>
-          A girl who enjoys building web applications and &mdash;struggles a little bit with&mdash; designing
-          them.
+          A girl who enjoys building web applications and designing them.
         </p>
       </StyledHero>
     )

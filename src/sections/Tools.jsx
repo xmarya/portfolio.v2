@@ -11,30 +11,76 @@ import React from "../UI/SVGs/React";
 import Router from "../UI/SVGs/Router";
 import StyledComponents from "../UI/SVGs/StyledComponents";
 import Tailwind from "../UI/SVGs/Tailwind";
-import Supsbase from "../UI/SVGs/supsbase";
+import Supabase from "../UI/SVGs/supabase";
 import Mongoose from "../UI/SVGs/mongoose";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useAnimation } from "framer-motion";
+
+const tools = [
+  { component: "div" },
+  { component: <React /> },
+  { component: <Router /> },
+  { component: <Next /> },
+  { component: <Express /> },
+  { component: <Node /> },
+  { component: "div" },
+  { component: "div" },
+  { component: <Mongoose /> },
+  { component: <Tailwind /> },
+  { component: <JavaScript /> },
+  { component: <Supabase /> },
+  { component: <StyledComponents /> },
+  { component: "div" },
+  { component: "div" },
+  { component: <HTML /> },
+  { component: <CSS /> },
+  { component: <Git /> },
+  { component: "div" },
+];
 
 export default function Tools() {
+  const targetRef = useRef();
+  const isInView = useInView(targetRef, {once: true, amount: 0.4});
+  const controls = useAnimation();
+
+  const staggeredVariants = {
+    initial: { visibility: "hidden", y: 50 },
+    animate: (index) => ({
+       visibility: "visible",
+      y: 0,
+      transition: { delay: 0.05 * index },
+    }),
+  };
+
+  useEffect(() => {
+    isInView ? controls.start("animate") : ""
+  }, [isInView, controls]);
+
   return (
-    <CentredSection>
+    <CentredSection ref={targetRef}>
       <SectionSubHeading>Technologies and Tools I use:</SectionSubHeading>
-
-      <div className="w-[95%] flex flex-wrap items-center justify-around gap-12">
-       <React/>
-       <Router/>
-       <Next/>
-       <Express/>
-       <Node/>
-       <Mongoose/>
-       <Tailwind/>
-       <JavaScript/>
-       <Supsbase/>
-       <StyledComponents/>
-       <HTML/>
-       <CSS/>
-       <Git/>  
-      </div>
-
+      <ul className="w-[80%] flex flex-wrap items-center justify-around gap-14 pl-5">
+        {tools.map((tool, index) => {
+          return tool.component === "div" ? (
+            <li key={index}>
+              <div />
+            </li>
+          ) : (
+            <motion.li
+              variants={staggeredVariants}
+              initial="initial"
+              animate={controls}
+              custom={index}
+              key={index}
+            >
+              {tool.component}
+            </motion.li>
+          );
+        })}
+      </ul>
     </CentredSection>
   );
 }

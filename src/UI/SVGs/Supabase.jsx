@@ -1,6 +1,6 @@
-export default function Supsbase() {
+export default function Supabase() {
   return (
-    <div className="w-[16rem] h-[16rem]">
+    <div className="size-72">
       <svg viewBox="0 0 128 128">
         <path
           fill="var(--colour-grey-400)"

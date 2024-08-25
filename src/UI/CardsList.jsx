@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { tools } from "../data/toolsData";
+import { tools } from "../data/toolsStyles";
 
 
 const CardList = styled.ul`

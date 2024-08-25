@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   display: ${(props) => props.display || ""};
-  height: 80svh;
+  height: 90svh;
   margin-top: var(--section-mt);
 
   p {
@@ -10,28 +10,30 @@ export const Section = styled.section`
   }
 `;
 
+/*  this was for the _Offer.jsx
+// drow the hirarechy of the scrolling 
 export const CarouselSection = styled.section`
-  height: 400vh;
+  height: 200svh;
   display: grid;
   grid-template-columns: max-content 1fr;
   align-items: start;
   gap: 4rem;
-  padding-top: var(--section-mt);
+  margin-top: calc(var(--section-mt) *3);
 
   p {
     margin-bottom: 1.5rem;
   }
-
   div {
     position: sticky;
     top:0;
   }
-`;
+`;*/
 
 export const CentredSection = styled.section`
-  width: 80%;
+  min-height: 90svh;
+  max-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 15rem auto 0;
+  margin: var(--section-mt) auto 0;
 `;

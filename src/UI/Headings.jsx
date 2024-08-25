@@ -8,10 +8,10 @@ export const HeroHeading = styled.h1`
 
 export const SectionHeading = styled.h2`
     font-size: var(--section-heading);
-  font-weight: 600;
-  position: relative;
-  margin-top: var(--section-heading-mt);
-  margin-bottom: var(--section-heading-mb);
+    font-weight: 600;
+    position: relative;
+    margin-top: var(--section-heading-mt);
+    margin-bottom: var(--section-heading-mb);
 
   &::before {
     content: "0" counter(section-heading) ".";
@@ -19,19 +19,20 @@ export const SectionHeading = styled.h2`
     counter-increment: section-heading 1;
     color: var(--neon-purple);
     font-size: clamp(var(--lg-text), 3vw, 2rem);
-    margin-right: 0.8rem;
+    margin-right: 0.4rem;
   }
 
   &::after {
     content: "";
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 15%;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    /* left: 15%; */
     width: 30rem;
     height: 0.01rem;
     background-color: var(--neon-purple);
-    margin-left: 2rem;
+    vertical-align: middle;
+    margin-left: 1.6rem;
   }
 `;
 
