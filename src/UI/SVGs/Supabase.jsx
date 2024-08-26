@@ -29,8 +29,8 @@ export default function Supabase() {
             gradientTransform="translate(.02 51.611) scale(.22053)"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0" stop-color="var(--colour-grey-600)"></stop>
-            <stop offset="1" stop-color="var(--colour-grey-400)"></stop>
+            <stop offset="0" stopColor="var(--colour-grey-600)"></stop>
+            <stop offset="1" stopColor="var(--colour-grey-400)"></stop>
           </linearGradient>
           <linearGradient
             id="b"
@@ -42,7 +42,7 @@ export default function Supabase() {
             gradientUnits="userSpaceOnUse"
           >
             <stop offset="0"></stop>
-            <stop offset="1" stop-opacity="0"></stop>
+            <stop offset="1" stopOpacity="0"></stop>
           </linearGradient>
         </defs>
       </svg>

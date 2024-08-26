@@ -32,11 +32,11 @@ export default function Node() {
             gradientTransform="translate(0 24.664) scale(1.51263)"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="var(--colour-grey-700)"></stop>
-            <stop offset=".33" stop-color="var(--colour-grey-800)"></stop>
-            <stop offset=".637" stop-color="var(--colour-grey-800)"></stop>
-            <stop offset=".934" stop-color="var(--colour-grey-700)"></stop>
-            <stop offset="1" stop-color="var(--colour-grey-700)"></stop>
+            <stop stopColor="var(--colour-grey-700)"></stop>
+            <stop offset=".33" stopColor="var(--colour-grey-800)"></stop>
+            <stop offset=".637" stopColor="var(--colour-grey-800)"></stop>
+            <stop offset=".934" stopColor="var(--colour-grey-700)"></stop>
+            <stop offset="1" stopColor="var(--colour-grey-700)"></stop>
           </linearGradient>
           <linearGradient
             id="b"
@@ -47,10 +47,10 @@ export default function Node() {
             gradientTransform="translate(0 24.664) scale(1.51263)"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset=".138" stop-color="var(--colour-grey-700)"></stop>
-            <stop offset=".402" stop-color="var(--colour-grey-800)"></stop>
-            <stop offset=".713" stop-color="var(--colour-grey-700)"></stop>
-            <stop offset=".908" stop-color="var(--colour-grey-400)"></stop>
+            <stop offset=".138" stopColor="var(--colour-grey-700)"></stop>
+            <stop offset=".402" stopColor="var(--colour-grey-800)"></stop>
+            <stop offset=".713" stopColor="var(--colour-grey-700)"></stop>
+            <stop offset=".908" stopColor="var(--colour-grey-400)"></stop>
           </linearGradient>
           <linearGradient
             id="c"
@@ -61,10 +61,10 @@ export default function Node() {
             gradientTransform="translate(0 24.664) scale(1.51263)"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset=".092" stop-color="var(--colour-grey-400)"></stop>
-            <stop offset=".287" stop-color="var(--colour-grey-700)"></stop>
-            <stop offset=".598" stop-color="var(--colour-grey-800)"></stop>
-            <stop offset=".862" stop-color="var(--colour-grey-700)"></stop>
+            <stop offset=".092" stopColor="var(--colour-grey-400)"></stop>
+            <stop offset=".287" stopColor="var(--colour-grey-700)"></stop>
+            <stop offset=".598" stopColor="var(--colour-grey-800)"></stop>
+            <stop offset=".862" stopColor="var(--colour-grey-700)"></stop>
           </linearGradient>
         </defs>
       </svg>

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 
@@ -36,7 +37,7 @@ export const SectionHeading = styled.h2`
   }
 `;
 
-export const SectionSubHeading = styled.h3`
+export const SectionSubHeading = styled(motion.h3)`
     font-size: var(--xxl-text);
     margin-bottom: 3rem;
 `;

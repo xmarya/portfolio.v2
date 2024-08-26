@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-  display: ${(props) => props.display || ""};
-  height: 90svh;
+  /* display: ${(props) => props.display || ""}; */
+  height: auto;
   margin-top: var(--section-mt);
 
   p {

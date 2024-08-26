@@ -18,6 +18,7 @@ import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useAnimation } from "framer-motion";
+import AnimatedWrapper from "../UI/AnimatedWrapper";
 
 const tools = [
   { component: "div" },
@@ -43,44 +44,50 @@ const tools = [
 
 export default function Tools() {
   const targetRef = useRef();
-  const isInView = useInView(targetRef, {once: true, amount: 0.4});
+  const isInView = useInView(targetRef, { once: true, amount: 0.4 });
   const controls = useAnimation();
 
   const staggeredVariants = {
-    initial: { visibility: "hidden", y: 50 },
+    initial: { visibility: "hidden", y: 75 },
     animate: (index) => ({
-       visibility: "visible",
+      visibility: "visible",
       y: 0,
-      transition: { delay: 0.05 * index },
+      transition: { delay: 0.08 * index },
     }),
   };
 
   useEffect(() => {
-    isInView ? controls.start("animate") : ""
+    isInView ? controls.start("animate") : "";
   }, [isInView, controls]);
 
   return (
-    <CentredSection ref={targetRef}>
-      <SectionSubHeading>Technologies and Tools I use:</SectionSubHeading>
-      <ul className="w-[80%] flex flex-wrap items-center justify-around gap-14 pl-5">
-        {tools.map((tool, index) => {
-          return tool.component === "div" ? (
-            <li key={index}>
-              <div />
-            </li>
-          ) : (
-            <motion.li
-              variants={staggeredVariants}
-              initial="initial"
-              animate={controls}
-              custom={index}
-              key={index}
-            >
-              {tool.component}
-            </motion.li>
-          );
-        })}
-      </ul>
-    </CentredSection>
+    <motion.div>
+      <CentredSection ref={targetRef}>
+
+        <AnimatedWrapper>
+          <SectionSubHeading>Technologies and Tools I use:</SectionSubHeading>
+        </AnimatedWrapper>
+
+        <ul className="w-[80%] flex flex-wrap items-center justify-around gap-14 pl-5">
+          {tools.map((tool, index) => {
+            return tool.component === "div" ? (
+              <li key={index}>
+                <div />
+              </li>
+            ) : (
+              <motion.li
+                variants={staggeredVariants}
+                initial="initial"
+                animate={controls}
+                custom={index + 1}
+                key={index}
+              >
+                {tool.component}
+              </motion.li>
+            );
+          })}
+        </ul>
+      </CentredSection>
+    </motion.div>
   );
 }
