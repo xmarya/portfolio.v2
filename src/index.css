@@ -84,6 +84,7 @@ a:focus:not(:hover) {
 html {
   font-size: 62.5%;
   overflow-x: hidden;
+  /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
   scrollbar-width: thin;
   position: relative; 
@@ -94,6 +95,15 @@ body {
   max-width: 128rem;
   min-height: 100vh;
   color: var(--colour-grey-200);
+}
+
+::selection {
+  background-color: var(--neon-purple);
+  color: var(--colour-grey-500);
+}
+
+section {
+  scroll-snap-align: center;
 }
 
 h1,
@@ -124,9 +134,9 @@ button {
   cursor: pointer;
 }
 
-/* *:disabled {
+*:disabled {
   cursor: not-allowed;
-} */
+}
 
 select:disabled,
 input:disabled {
@@ -158,7 +168,6 @@ ul,
 ol {
   list-style: none;
 }
-
 
 img {
   max-width: 100%;
