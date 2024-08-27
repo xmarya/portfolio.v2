@@ -88,23 +88,23 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   position: relative; 
+  
 }
 
 body {
   background-color: var(--colour-grey-900);
+  /* background: linear-gradient(180deg, var(--colour-grey-900), #292f3d); */
+  /* background: linear-gradient(180deg, var(--colour-grey-900), var(--colour-grey-800)); */
   max-width: 128rem;
   min-height: 100vh;
   color: var(--colour-grey-200);
+  
 }
 
 ::selection {
   background-color: var(--neon-purple);
   color: var(--colour-grey-500);
-}
-
-section {
-  scroll-snap-align: center;
-}
+} 
 
 h1,
 h2,

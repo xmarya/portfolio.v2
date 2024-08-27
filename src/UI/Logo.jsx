@@ -1,8 +1,12 @@
-export default function Logo() {
+import { motion } from "framer-motion";
+
+export default function Logo({parentVariants}) {
     return (
-        <div>
-            Logo
-        </div>
+        <motion.div variants={parentVariants} initial="initial" animate="animate">
+           <div>
+           Logo
+           </div>
+        </motion.div>
     )
 }
 

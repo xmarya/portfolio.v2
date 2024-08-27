@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components"
 
 const StyledNavigation = styled.ol`
@@ -10,7 +11,7 @@ const StyledNavigation = styled.ol`
 
 `;
 
-const NavItem = styled.li`
+const NavItem = styled(motion.li)`
     font-size: var(--xsm-text);
     counter-increment: nav-item 1;
 
@@ -33,25 +34,25 @@ const NavLink = styled.a`
 `;
 
 
-export default function Navigation() {
+export default function Navigation({parentVariants}) {
     return (
         <StyledNavigation>
-            <NavItem>
+            <NavItem variants={parentVariants} initial="initial" animate="animate">
                 <NavLink href="#who-i-am">
                     who I am ?
                 </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem variants={parentVariants} initial="initial" animate="animate">
                 <NavLink href="#what-i-offer">
                     what I offer ?
                 </NavLink>
             </NavItem>
-            <NavItem>
-                <NavLink>
-                    projects
+            <NavItem variants={parentVariants} initial="initial" animate="animate">
+                <NavLink href="#works">
+                    works
                 </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem variants={parentVariants} initial="initial" animate="animate">
                 <NavLink>
                     contact
                 </NavLink>

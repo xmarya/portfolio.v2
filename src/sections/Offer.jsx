@@ -44,7 +44,7 @@ const OffersListItems = styled.li`
 
 export default function Offer() {
   return (
-    <Section id="what-i-offer">
+    <Section id="what-i-offer" display="flex">
       <AnimatedWrapper>
         <SectionHeading>what I offer?</SectionHeading>
       </AnimatedWrapper>

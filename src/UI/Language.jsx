@@ -1,8 +1,12 @@
-export default function Language() {
+import { motion } from "framer-motion";
+
+export default function Language({parentVariants}) {
     return (
-        <div>
-           E | ع
-        </div>
+        <motion.div variants={parentVariants} initial="initial" animate="animate">
+          <div>
+          E | ع
+          </div>
+        </motion.div>
     )
 }
 
