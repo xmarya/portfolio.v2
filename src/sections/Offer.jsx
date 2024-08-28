@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import AnimatedWrapper from "../UI/AnimatedWrapper";
-import { SectionHeading, SectionSubHeading } from "../UI/Headings";
+import { SectionHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 import { motion } from "framer-motion";
+import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 
 const services = [
   { label: "UI/UX Design" },

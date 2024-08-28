@@ -18,7 +18,7 @@ import { useInView } from "framer-motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useAnimation } from "framer-motion";
-import AnimatedWrapper from "../UI/AnimatedWrapper";
+import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 
 const tools = [
   { component: "div" },

@@ -1,4 +1,4 @@
-import AnimatedWrapper from "../UI/AnimatedWrapper";
+import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { SectionHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 

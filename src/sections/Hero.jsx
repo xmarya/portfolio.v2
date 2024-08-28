@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { GradiantText } from "../UI/GradiantText";
+import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { HeroHeading } from "../UI/Headings";
 import { LookAtMe } from "../UI/LookAtMe";
-import AnimatedWrapper from "../UI/AnimatedWrapper";
 
 
 const StyledHero = styled.section`

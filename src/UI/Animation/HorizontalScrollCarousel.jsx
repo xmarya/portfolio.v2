@@ -1,6 +1,6 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
-import { offers } from "../data/offersData";
+import { offers } from "../../data/offersData";
 
 
 export default function HorizontalScrollCarousel () {
