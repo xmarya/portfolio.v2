@@ -11,6 +11,9 @@ export const offers =[
         title: "Front-end develoment",
       },
       {
-        title: "Back-end develoment",
+        title: "Building API",
+      },
+      {
+        title: "Designing and Creating SQL/NoSQL Database",
       },
 ];

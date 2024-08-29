@@ -3,13 +3,8 @@ import { SectionHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 import { motion } from "framer-motion";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
+import { offers } from "../data/offersData";
 
-const services = [
-  { label: "UI/UX Design" },
-  { label: "Wireframe Design" },
-  { label: "Front-end Development" },
-  { label: "Back-end Development" },
-];
 
 const OffersList = styled(motion.ul)`
   width: 50%;
@@ -18,12 +13,13 @@ const OffersList = styled(motion.ul)`
   flex-wrap: wrap;
   gap: 2rem;
   padding-top: 2rem;
-  padding-left: 12rem;
+  padding-left: 10rem;
 `;
 
 const OffersListItems = styled.li`
   /* making each item the same width in order to make the correctley aligned by setting  justify-content: start*/
-  width: 20rem;
+  min-width: 20rem;
+  max-width: fit-content;
   text-align: start;
   font-size: var(--lg-text);
   text-transform: capitalize;
@@ -70,9 +66,9 @@ export default function Offer() {
       </AnimatedWrapper>
 
       <OffersList>
-        {services.map((service) => (
-          <AnimatedWrapper key={service.label}>
-            <OffersListItems>{service.label}</OffersListItems>
+        {offers.map((offer) => (
+          <AnimatedWrapper key={offer.title}>
+            <OffersListItems>{offer.title}</OffersListItems>
           </AnimatedWrapper>
         ))}
       </OffersList>

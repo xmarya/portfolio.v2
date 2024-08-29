@@ -57,12 +57,12 @@
   --p-text: clamp(2rem, 5vw, 1.8rem);
   --button-text: 1.4rem;
 
-  --xxl-text: 22px;
-  --xl-text: 18px;
-  --lg-text: 16px;
-  --md-text: 14px;
+  --xxl-text: 2.2rem;
+  --xl-text: 1.8rem;
+  --lg-text: 1.6rem;
+  --md-text: 1.4rem;
   --xsm-text: 1.3rem;
-  --xxsm-text: 12px;
+  --xxsm-text: 1.2rem;
 }
 
 *,

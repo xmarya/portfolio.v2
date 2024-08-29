@@ -65,6 +65,8 @@ export default function OneDay() {
     }
   };
 
+  // TODO: add a final note "the owner of this portfolio is not a Robot, so the above information is not accurate 100% eveyday"
+  // TODO: add explanation for the free time
 
   return (
     <CentredSection>
@@ -124,6 +126,11 @@ export default function OneDay() {
           );
         })}
       </Timeline>
+      <div className="self-start ml-40">
+      <AnimatedWrapper>
+        <Timeline.Note className="italic text-[var(--lg-text)]">* please note that the owner of this portfolio is not a Robot, so the above information is not accurate 100% every day.</Timeline.Note>
+      </AnimatedWrapper>
+      </div>
     </CentredSection>
   );
 }

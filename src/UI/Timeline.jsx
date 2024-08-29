@@ -47,10 +47,10 @@ const MiddleLine = styled(motion.div)`
 `;
 
 const Content = styled(motion.div)`
-  font-size: var(--secondary-heading);
+  /* font-size: var(--secondary-heading); */
+  font-size: var(--p-text);
   font-weight: 500;
-  text-align: center;
-  height: 20rem;
+  height: 15rem;
   justify-self: ${(props) => props.direction};
   margin: 0 1.2rem 2rem;
 
@@ -80,13 +80,12 @@ const Content = styled(motion.div)`
 `;
 
 const Activity = styled.div`
-  /* font-size: 2.4rem; */
   text-transform: uppercase;
   padding: 0 2rem;
 `;
 
 const Note = styled.div`
-  font-size: var(--p-text);
+  font-size: var(--md-text);
   font-style: italic;
   padding: 0 2rem;
   margin-top: 0.6rem;
@@ -94,6 +93,8 @@ const Note = styled.div`
 
 const Time = styled.div`
   /* font-size: 3rem; */
+    font-size: 2.4rem;
+
   font-weight: 600;
   margin-top: -3rem;
 `;
