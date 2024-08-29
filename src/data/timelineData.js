@@ -28,7 +28,7 @@ export const timelineActivities = [
     },
     {
         activity: "FINALLY COMES! IT'S THE TIME FOR MY CUP OF COFFEE",
-        note: "I♥☕",
+        note: "I love ☕",
         time: "8:00 ~ 8:30"
     },
     {

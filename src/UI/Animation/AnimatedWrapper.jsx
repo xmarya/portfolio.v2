@@ -11,8 +11,8 @@ const Container = styled.div`
 `;
 
 const Warapper = styled(motion.div)`
-width: 100%;
-height: 100%;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top:4px;
     left: 0;

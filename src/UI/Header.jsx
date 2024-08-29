@@ -15,13 +15,11 @@ const StyledHeader = styled(motion.header)`
 
 const navigationVariants = {
     initial: {
-        y: -50,
-        x: -20,
+        y: 50,
         opacity: 0
     },
     animate: (stagger) => ({
         y:0,
-        x: 0,
         opacity: 1,
         transition: {
             delay: 1, // 1 is to delay until the hero animation completes,
@@ -36,6 +34,7 @@ const navigationVariants = {
 }
 
 export default function Header() {
+    // FIXME: the animation here is so stupid, fix it to be similar to the way the page animations are
     return (
         <StyledHeader variants={navigationVariants}>
             <Logo parentVariants={navigationVariants}/>         

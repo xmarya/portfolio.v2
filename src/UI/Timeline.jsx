@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { createContext } from "react";
 import styled, { css } from "styled-components";
 
@@ -6,7 +7,7 @@ const TimelineConext = createContext();
 export default function Timeline({ children }) {
   return (
     <TimelineConext.Provider value={{}}>
-      <TimelineContainer className="">{children}</TimelineContainer>
+      <TimelineContainer>{children}</TimelineContainer>
     </TimelineConext.Provider>
   );
 }
@@ -29,25 +30,29 @@ const TimelineContainer = styled.ul`
     box-shadow: 0px 0px 15px currentColor;
   } */
 `;
-const Item = styled.li`
+const Item = styled(motion.li)`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 0.5rem 1fr;
   gap: 1.5rem;
+  row-gap: 4rem;
   overflow: visible;
 `;
 
-const MiddleLine = styled.div`
+const MiddleLine = styled(motion.div)`
+  height: auto;
   position: relative;
   background-color: var(--neon-purple);
   box-shadow: 0px 0px 1.5rem currentColor;
 `;
 
-const Content = styled.div`
+const Content = styled(motion.div)`
+  font-size: var(--secondary-heading);
+  font-weight: 500;
+  text-align: center;
   height: 20rem;
-  justify-self: ${props => props.direction};
+  justify-self: ${(props) => props.direction};
   margin: 0 1.2rem 2rem;
-  padding: 2rem;
 
   ${(props) => {
     switch (props.background) {
@@ -60,38 +65,42 @@ const Content = styled.div`
           background-color: rgba(176, 123, 255, 0.63);
           border-radius: 1.2rem;
           box-shadow: 0px 0px 0.5rem currentColor;
+          padding: 1rem 2rem;
         `;
-    
+
       default:
         return css`
           background: none;
           border: none;
           box-shadow: none;
+          padding-top: 2rem;
         `;
     }
   }}
-
 `;
 
 const Activity = styled.div`
-  font-size: 2.4rem;
-  font-weight: 500;
+  /* font-size: 2.4rem; */
   text-transform: uppercase;
+  padding: 0 2rem;
 `;
 
 const Note = styled.div`
   font-size: var(--p-text);
+  font-style: italic;
+  padding: 0 2rem;
+  margin-top: 0.6rem;
 `;
 
 const Time = styled.div`
-  font-size: 3rem;
+  /* font-size: 3rem; */
   font-weight: 600;
   margin-top: -3rem;
 `;
 
 // opt for Icon or Circle
 
-const Circle = styled.div`
+const Circle = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 50%;
@@ -102,11 +111,14 @@ const Circle = styled.div`
   box-shadow: 0px 0px 10px currentColor;
   border-radius: 100%;
 
-  margin-top: ${(props) => props.lastOne ? "initial" : "-0.2rem"}; // NOTE: if it doesn't work change it to "unset" */
+  margin-top: ${(props) =>
+    props.lastOne
+      ? "initial"
+      : "-0.2rem"}; // NOTE: if it doesn't work change it to "unset" */
   /* bottom: ${(props) => props.lastOne && 0}; */
 `;
 
-const Icon = styled.div`
+const Icon = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 50%;
