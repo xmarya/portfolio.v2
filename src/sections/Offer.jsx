@@ -1,27 +1,82 @@
 import styled from "styled-components";
-import { SectionHeading } from "../UI/Headings";
+import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
+import { SectionHeading, SectionSubHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 import { motion } from "framer-motion";
-import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
-import { offers } from "../data/offersData";
+import { Button } from "../UI/Button";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); // CHANGE LATER: make it with clamp() when start writong the media-queries
+  grid-template-rows: repeat((2, fit-content));
+  column-gap: 10rem;
+  row-gap: 8rem;
+  padding: 0 10rem;
+  margin: 1.5rem 0;
+`;
 
-const OffersList = styled(motion.ul)`
-  width: 50%;
-  list-style-position: inside;
+const TopCorner = styled(motion.div)`
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  background-image: linear-gradient(
+    130deg,
+    var(--neon-purple) 15%,
+    rgba(255, 255, 255, 0) 31%
+  );
+  //background-size: width height
+  /* background-size: 100% 0.2rem; */
+  border-radius: 1.2rem;
+  z-index: -1;
+`;
+
+const BottomCorner = styled(motion.div)`
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  background-image: linear-gradient(
+    312.25deg,
+    var(--neon-purple) 15%,
+    rgba(255, 255, 255, 0) 31%
+  );
+  //background-size: width height
+  /* background-size: 100% 0.2rem; */
+  border-radius: 1.2rem;
+  z-index: -1;
+`;
+
+const OfferList = styled(motion.ul)`
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding-top: 2rem;
-  padding-left: 10rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 3rem;
+  background-color: var(--colour-grey-900);
+  border-radius: 1.2rem;
+  transition: all 0.3s ease;
+
+  position: relative;
+
+  &:hover {
+    box-shadow: 0px 0px 0.7rem var(--neon-purple);
+  }
 `;
 
 const OffersListItems = styled.li`
   /* making each item the same width in order to make the correctley aligned by setting  justify-content: start*/
-  min-width: 20rem;
-  max-width: fit-content;
+  min-width: 27rem;
+  /* max-width: fit-content; */
   text-align: start;
-  font-size: var(--lg-text);
+  font-size: var(--md-text);
   text-transform: capitalize;
   display: flex;
   align-items: center;
@@ -38,40 +93,139 @@ const OffersListItems = styled.li`
   }
 `;
 
+const OfferDetails = styled.p`
+  font-size: var(--md-text);
+`;
+
+const OfferCTA = styled(motion.div)`
+  grid-column: 1 /-1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  margin: 0 auto;
+
+  p {
+    max-width: fit-content;
+  }
+`;
+
+const listVariants = {
+  initial: {
+    y: 75,
+    opacity: 0,
+  },
+  animate: (customDelay) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      delay: customDelay * 1,
+    },
+  }),
+};
+
+const cornerVariants = {
+  initialState: {
+    opacity: 0,
+  },
+  animateState: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      delay: 2
+    },
+  },
+};
+
 export default function Offer() {
+  const targetRef = useRef(null);
+  const isInView = useInView(targetRef, { once: true, amount: 0.2 });
+
   return (
-    <Section id="what-i-offer" display="flex">
+    <Section id="what-i-offer" display="flex" ref={targetRef}>
       <AnimatedWrapper>
         <SectionHeading>what I offer?</SectionHeading>
       </AnimatedWrapper>
-      <AnimatedWrapper>
-        <p>
-          I can help you design the web page from scratch, or only code your
-          existing design. I always aim to deliver results that exceed your
-          expectations. Your satisfaction is my priority.
-        </p>
-      </AnimatedWrapper>
-      <AnimatedWrapper>
-        <p>
-          Also, if you become my customer, Don’t worry, I GOT YOUR BACK with
-          full support in case of any errors and will be available when you
-          encounter issues after deploying your web application.
-        </p>
-      </AnimatedWrapper>
-      <AnimatedWrapper>
-        <p>
-          So don’t hesitate to reach out! you’re one step away from your web
-          application.
-        </p>
-      </AnimatedWrapper>
+      <Grid>
+        {/* the custom value has 1 because it's to delay the comp 1s so the animated wrapper has time to complete */}
+        <OfferList
+          variants={listVariants}
+          custom={1}
+          initial="initial"
+          animate={isInView ? "animate" : ""}
+        >
+          <TopCorner
+            variants={cornerVariants}
+            initial="initialState"
+            animate="animateState"
+          />
+          <SectionSubHeading>Front-End Services</SectionSubHeading>
+          <OfferDetails>
+            My main focus is to provide a high-quality design that reflects the
+            message of my client's brand/services and ensure the interface is
+            user-friendly. Whether you need a design created from scratch or
+            want to transform your design into a fully functional web
+            application, I've got you covered.
+          </OfferDetails>
+          <div className="flex flex-col">
+            <OffersListItems>UI/UX Design</OffersListItems>
+            <OffersListItems>Wireframe design</OffersListItems>
+            <OffersListItems>Front-end develoment</OffersListItems>
+            <OffersListItems>Full Support</OffersListItems>
+          </div>
+          <BottomCorner
+            variants={cornerVariants}
+            initial="initialState"
+            animate="animateState"
+          />
+        </OfferList>
 
-      <OffersList>
-        {offers.map((offer) => (
-          <AnimatedWrapper key={offer.title}>
-            <OffersListItems>{offer.title}</OffersListItems>
-          </AnimatedWrapper>
-        ))}
-      </OffersList>
+        <OfferList
+          variants={listVariants}
+          custom={1.3}
+          initial="initial"
+          animate={isInView ? "animate" : ""}
+        >
+          <TopCorner
+            variants={cornerVariants}
+            initial="initialState"
+            animate="animateState"
+          />
+          <SectionSubHeading>Back-End Services</SectionSubHeading>
+          <OfferDetails>
+            When working on a Back-end project, I prioritise performance,
+            security and adaptability. I always aim to deliver results that
+            exceed your expectations. Your satisfaction with my work is the most
+            I would like.
+          </OfferDetails>
+          <div className="flex flex-col">
+            <OffersListItems>Building API</OffersListItems>
+            <OffersListItems>
+              Designing and Creating NoSQL Database
+            </OffersListItems>
+            <OffersListItems>Full Support</OffersListItems>
+          </div>
+          <BottomCorner
+            variants={cornerVariants}
+            initial="initialState"
+            animate="animateState"
+          />
+        </OfferList>
+
+        <OfferCTA
+          variants={listVariants}
+          custom={2.2}
+          initial="initial"
+          animate={isInView ? "animate" : ""}
+        >
+          <p>
+            So don’t hesitate to reach out&mdash;you’re one step away from your
+            web application.
+          </p>
+          <Button>Contact me</Button>
+        </OfferCTA>
+      </Grid>
     </Section>
   );
 }

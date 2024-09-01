@@ -20,13 +20,13 @@
   --neon-blue: #58a6ff;
   --neon-skyblue: #00e5ff;
   --neon-green: #39ff14;
-  --neon-calm-green: #00FF7F;
+  --neon-calm-green: #00ff7f;
   --neon-dark-green: #006400;
-  --neon-orange: #FF5E00;
+  --neon-orange: #ff5e00;
   --neon-yellow: #ffff00;
   --neon-pink: #ff6ec7;
   /* --neon-brown: #800; */
-  --neon-brown: #D2691E;
+  --neon-brown: #d2691e;
 
   --sm-radius: 0.4rem;
   --md-radius: 0.8rem;
@@ -55,14 +55,13 @@
   --section-heading: clamp(2.6rem, 5vw, 3.2rem);
   --secondary-heading: clamp(2.4rem, 5vw, 2.8rem);
   --p-text: clamp(2rem, 5vw, 1.8rem);
-  --button-text: 1.4rem;
 
   --xxl-text: 2.2rem;
   --xl-text: 1.8rem;
   --lg-text: 1.6rem;
   --md-text: 1.4rem;
-  --xsm-text: 1.3rem;
-  --xxsm-text: 1.2rem;
+  --sm-text: 1.3rem;
+  --xsm-text: 1.2rem;
 }
 
 *,
@@ -72,7 +71,7 @@
   padding: 0;
   margin: 0;
   /* Creating animations for dark mode */
-  transition: background-color 0.3s, border 0.3s;
+  /* transition: background-color 0.3s, border 0.3s; */
 }
 
 *:focus:not(:hover),
@@ -87,8 +86,7 @@ html {
   /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  position: relative; 
-  
+  position: relative;
 }
 
 body {
@@ -98,13 +96,12 @@ body {
   max-width: 128rem;
   min-height: 100vh;
   color: var(--colour-grey-200);
-  
 }
 
 ::selection {
   background-color: var(--neon-purple);
   color: var(--colour-grey-500);
-} 
+}
 
 h1,
 h2,
@@ -119,6 +116,7 @@ h6 {
 p {
   font-size: var(--p-text);
   max-width: 60ch;
+  /* CHANGE LATER: after deciding the new fonts */
   line-height: 1.3;
 }
 
@@ -166,6 +164,7 @@ a {
 
 ul,
 ol {
+  display: block;
   list-style: none;
 }
 

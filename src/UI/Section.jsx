@@ -9,7 +9,7 @@ export const Section = styled.section`
   p {
     margin-bottom: 1.5rem;
   }
-  &::after {
+  /* &::after {
   content: "";
   position: absolute;
   display: block;
@@ -27,9 +27,9 @@ background-size: 150px calc(.866*150px);
 opacity: 0.3;
 transform: rotate(166deg);
 z-index: -10;
-box-shadow: 0px 0px 15px #fff;
+box-shadow: 0px 0px 15px #fff; 
 
-}
+}*/
 
 `;
 

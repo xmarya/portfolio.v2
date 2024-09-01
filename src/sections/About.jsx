@@ -18,7 +18,7 @@ export default function About() {
       <AnimatedWrapper>
         <p>
           I’m full of passion for what I do and excited to dive deeper into the
-          world of programming, face its challenges, and acquire MORE~ skills.{" "}
+          world of programming, face its challenges, and acquire MORE~ skills.
           <br /> I would like to talk more but without further ado let me
           introduce what the developer-me can offer to you!
         </p>
