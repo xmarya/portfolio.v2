@@ -8,8 +8,10 @@ export const Form = styled.form`
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    padding: 0 5rem;
+    padding: 3rem 5rem;
     margin-top: 4rem;
+
+    box-shadow: 1rem -1rem var(--neon-purple), -1rem 1rem var(--neon-purple);
     
 `;
 
@@ -25,7 +27,7 @@ export const FormRow = styled.div`
     /* padding: 1.4rem;  */
 
     ${Button} {
-        /* align-self: center; */
+        padding: 0.8rem 3rem;
         margin-top: 1.5rem;
     }
 
@@ -47,16 +49,21 @@ export const Input = styled.input`
     padding: 1.2rem;
 
     &:hover {
-        box-shadow: 0px 0px 0.8rem var(--neon-purple);
+        backdrop-filter: blur(2.5rem) saturate(0%);
+        -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
+        background-color: rgba(176, 123, 255, 0.63);
+        border-radius: var(--sm-radius);
+        outline: 0.2rem solid var(--neon-purple);
     }
 
-    &:focus,
-    &:active {
+    &:focus {
         border-radius: var(--sm-radius);
-        outline: 2px solid var(--neon-purple);
-        box-shadow: 0px 0px 0.7rem var(--neon-purple);
+        outline: 0.2rem solid var(--neon-purple);
+        outline-offset: 0.2rem; // overriding the outline in the general :focus selector in index.css
+        background-color: var(--colour-grey-900);
         border-bottom: none;
     }
+
 `;
 
 export const Textarea = styled.textarea`
@@ -82,13 +89,17 @@ export const Textarea = styled.textarea`
     }
 
     &:hover {
-        box-shadow: 0px 0px 0.8rem var(--neon-purple);
+        backdrop-filter: blur(2.5rem) saturate(0%);
+        -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
+        background-color: rgba(176, 123, 255, 0.63);
+        border-radius: var(--sm-radius);
     }
 
     &:focus {
         border-radius: var(--sm-radius);
-        outline: 2px solid var(--neon-purple);
-        box-shadow: 0px 0px 0.7rem var(--neon-purple);
+        background-color: var(--colour-grey-900);
+        outline: 0.2rem solid var(--neon-purple);
+        outline-offset: 0.2rem; // overriding the outline in the general :focus selector in index.css
         border-bottom: none;
 
     }

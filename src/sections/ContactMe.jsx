@@ -55,7 +55,8 @@ export default function ContactMe() {
         </FormRow>
 
         <FormRow>
-            <Button size="small">Send</Button>
+          {/* TODO: make it disabled in case of incompete form */}
+            <Button>Send</Button>
         </FormRow>
       </Form>
     </Section>

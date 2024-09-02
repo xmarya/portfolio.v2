@@ -26,11 +26,7 @@ const TopCorner = styled(motion.div)`
   bottom: -2px;
   left: -2px;
   right: -2px;
-  background-image: linear-gradient(
-    130deg,
-    var(--neon-purple) 15%,
-    rgba(255, 255, 255, 0) 31%
-  );
+  /* background-image: linear-gradient(130deg,var(--neon-purple) 15%,rgba(255, 255, 255, 0) 31%); */
   //background-size: width height
   /* background-size: 100% 0.2rem; */
   /* border-radius: 1.2rem; */
@@ -44,11 +40,7 @@ const BottomCorner = styled(motion.div)`
   bottom: -2px;
   left: -2px;
   right: -2px;
-  background-image: linear-gradient(
-    312.25deg,
-    var(--neon-purple) 15%,
-    rgba(255, 255, 255, 0) 31%
-  );
+  /* background-image: linear-gradient(312.25deg,var(--neon-purple) 15%,rgba(255, 255, 255, 0) 31%); */
   //background-size: width height
   /* background-size: 100% 0.2rem; */
   /* border-radius: 1.2rem; */
@@ -63,15 +55,13 @@ const OfferList = styled(motion.ul)`
   justify-content: start;
   padding: 3rem;
   background-color: var(--colour-grey-900);
-  /* border-radius: 1.2rem; */
-  border-radius: var(--md-radius);
-  transition: all 0.3s ease;
 
   position: relative;
+  box-shadow: 1rem -1rem var(--neon-purple), -1rem 1rem var(--neon-purple);
 
-  &:hover {
-    box-shadow: 0px 0px 0.7rem var(--neon-purple);
-  }
+  /* &:hover {
+    box-shadow: var(--hover-shadow);
+  } */
 `;
 
 const OffersListItems = styled.li`
@@ -123,24 +113,11 @@ const listVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: "easeIn",
       delay: customDelay * 1,
     },
   }),
 };
 
-const cornerVariants = {
-  initialState: {
-    opacity: 0,
-  },
-  animateState: {
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      delay: 2
-    },
-  },
-};
 
 export default function Offer() {
   const targetRef = useRef(null);
@@ -159,11 +136,7 @@ export default function Offer() {
           initial="initial"
           animate={isInView ? "animate" : ""}
         >
-          <TopCorner
-            variants={cornerVariants}
-            initial="initialState"
-            animate="animateState"
-          />
+
           <SectionSubHeading>Front-End Services</SectionSubHeading>
           <OfferDetails>
             My main focus is to provide a high-quality design that reflects the
@@ -178,11 +151,7 @@ export default function Offer() {
             <OffersListItems>Front-end develoment</OffersListItems>
             <OffersListItems>Full Support</OffersListItems>
           </div>
-          <BottomCorner
-            variants={cornerVariants}
-            initial="initialState"
-            animate="animateState"
-          />
+
         </OfferList>
 
         <OfferList
@@ -191,11 +160,7 @@ export default function Offer() {
           initial="initial"
           animate={isInView ? "animate" : ""}
         >
-          <TopCorner
-            variants={cornerVariants}
-            initial="initialState"
-            animate="animateState"
-          />
+
           <SectionSubHeading>Back-End Services</SectionSubHeading>
           <OfferDetails>
             When working on a Back-end project, I prioritise performance,
@@ -210,11 +175,7 @@ export default function Offer() {
             </OffersListItems>
             <OffersListItems>Full Support</OffersListItems>
           </div>
-          <BottomCorner
-            variants={cornerVariants}
-            initial="initialState"
-            animate="animateState"
-          />
+
         </OfferList>
 
         <OfferCTA

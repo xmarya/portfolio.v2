@@ -22,6 +22,10 @@ export const Section = styled.section`
       margin: var(--section-mt) auto 0;
     `};
 
+    &:last-of-type {
+      margin-bottom: 6rem;
+    }
+
   p {
     margin-bottom: 1.5rem;
   }
