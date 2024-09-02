@@ -9,7 +9,8 @@ export const Button = styled.button`
     border-radius: var(--md-radius);
     border: 0.2rem solid var(--neon-purple);
     
-    padding: 1.6rem 3.2rem;
+    padding: ${(props) => props.size === "small" ? "0.8rem 3rem" : "1.6rem 3.2rem"};
+
 
     &:hover {
         box-shadow: 0.2rem 0.2rem 0 0 var(--neon-purple);

@@ -63,7 +63,8 @@ const Content = styled(motion.div)`
           backdrop-filter: blur(2.5rem) saturate(0%);
           -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
           background-color: rgba(176, 123, 255, 0.63);
-          border-radius: 1.2rem;
+          /* border-radius: 1.2rem; */
+          border-radius: var(--md-radius);
           box-shadow: 0px 0px 0.5rem currentColor;
           padding: 1rem 2rem;
         `;

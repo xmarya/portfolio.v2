@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { SectionSubHeading } from "../UI/Headings";
-import { CentredSection } from "../UI/Section";
+import { CentredSection, Section } from "../UI/Section";
 import Timeline from "../UI/Timeline";
 import { timelineActivities } from "../data/timelineData";
 
@@ -51,8 +51,8 @@ export default function OneDay() {
       transition: {
         type:"spring",
         stiffness: 99,
-
-        duration: 0.3,
+        duration: 0.5,
+         ease: "easeIn",
         delay: 0.5
       }
     }
@@ -68,8 +68,8 @@ export default function OneDay() {
       transition: {
         type:"spring",
         stiffness: 99,
-
-        duration: 0.3,
+        duration: 0.5,
+        ease: "easeIn",
         delay: 1
       }
     }
@@ -78,7 +78,8 @@ export default function OneDay() {
   // TODO: add explanation for the free time... or maybe not
 
   return (
-    <CentredSection>
+    // <CentredSection>
+    <Section display="flex">
       <AnimatedWrapper>
         <SectionSubHeading>A Day in my Life:</SectionSubHeading>
       </AnimatedWrapper>
@@ -140,6 +141,6 @@ export default function OneDay() {
         <Timeline.Note className="italic text-[var(--lg-text)]">* please note that the owner of this portfolio is not a Robot, so the above information is not accurate 100% every day.</Timeline.Note>
       </AnimatedWrapper>
       </div>
-    </CentredSection>
+    </Section>
   );
 }

@@ -1,5 +1,5 @@
 import { SectionSubHeading } from "../UI/Headings";
-import { CentredSection } from "../UI/Section";
+import { CentredSection, Section } from "../UI/Section";
 import CSS from "../UI/SVGs/CSS";
 import Express from "../UI/SVGs/Express";
 import Git from "../UI/SVGs/Git";
@@ -62,7 +62,8 @@ export default function Tools() {
 
   return (
     <motion.div>
-      <CentredSection ref={targetRef}>
+      {/* <CentredSection ref={targetRef}> */}
+      <Section display="flex" ref={targetRef}>
 
         <AnimatedWrapper>
           <SectionSubHeading>Technologies and Tools I use:</SectionSubHeading>
@@ -87,7 +88,7 @@ export default function Tools() {
             );
           })}
         </ul>
-      </CentredSection>
+      </Section>
     </motion.div>
   );
 }

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const HeroHeading = styled.h1`
     font-size: var(--hero-heading);
-    line-height: 1.2;
+    line-height: 1.3;
 `;
 
 export const SectionHeading = styled.h2`

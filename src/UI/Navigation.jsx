@@ -45,7 +45,7 @@ export default function Navigation({}) {
         <NavLink href="#works">works</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink>contact</NavLink>
+        <NavLink href="#contact-me">contact</NavLink>
       </NavItem>
     </StyledNavigation>
   );

@@ -1,11 +1,27 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Section = styled.section`
-  /* display: ${(props) => props.display || ""}; */
   height: auto;
-  position: relative;
   margin-top: var(--section-mt);
   
+  ${(props) =>
+    props.display === "grid" &&
+    css`
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    `};
+
+  ${(props) =>
+    props.display === "flex" &&
+    css`
+      min-height: 90svh;
+      max-height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: var(--section-mt) auto 0;
+    `};
+
   p {
     margin-bottom: 1.5rem;
   }
@@ -30,7 +46,6 @@ z-index: -10;
 box-shadow: 0px 0px 15px #fff; 
 
 }*/
-
 `;
 
 /*  this was for the _Offer.jsx
@@ -53,10 +68,10 @@ export const CarouselSection = styled.section`
 `;*/
 
 export const CentredSection = styled.section`
-  min-height: 90svh;
+  /* min-height: 90svh;
   max-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: var(--section-mt) auto 0;
+  margin: var(--section-mt) auto 0; */
 `;

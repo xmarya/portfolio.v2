@@ -33,7 +33,8 @@ const TopCorner = styled(motion.div)`
   );
   //background-size: width height
   /* background-size: 100% 0.2rem; */
-  border-radius: 1.2rem;
+  /* border-radius: 1.2rem; */
+  border-radius: var(--md-radius);
   z-index: -1;
 `;
 
@@ -50,7 +51,8 @@ const BottomCorner = styled(motion.div)`
   );
   //background-size: width height
   /* background-size: 100% 0.2rem; */
-  border-radius: 1.2rem;
+  /* border-radius: 1.2rem; */
+  border-radius: var(--md-radius);
   z-index: -1;
 `;
 
@@ -61,7 +63,8 @@ const OfferList = styled(motion.ul)`
   justify-content: start;
   padding: 3rem;
   background-color: var(--colour-grey-900);
-  border-radius: 1.2rem;
+  /* border-radius: 1.2rem; */
+  border-radius: var(--md-radius);
   transition: all 0.3s ease;
 
   position: relative;
@@ -119,7 +122,8 @@ const listVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.3,
+      duration: 0.5,
+      ease: "easeIn",
       delay: customDelay * 1,
     },
   }),
@@ -143,7 +147,7 @@ export default function Offer() {
   const isInView = useInView(targetRef, { once: true, amount: 0.2 });
 
   return (
-    <Section id="what-i-offer" display="flex" ref={targetRef}>
+    <Section id="what-i-offer" ref={targetRef}>
       <AnimatedWrapper>
         <SectionHeading>what I offer?</SectionHeading>
       </AnimatedWrapper>

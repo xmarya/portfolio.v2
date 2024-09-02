@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
     position: relative;
-    width: ${(props) => props.width};
+    width: fit-content;
     overflow: hidden;
 `;
 
@@ -52,7 +52,7 @@ const wrapperVriants = {
 }
 
 
-export default function AnimatedWrapper({children, width ="fit-content"}) {
+export default function AnimatedWrapper({children}) {
     const targetRef = useRef(null);
 
     const isInView = useInView(targetRef, {once: true});
@@ -69,7 +69,7 @@ export default function AnimatedWrapper({children, width ="fit-content"}) {
     }, [isInView]);
 
     return (
-        <Container ref={targetRef} width={width}>
+        <Container ref={targetRef}>
             <motion.div
                 variants={childrenVariants}
                 initial="initial"

@@ -4,6 +4,7 @@ import Hero from "../sections/Hero";
 import Offer from "../sections/Offer";
 import Tools from "../sections/Tools";
 import OneDay from "../sections/OneDay";
+import ContactMe from "../sections/ContactMe";
 
 const StyledHome = styled.div`
   counter-reset: section-heading 0;
@@ -17,7 +18,8 @@ export default function Home() {
       <Tools/>
       <Offer/>
       <OneDay/>
-
+      {/* <MyWorks/> */}
+      <ContactMe/>
     </StyledHome>
   );
 }
