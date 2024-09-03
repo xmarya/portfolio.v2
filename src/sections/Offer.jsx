@@ -57,7 +57,8 @@ const OfferList = styled(motion.ul)`
   background-color: var(--colour-grey-900);
 
   position: relative;
-  box-shadow: 1rem -1rem var(--neon-purple), -1rem 1rem var(--neon-purple);
+  box-shadow: var(--corners-shadow-sm);
+
 
   /* &:hover {
     box-shadow: var(--hover-shadow);

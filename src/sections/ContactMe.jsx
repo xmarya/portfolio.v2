@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { Section } from "../UI/Section";
-import { SectionHeading, SectionSubHeading } from "../UI/Headings";
-import { Form, FormRow, Input, Label, Textarea } from "../UI/FormElements";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
-import { Button } from "../UI/Button";
+import { SectionHeading } from "../UI/Headings";
+import { Section } from "../UI/Section";
+import ContactForm from "../UI/ContactForm";
 
 const WorkState = styled.div`
   position: relative;
@@ -38,27 +37,7 @@ export default function ContactMe() {
         </AnimatedWrapper>
       </div>
 
-      <Form>
-        <FormRow>
-        <Label htmlFor="name">Name:</Label>
-        <Input required type="text" name="name" id="name" />
-        </FormRow>
-
-        <FormRow>
-        <Label htmlFor="email">Email:</Label>
-        <Input required type="email" name="email" id="email" />
-        </FormRow>
-
-        <FormRow>
-        <Label htmlFor="details">Tell me about your project:</Label>
-        <Textarea required name="details" id="details"></Textarea>
-        </FormRow>
-
-        <FormRow>
-          {/* TODO: make it disabled in case of incompete form */}
-            <Button>Send</Button>
-        </FormRow>
-      </Form>
+      <ContactForm/>
     </Section>
   );
 }

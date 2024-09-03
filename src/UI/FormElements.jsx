@@ -11,7 +11,7 @@ export const Form = styled.form`
     padding: 3rem 5rem;
     margin-top: 4rem;
 
-    box-shadow: 1rem -1rem var(--neon-purple), -1rem 1rem var(--neon-purple);
+    box-shadow: var(--corners-shadow);
     
 `;
 
@@ -22,9 +22,6 @@ export const FormRow = styled.div`
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    gap: 0.8rem;
-
-    /* padding: 1.4rem;  */
 
     ${Button} {
         padding: 0.8rem 3rem;
@@ -37,6 +34,8 @@ export const Label = styled.label`
     display: block;
     font-size: var(--lg-text);
     align-self: start;
+    margin-bottom: 0.8rem;
+
 `;
 
 export const Input = styled.input`
@@ -49,9 +48,6 @@ export const Input = styled.input`
     padding: 1.2rem;
 
     &:hover {
-        backdrop-filter: blur(2.5rem) saturate(0%);
-        -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
-        background-color: rgba(176, 123, 255, 0.63);
         border-radius: var(--sm-radius);
         outline: 0.2rem solid var(--neon-purple);
     }
@@ -89,10 +85,8 @@ export const Textarea = styled.textarea`
     }
 
     &:hover {
-        backdrop-filter: blur(2.5rem) saturate(0%);
-        -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
-        background-color: rgba(176, 123, 255, 0.63);
         border-radius: var(--sm-radius);
+        outline: 0.2rem solid var(--neon-purple);
     }
 
     &:focus {
@@ -103,6 +97,16 @@ export const Textarea = styled.textarea`
         border-bottom: none;
 
     }
+`;
+
+export const FormError = styled.p`
+    min-height: 3.7rem; /* this line for reserving the space, adjust the preserved height based on font-size */
+    visibility: ${(props) => props.hasError ? "visible" : "hidden"};
+    color: var(--neon-red);
+    font-size: var(--sm-text);
+    font-weight: 600;
+    margin-top: 0.8rem;
+
 `;
 
 

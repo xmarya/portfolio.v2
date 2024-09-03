@@ -11,9 +11,31 @@ export const Button = styled.button`
     
     padding: 1.6rem 3.2rem;
 
-    &:hover {
+    /* &:focus:not(:focus-visible) { outline: none } */
+
+    &:hover:not(:disabled) {
         box-shadow: 0.2rem 0.2rem 0 0 var(--neon-purple);
         border: 0.2rem solid var(--neon-purple);
         transform: translate(-0.2rem, -0.4rem);
     }
+
+    &:hover:focus-visible{
+    /* this to remove the starnge browser's white border that appears when both hover and focus actions are applied to the button at once
+    here, We Ensuring the hover styles apply even when the button is focused */
+    box-shadow: 0.2rem 0.2rem 0 0 var(--neon-purple);
+    border: 0.2rem solid var(--neon-purple);
+    outline: none; /* Resetting the outline */
+    transform: translate(-0.2rem, -0.4rem);
+    }
+
+    &:active:enabled {
+        box-shadow: 0.1rem 0.1rem 0 0 var(--neon-purple);
+        transform: translate(-0.1rem, -0.2rem);
+    }
+
+    &:focus-visible:not(:hover) {
+    outline: 0.2rem solid var(--neon-purple);
+    outline-offset: 0.6rem;
+    }
+
 `;

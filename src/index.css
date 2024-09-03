@@ -40,6 +40,8 @@
   --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-xsm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --hover-shadow: 0px 0px 0.7rem var(--neon-purple);
+  --corners-shadow: 2rem -2rem var(--neon-purple), -2rem 2rem var(--neon-purple);
+  --corners-shadow-sm: 1rem -1rem var(--neon-purple), -1rem 1rem var(--neon-purple);
 
   --backdrop-colour: rgba(255, 255, 255, 0.1);
 
@@ -80,8 +82,12 @@
   /* transition: background-color 0.3s, border 0.3s; */
 }
 
-*:focus,
-a:focus {
+/* 
+  Q- what does the HERO selector focus-visible do ?
+  A- Gets rid of the annoying outline for mouse users but preserves it for keyboard users,
+  and is ignored by browsers that don’t support :focus-visible.
+*/
+a:focus-visible:not(:hover) {
   outline: 0.2rem solid var(--neon-purple);
   outline-offset: 0.6rem;
 }
@@ -121,6 +127,12 @@ p {
   line-height: 1.4;
 }
 
+label::after {
+  content: "*";
+  color: var(--neon-red);
+  margin: 0 0.6rem;
+}
+
 input,
 button,
 textarea,
@@ -153,9 +165,11 @@ button {
 }
 
 select:disabled,
-input:disabled {
+input:disabled,
+button:disabled {
   background-color: var(--colour-grey-200);
   color: var(--colour-grey-500);
+  border-color: var(--colour-grey-500);
 }
 
 a {
