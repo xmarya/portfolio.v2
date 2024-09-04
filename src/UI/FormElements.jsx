@@ -2,30 +2,54 @@ import styled from "styled-components";
 import { Button } from "./Button";
 
 
-export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 3rem 5rem;
-    margin-top: 4rem;
+export const Form = styled.form`   
 
     box-shadow: var(--corners-shadow);
+    border-radius: var(--lg-radius);
+`;
+
+export const SidesContainer = styled.div`
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 1.5s ease;
+
+    
+    /* &:hover { 
+        transform: perspective(150rem) rotateY(-180deg);
+    } */
+`
+export const FrontSide = styled.div`
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    padding: 4rem;
+
+`;
+
+export const BackSide = styled(FrontSide)`
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const FormGrid = styled.div`
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
     
 `;
 
-
 export const FormRow = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
 
     ${Button} {
         padding: 0.8rem 3rem;
-        margin-top: 1.5rem;
     }
 
 `;
@@ -39,7 +63,6 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-    display: block;
     width: 77%;
     height: 3.5rem;
     background-color: var(--colour-grey-900);
@@ -63,9 +86,8 @@ export const Input = styled.input`
 `;
 
 export const Textarea = styled.textarea`
-    display: block;
-    width: 77%;
-    height: 25rem;
+    width: 88%;
+    height: 16rem;
     background-color: var(--colour-grey-900);
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
@@ -108,6 +130,3 @@ export const FormError = styled.p`
     margin-top: 0.8rem;
 
 `;
-
-
-

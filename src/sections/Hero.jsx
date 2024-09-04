@@ -10,7 +10,7 @@ const StyledHero = styled.section`
   height: 80svh;
   display: flex;
   flex-direction: column;
-  margin-top: calc(var(--section-mt) - 10rem);
+  margin-top: calc(var(--section-mt) - 15rem);
 
   p {
     font-size: var(--p-text);

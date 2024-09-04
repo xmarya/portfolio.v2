@@ -16,7 +16,7 @@ const Grid = styled.div`
   grid-template-rows: repeat((2, fit-content));
   column-gap: 10rem;
   row-gap: 8rem;
-  padding: 0 10rem;
+  padding: 5rem 10rem;
   margin: 1.5rem 0;
 `;
 
@@ -58,6 +58,8 @@ const OfferList = styled(motion.ul)`
 
   position: relative;
   box-shadow: var(--corners-shadow-sm);
+  border-top-right-radius: var(--md-radius);
+  border-bottom-left-radius: var(--md-radius);
 
 
   /* &:hover {

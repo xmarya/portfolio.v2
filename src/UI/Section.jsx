@@ -1,21 +1,21 @@
 import styled, { css } from "styled-components";
 
 export const Section = styled.section`
-  height: auto;
+  min-height: 90svh;
+  max-height: auto;
   margin-top: var(--section-mt);
   
   ${(props) =>
     props.display === "grid" &&
     css`
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: max-content 1fr;
+      gap: 2rem;
     `};
 
   ${(props) =>
     props.display === "flex" &&
     css`
-      min-height: 90svh;
-      max-height: auto;
       display: flex;
       flex-direction: column;
       align-items: center;

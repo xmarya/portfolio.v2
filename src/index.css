@@ -40,7 +40,7 @@
   --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-xsm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --hover-shadow: 0px 0px 0.7rem var(--neon-purple);
-  --corners-shadow: 2rem -2rem var(--neon-purple), -2rem 2rem var(--neon-purple);
+  --corners-shadow: inset 1.2rem -1.2rem var(--neon-purple), inset -1.2rem 1.2rem var(--neon-purple);
   --corners-shadow-sm: 1rem -1rem var(--neon-purple), -1rem 1rem var(--neon-purple);
 
   --backdrop-colour: rgba(255, 255, 255, 0.1);
@@ -50,7 +50,7 @@
   --image-grayscale: 0;
   --image-opacity: 100%;
 
-  --section-mt: 20rem;
+  --section-mt: 25rem;
   --section-heading-mt: 1rem;
   --section-heading-mb: 4rem;
 
