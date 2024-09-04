@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "./Button";
+import { motion } from "framer-motion";
 
 
 export const Form = styled.form`   
@@ -8,12 +9,15 @@ export const Form = styled.form`
     border-radius: var(--lg-radius);
 `;
 
-export const SidesContainer = styled.div`
+export const SidesContainer = styled(motion.div)`
     height: 100%;
     width: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: 1.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transition: 1.5s ease; */
 
     
     /* &:hover { 
@@ -30,6 +34,10 @@ export const FrontSide = styled.div`
 `;
 
 export const BackSide = styled(FrontSide)`
+    background-color: var(--colour-grey-700);
+    font-size: var(--secondary-heading);
+    height: 50%;
+    width: 70%;
     transform: rotateY(180deg);
     display: flex;
     align-items: center;
