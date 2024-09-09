@@ -18,7 +18,7 @@ export default function About() {
       <motion.div
         initial={{ y: 300, visibility: "hidden" }}
         animate={isInView ? { y: 0, visibility: "visible" } : {}}
-        transition={{ duration: 1.6, ease: "easeIn", type: "spring", bounce: 0.8, mass: 3 }}
+        transition={{ duration: 1.6, : "easeIn", type: "spring", bounce: 0.8, mass: 3 }}
       >
         <motion.div ref={scrollRef} style={{ x, y, opacity}} className="h-[200svh]">
           <SectionHeading>who I am?</SectionHeading>

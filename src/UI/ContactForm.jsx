@@ -44,6 +44,7 @@ export default function ContactForm() {
         controls.start("animate");
         reset();
         // TODO: using controls, show thankyou element using animation and set a time of 3s then use animationPresence
+        // TODO: must handle the error case
     }
 
     return (

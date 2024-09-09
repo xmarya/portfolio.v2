@@ -92,7 +92,7 @@ export default function OneDay() {
               {index % 2 !== 0 ? (
                 <>
                   <Timeline.Content direction="right" background="glass" variants={activityVariants} initial="initial" animate={isInView? "animate" : "initial"} custom="ltr" >
-                    <Timeline.Activity>{activity.activity}hhhhhh</Timeline.Activity>
+                    <Timeline.Activity>{activity.activity}</Timeline.Activity>
                     <Timeline.Note>{activity?.note}</Timeline.Note>
                   </Timeline.Content>
 

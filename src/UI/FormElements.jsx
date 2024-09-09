@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 export const Form = styled.form`   
 
-    box-shadow: var(--corners-shadow);
     border-radius: var(--lg-radius);
 `;
 

@@ -15,7 +15,7 @@
   --colour-grey-800: #1f2937;
   --colour-grey-900: #111827;
 
-  --neon-purple: #b07bff;
+  --neon-purple: rgb(176, 123, 255);
   --neon-light-purple: #d580ff;
   --neon-blue: #58a6ff;
   --neon-skyblue: #00e5ff;
@@ -35,8 +35,8 @@
 
   --shadow-bg: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 10px 15px -3px rgb(176, 123, 255),
+    0 4px 6px -4px rgb(176, 123, 255);
   --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-xsm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --hover-shadow: 0px 0px 0.7rem var(--neon-purple);
@@ -94,17 +94,15 @@ a:focus-visible:not(:hover) {
 
 html {
   font-size: 62.5%;
-  overflow-x: hidden;
   /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
   scrollbar-width: thin;
   position: relative;
+  /* overflow: hidden; */
 }
 
 body {
   background-color: var(--colour-grey-900);
-  /* background: linear-gradient(180deg, var(--colour-grey-900), #292f3d); */
-  /* background: linear-gradient(180deg, var(--colour-grey-900), var(--colour-grey-800)); */
   max-width: 128rem;
   min-height: 100vh;
   color: var(--colour-grey-200);
@@ -141,7 +139,7 @@ select {
   color: inherit;
 }
 
-/* these styles to change the behaviour of the browser autofill*/
+/* these to change the default styles of the browser autofill*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
