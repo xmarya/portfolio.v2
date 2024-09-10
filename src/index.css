@@ -15,19 +15,10 @@
   --colour-grey-800: #1f2937;
   --colour-grey-900: #111827;
 
-  --neon-purple: rgb(176, 123, 255);
-  --neon-light-purple: #d580ff;
-  --neon-blue: #58a6ff;
-  --neon-skyblue: #00e5ff;
-  --neon-green: #39ff14;
-  --neon-calm-green: #00ff7f;
-  --neon-dark-green: #006400;
-  --neon-orange: #ff5e00;
+  --neon-purple: #b07bff;
   --neon-yellow: #ffff00;
-  --neon-pink: #ff6ec7;
+  --neon-green: #00ff7f;
   --neon-red: #FF4C4C;
-  /* --neon-brown: #800; */
-  --neon-brown: #d2691e;
 
   --sm-radius: 0.4rem;
   --md-radius: 0.8rem;

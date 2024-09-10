@@ -4,32 +4,76 @@ import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { contactSchema } from "../data/zodValidator";
 import { Button } from "../UI/Button";
-import { BackSide, Form, FormError, FormGrid, FormRow, FrontSide, Input, Label, SidesContainer, Textarea } from "../UI/FormElements";
+import { AfterSubmit, Form, FormError, FormGrid, FormRow, Input, Label, Textarea } from "../UI/FormElements";
 import { Spinner } from "./Spinner";
 import { useAnimation } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { useInView } from 'framer-motion';
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 
 
-
-const flipVariants = {
+const rowVariants = {
     initial: {
-        perspective: "150rem",
-        rotateY: "0deg"
+        y: 50,
+        opacity: 0
     },
+
     animate: {
-        perspective: "150rem",
-        rotateY: "-180deg",
+        y: 0,
+        opacity: 1,
         transition: {
-            duration: 1.5,
+            duration: 0.5,
+            delay: 1,
         }
     }
 }
 
-export default function ContactForm() {
+const gridExitVariants = {
+    gridExit: {
+        y: -100,
+        opacity: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+}
+
+const exitVariants = {
+    initial: {
+        y: 200,
+        opacity: 0,
+        zIndex: -10
+    },
+
+    animateAfterSubmit: {
+        y: 0,
+        opacity:1,
+        zIndex: 10,
+        transition: {
+            duration: 0.4,
+            ease: "easeIn"
+        }
+    },
+
+    exitAfterSubmit: {
+        opacity: 0,
+        transition: {
+            delay: 3,
+            duration: 0.5,
+            ease: "easeOut"
+        }
+    }
+}
+
+export default function ContactForm({sectionRef}) {
+    const {register, handleSubmit, reset, formState: {isSubmitting, isDirty, isValid, errors: formErrors}} = useForm({ mode: "onBlur", resolver: zodResolver(contactSchema)});
+    
     const formRef = useRef();
-    const {register, handleSubmit, reset, formState: {isSubmitting, isSubmitted, isDirty, isValid, errors: formErrors}} = useForm({ mode: "onBlur", resolver: zodResolver(contactSchema)});
+    const afterSubmitRef = useRef();
+    const isInView = useInView(formRef, {once: true});
 
     const controls = useAnimation();
 
@@ -40,20 +84,38 @@ export default function ContactForm() {
 
         const result = await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {publicKey: PUBLIC_KEY});
 
-        if(result.status !== 200) throw new Error("something went wrong");
-        controls.start("animate");
+        result.status === 200 ? handleAfterSubmitStyles("success") : handleAfterSubmitStyles("error");
+    }
+
+    async function handleAfterSubmitStyles(styleType) {
+        console.log(styleType);
+        controls.start("gridExit");
+
+        if (styleType === "success") {
+            sectionRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-green)";
+            afterSubmitRef.current.children[0].innerText = "Thank you for your email."
+            console.log("inside"+ styleType);
+        }
+        
+        else {
+            sectionRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-red)";
+            afterSubmitRef.current.children[0].innerText = "Something went wrong, Please try to send your email again";
+            console.log("inside"+ styleType);
+        }
+
+        await controls.start("animateAfterSubmit");
         reset();
-        // TODO: using controls, show thankyou element using animation and set a time of 3s then use animationPresence
-        // TODO: must handle the error case
+        await controls.start("exitAfterSubmit");
+        sectionRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-purple)";
+
     }
 
     return (
         <Form ref={formRef} onSubmit={handleSubmit(handleFormSubmit)}>
-
-            <SidesContainer variants={flipVariants} initial="initial" animate={controls}>
-                <FrontSide>
-                    <FormGrid>
-                    <FormRow className="col-start-1 col-end-2">
+            
+                <AnimatePresence>
+                <FormGrid variants={gridExitVariants} exit={controls}>
+                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-start-1 col-end-2">
                         <Label htmlFor="name">Name:</Label>
                         <Input required type="text" name="name" id="name" 
                             {...register("name")}
@@ -63,7 +125,7 @@ export default function ContactForm() {
                         </FormError>
                     </FormRow>
 
-                    <FormRow className="col-start-2 -col-end-1">
+                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-start-2 -col-end-1">
                         <Label htmlFor="email">Email:</Label>
                         <Input required type="email" name="email" id="email" 
                             {...register("email")}
@@ -73,7 +135,7 @@ export default function ContactForm() {
                         </FormError>
                     </FormRow>
 
-                    <FormRow className="col-start-1 -col-end-1">
+                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-start-1 -col-end-1">
                         <Label htmlFor="details">Tell me about your project:</Label>
                         <Textarea required name="details" id="details"
                             {...register("details")}
@@ -83,18 +145,19 @@ export default function ContactForm() {
                         </FormError>
                     </FormRow>
 
-                    <FormRow className="col-auto">
+                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-auto">
                         <Button disabled={!isDirty || !isValid}>
                         {isSubmitting ? <Spinner/> : "Send"}
                         </Button>
-                    </FormRow>
-                        
-                    </FormGrid>
-                </FrontSide>
-                <BackSide>
-                <span>Thank you for your email.</span>
-                </BackSide>
-            </SidesContainer>
+                    </FormRow>             
+                </FormGrid>
+                </AnimatePresence>
+
+            <AnimatePresence>
+                <AfterSubmit ref={afterSubmitRef} variants={exitVariants} initial="initial" animate={controls} exit={controls}>
+                    <p></p>
+                </AfterSubmit>
+            </AnimatePresence>
 
       </Form>
     )

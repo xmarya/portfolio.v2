@@ -4,58 +4,34 @@ import { motion } from "framer-motion";
 
 
 export const Form = styled.form`   
-
     border-radius: var(--lg-radius);
-`;
-
-export const SidesContainer = styled(motion.div)`
-    height: 100%;
-    width: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* transition: 1.5s ease; */
-
-    
-    /* &:hover { 
-        transform: perspective(150rem) rotateY(-180deg);
-    } */
-`
-export const FrontSide = styled.div`
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    backface-visibility: hidden;
     padding: 4rem;
-
-`;
-
-export const BackSide = styled(FrontSide)`
-    background-color: var(--colour-grey-700);
-    font-size: var(--secondary-heading);
-    height: 50%;
-    width: 70%;
-    transform: rotateY(180deg);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
 `;
 
-export const FormGrid = styled.div`
+export const FormGrid = styled(motion.div)`
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     grid-auto-rows: 1fr;
+    align-content: center;
+    justify-items: stretch;
     
 `;
 
-export const FormRow = styled.div`
+export const FormRow = styled(motion.div)`
 
     ${Button} {
+        justify-self: center;
         padding: 0.8rem 3rem;
     }
 
@@ -94,7 +70,7 @@ export const Input = styled.input`
 
 export const Textarea = styled.textarea`
     width: 88%;
-    height: 16rem;
+    height: 10rem;
     background-color: var(--colour-grey-900);
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
@@ -136,4 +112,23 @@ export const FormError = styled.p`
     font-weight: 600;
     margin-top: 0.8rem;
 
+`;
+
+export const AfterSubmit = styled(motion.div)`
+    width: 100%;
+    height: 100%;
+    background-color: var(--colour-grey-900);
+
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6rem;
+
+    p {
+        font-size: var(--secondary-heading);
+        text-align: center;
+    }
+    
 `;

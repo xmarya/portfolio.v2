@@ -65,7 +65,7 @@ const Content = styled(motion.div)`
           background-color: rgba(176, 123, 255, 0.63);
           /* border-radius: 1.2rem; */
           border-radius: var(--md-radius);
-          box-shadow: 0px 0px 0.5rem currentColor;
+          box-shadow: 0px 0px 0.5rem var(--neon-purple);
           padding: 1rem 2rem;
         `;
 
@@ -110,7 +110,7 @@ const Circle = styled(motion.div)`
   width: 1.5rem;
   height: 1.5rem;
   background-color: var(--neon-purple);
-  box-shadow: 0px 0px 10px currentColor;
+  box-shadow: 0px 0px 10px var(--neon-purple);
   border-radius: 100%;
 
   margin-top: ${(props) =>
@@ -129,7 +129,7 @@ const Icon = styled(motion.div)`
   height: 3rem;
   background-color: var(--neon-purple);
   border-radius: 100%;
-  box-shadow: 0px 0px 10px currentColor;
+  box-shadow: 0px 0px 10px var(--neon-purple);
 
   display: flex;
   align-items: center;

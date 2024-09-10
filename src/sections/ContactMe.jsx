@@ -3,6 +3,7 @@ import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { SectionHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 import ContactForm from "../UI/ContactForm";
+import { useRef } from "react";
 
 const WorkState = styled.div`
   position: relative;
@@ -26,8 +27,10 @@ const WorkState = styled.div`
 `;
 
 export default function ContactMe() {
+  const sectionRef = useRef();
+
   return (
-    <Section id="contact-me" display="grid">
+    <Section id="contact-me" display="grid" ref={sectionRef}>
       <div className="self-start">
         <AnimatedWrapper>
             <SectionHeading>contact</SectionHeading>
@@ -37,7 +40,7 @@ export default function ContactMe() {
         </AnimatedWrapper>
       </div>
 
-      <ContactForm/>
+      <ContactForm sectionRef={sectionRef}/>
     </Section>
   );
 }

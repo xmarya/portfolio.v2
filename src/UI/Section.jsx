@@ -2,15 +2,22 @@ import styled, { css } from "styled-components";
 
 export const Section = styled.section`
   min-height: 90svh;
-  max-height: auto;
+  max-height: fit-content;
   margin-top: var(--section-mt);
   
   ${(props) =>
     props.display === "grid" &&
     css`
+      height: 70svh;
       display: grid;
       grid-template-columns: max-content 1fr;
       gap: 2rem;
+      box-shadow: 0px 0px 3.5rem var(--neon-purple);
+      border-radius: var(--lg-radius);
+      padding: 3rem;
+
+      transition: all 0.5s ease-in;
+
     `};
 
   ${(props) =>

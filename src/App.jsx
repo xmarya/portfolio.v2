@@ -45,9 +45,9 @@ export default function App() {
     }
   }, [isLoading]);
   return ( 
-    showLoader ? 
-        <InitialLoader isLoading={isLoading}/>
-        :
+    // showLoader ? 
+    //     <InitialLoader isLoading={isLoading}/>
+    //     :
         <RouterProvider router={router}/>
 
   )
