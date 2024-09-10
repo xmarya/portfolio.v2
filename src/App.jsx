@@ -44,6 +44,7 @@ export default function App() {
       return () => clearTimeout(loaderExitTime);
     }
   }, [isLoading]);
+  
   return ( 
     // showLoader ? 
     //     <InitialLoader isLoading={isLoading}/>

@@ -1,14 +1,12 @@
 import emailjs from '@emailjs/browser';
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AnimatePresence, useAnimation, useInView } from 'framer-motion';
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { contactSchema } from "../data/zodValidator";
 import { Button } from "../UI/Button";
 import { AfterSubmit, Form, FormError, FormGrid, FormRow, Input, Label, Textarea } from "../UI/FormElements";
 import { Spinner } from "./Spinner";
-import { useAnimation } from 'framer-motion';
-import { AnimatePresence } from 'framer-motion';
-import { useInView } from 'framer-motion';
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;

@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
+import { Button } from "../UI/Button";
 import { HeroHeading } from "../UI/Headings";
 import { LookAtMe } from "../UI/LookAtMe";
-import { Button } from "../UI/Button";
-import {motion} from "framer-motion";
+import navigateToSection from "../helpers/navigateToSection";
 
 
 const StyledHero = styled.section`
@@ -23,8 +24,9 @@ const StyledHero = styled.section`
   }
 `;
 
+
 export default function Hero() {
-    return (
+  return (
         <StyledHero>
 
         <AnimatedWrapper>
@@ -49,7 +51,7 @@ export default function Hero() {
         <motion.div
           initial={{y: 25, opacity:0}}
           animate={{y:0, opacity:1 , transition: {delay: 0.8, type: "just", duration: 0.5, ease: "easeIn"}}}>
-          <Button>Contact me</Button>
+          <Button onClick={() => navigateToSection("contact-me")}>Contact me</Button>
         </motion.div>
       </StyledHero>
     )

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "../UI/Button";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import navigateToSection from "../helpers/navigateToSection";
 
 const Grid = styled.div`
   display: grid;
@@ -191,7 +192,7 @@ export default function Offer() {
             So don’t hesitate to reach out&mdash;you’re one step away from your
             web application.
           </p>
-          <Button>Contact me</Button>
+          <Button onClick={() => navigateToSection("contact-me")}>Contact me</Button>
         </OfferCTA>
       </Grid>
     </Section>
