@@ -27,20 +27,14 @@ const WorkState = styled.div`
 `;
 
 export default function ContactMe() {
-  const sectionRef = useRef();
 
   return (
-    <Section id="contact-me" display="grid" ref={sectionRef}>
-      <div className="self-start">
+    <Section id="contact-me" display="grid">
         <AnimatedWrapper>
             <SectionHeading>contact</SectionHeading>
         </AnimatedWrapper>
-        <AnimatedWrapper>
-        <WorkState workState="busy">Busy</WorkState>
-        </AnimatedWrapper>
-      </div>
 
-      <ContactForm sectionRef={sectionRef}/>
+      <ContactForm />
     </Section>
   );
 }

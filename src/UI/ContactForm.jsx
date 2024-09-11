@@ -7,6 +7,7 @@ import { contactSchema } from "../data/zodValidator";
 import { Button } from "../UI/Button";
 import { AfterSubmit, Form, FormError, FormGrid, FormRow, Input, Label, Textarea } from "../UI/FormElements";
 import { Spinner } from "./Spinner";
+import { useEffect } from 'react';
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
@@ -66,14 +67,18 @@ const exitVariants = {
     }
 }
 
-export default function ContactForm({sectionRef}) {
+export default function ContactForm() {
     const {register, handleSubmit, reset, formState: {isSubmitting, isDirty, isValid, errors: formErrors}} = useForm({ mode: "onBlur", resolver: zodResolver(contactSchema)});
     
-    const formRef = useRef();
-    const afterSubmitRef = useRef();
-    const isInView = useInView(formRef, {once: true});
+    const formRef = useRef(null);
+    const afterSubmitRef = useRef(null);
 
+    const isInView = useInView(formRef, {once: true});
     const controls = useAnimation();
+
+    useEffect(() => {
+        console.log(isInView);
+    }, [isInView]);
 
     async function handleFormSubmit() {
         // TODO: making the template dynamic depending on the browser locale
@@ -86,34 +91,31 @@ export default function ContactForm({sectionRef}) {
     }
 
     async function handleAfterSubmitStyles(styleType) {
-        console.log(styleType);
         controls.start("gridExit");
 
         if (styleType === "success") {
-            sectionRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-green)";
+            formRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-green)";
             afterSubmitRef.current.children[0].innerText = "Thank you for your email."
-            console.log("inside"+ styleType);
         }
         
         else {
-            sectionRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-red)";
+            formRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-red)";
             afterSubmitRef.current.children[0].innerText = "Something went wrong, Please try to send your email again";
-            console.log("inside"+ styleType);
         }
 
         await controls.start("animateAfterSubmit");
         reset();
         await controls.start("exitAfterSubmit");
-        sectionRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-purple)";
+        formRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-purple)";
 
     }
 
     return (
         <Form ref={formRef} onSubmit={handleSubmit(handleFormSubmit)}>
             
-                <AnimatePresence>
+            <AnimatePresence>
                 <FormGrid variants={gridExitVariants} exit={controls}>
-                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-start-1 col-end-2">
+                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-start-1 col-end-2">
                         <Label htmlFor="name">Name:</Label>
                         <Input required type="text" name="name" id="name" 
                             {...register("name")}
@@ -123,7 +125,7 @@ export default function ContactForm({sectionRef}) {
                         </FormError>
                     </FormRow>
 
-                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-start-2 -col-end-1">
+                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-start-2 -col-end-1">
                         <Label htmlFor="email">Email:</Label>
                         <Input required type="email" name="email" id="email" 
                             {...register("email")}
@@ -133,7 +135,7 @@ export default function ContactForm({sectionRef}) {
                         </FormError>
                     </FormRow>
 
-                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-start-1 -col-end-1">
+                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-start-1 -col-end-1">
                         <Label htmlFor="details">Tell me about your project:</Label>
                         <Textarea required name="details" id="details"
                             {...register("details")}
@@ -143,13 +145,13 @@ export default function ContactForm({sectionRef}) {
                         </FormError>
                     </FormRow>
 
-                    <FormRow variants={rowVariants} initial="initial" whileInView={isInView ? "animate" : ""} className="col-auto">
+                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-auto">
                         <Button disabled={!isDirty || !isValid}>
                         {isSubmitting ? <Spinner/> : "Send"}
                         </Button>
                     </FormRow>             
                 </FormGrid>
-                </AnimatePresence>
+            </AnimatePresence>
 
             <AnimatePresence>
                 <AfterSubmit ref={afterSubmitRef} variants={exitVariants} initial="initial" animate={controls} exit={controls}>

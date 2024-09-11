@@ -3,28 +3,27 @@ import { Button } from "./Button";
 import { motion } from "framer-motion";
 
 
-export const Form = styled.form`   
-    border-radius: var(--lg-radius);
-    padding: 4rem;
+export const Form = styled(motion.form)`       
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 0px 3.5rem var(--neon-purple);
+    border-radius: var(--lg-radius);
+    transition: all 0.5s ease-in; // for the shadows colours
 
     position: relative;
-    overflow: hidden;
 
 `;
 
 export const FormGrid = styled(motion.div)`
     width: 100%;
-    height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 26.5rem);
+    /* grid-template-columns: repeat(2, 1fr); */
     grid-template-rows: auto;
-    grid-auto-rows: 1fr;
-    align-content: center;
-    justify-items: stretch;
+    justify-content: end;
+    gap: 1.6rem;
     
 `;
 
@@ -46,7 +45,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-    width: 77%;
+    width: 90%;
     height: 3.5rem;
     background-color: var(--colour-grey-900);
     font-size: var(--md-text);
@@ -116,7 +115,7 @@ export const FormError = styled.p`
 
 export const AfterSubmit = styled(motion.div)`
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background-color: var(--colour-grey-900);
 
     position: absolute;

@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 
 const Container = styled.div`
+height: fit-content;
     position: relative;
     width: fit-content;
     overflow: hidden;

@@ -37,6 +37,7 @@
   --backdrop-colour: rgba(255, 255, 255, 0.1);
 
 
+  --check-border: 1px solid pink;
   /* For dark mode */
   --image-grayscale: 0;
   --image-opacity: 100%;
@@ -114,6 +115,8 @@ p {
   max-width: 60ch;
   /* CHANGE LATER: after deciding the new fonts */
   line-height: 1.4;
+  /* text-wrap: balance; */
+  text-wrap: pretty;
 }
 
 label::after {

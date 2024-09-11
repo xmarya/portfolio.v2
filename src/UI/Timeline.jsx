@@ -15,20 +15,6 @@ export default function Timeline({ children }) {
 const TimelineContainer = styled.ul`
   height: fit-content;
   padding: 3rem 4rem;
-
-  /* &::before {
-    content: "";
-    display: block; */
-  /* position: relative; */
-  /* position: absolute; // decided to change it to absolute to take out the line from the page flow so I can place the time/activity freely + don't make the centred line  affected by the flex settings
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0.3rem;
-    height: 100%;
-    background-color: var(--neon-purple);
-    box-shadow: 0px 0px 15px currentColor;
-  } */
 `;
 const Item = styled(motion.li)`
   width: 100%;
@@ -43,14 +29,15 @@ const MiddleLine = styled(motion.div)`
   height: auto;
   position: relative;
   background-color: var(--neon-purple);
-  box-shadow: 0px 0px 1.5rem currentColor;
+  box-shadow: 0px 0px 1.5rem var(--neon-purple);
 `;
 
 const Content = styled(motion.div)`
   /* font-size: var(--secondary-heading); */
-  font-size: var(--p-text);
+  /* font-size: var(--p-text); */
+  font-size: var(--md-text);
   font-weight: 500;
-  height: 15rem;
+  height: 15rem; // CHANGE LATER: use calmp or min/max
   justify-self: ${(props) => props.direction};
   margin: 0 1.2rem 2rem;
 
@@ -63,10 +50,9 @@ const Content = styled(motion.div)`
           backdrop-filter: blur(2.5rem) saturate(0%);
           -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
           background-color: rgba(176, 123, 255, 0.63);
-          /* border-radius: 1.2rem; */
           border-radius: var(--md-radius);
           box-shadow: 0px 0px 0.5rem var(--neon-purple);
-          padding: 1rem 2rem;
+          padding: 0.6rem 1.2rem;
         `;
 
       default:
@@ -93,7 +79,6 @@ const Note = styled.div`
 `;
 
 const Time = styled.div`
-  /* font-size: 3rem; */
     font-size: 2.4rem;
 
   font-weight: 600;
