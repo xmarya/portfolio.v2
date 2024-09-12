@@ -1,113 +1,109 @@
+import { motion, useAnimate, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import styled from "styled-components";
-import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
-import { SectionHeading, SectionSubHeading } from "../UI/Headings";
-import { Section } from "../UI/Section";
-import { motion } from "framer-motion";
-import { Button } from "../UI/Button";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import navigateToSection from "../helpers/navigateToSection";
+import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
+import { Button } from "../UI/Button";
+import { SectionHeading } from "../UI/Headings";
+import { Section } from "../UI/Section";
+import OfferCard from "../UI/OfferCard";
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); // CHANGE LATER: make it with clamp() when start writong the media-queries
-  grid-template-rows: repeat((2, fit-content));
-  column-gap: 10rem;
-  row-gap: 8rem;
-  padding: 5rem 10rem;
-  margin: 1.5rem 0;
-`;
-
-const TopCorner = styled(motion.div)`
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  left: -2px;
-  right: -2px;
-  /* background-image: linear-gradient(130deg,var(--neon-purple) 15%,rgba(255, 255, 255, 0) 31%); */
-  //background-size: width height
-  /* background-size: 100% 0.2rem; */
-  /* border-radius: 1.2rem; */
-  border-radius: var(--md-radius);
-  z-index: -1;
-`;
-
-const BottomCorner = styled(motion.div)`
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  left: -2px;
-  right: -2px;
-  /* background-image: linear-gradient(312.25deg,var(--neon-purple) 15%,rgba(255, 255, 255, 0) 31%); */
-  //background-size: width height
-  /* background-size: 100% 0.2rem; */
-  /* border-radius: 1.2rem; */
-  border-radius: var(--md-radius);
-  z-index: -1;
-`;
-
-const OfferList = styled(motion.ul)`
+const CardsBox = styled.div`
+  min-height: 50svh;
+  max-height: 50svh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  padding: 3rem;
-  background-color: var(--colour-grey-900);
+  gap: 2.5rem;
 
-  position: relative;
-  box-shadow: var(--corners-shadow-sm);
-  border-top-right-radius: var(--md-radius);
-  border-bottom-left-radius: var(--md-radius);
+  border: var(--check);
+  margin-bottom: 6rem;
+  `;
 
-
-  /* &:hover {
-    box-shadow: var(--hover-shadow);
-  } */
-`;
-
-const OffersListItems = styled.li`
-  /* making each item the same width in order to make the correctley aligned by setting  justify-content: start*/
-  min-width: 27rem;
-  /* max-width: fit-content; */
-  text-align: start;
-  font-size: var(--md-text);
-  text-transform: capitalize;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-
-  &::before {
-    content: "";
-    position: relative;
-    display: block;
-    background-color: var(--neon-purple);
-    width: 0.8rem;
-    height: 0.8rem;
-    margin-right: 0.5rem;
-  }
-`;
-
-const OfferDetails = styled.p`
-  font-size: var(--md-text);
-`;
-
+  
 const OfferCTA = styled(motion.div)`
-  grid-column: 1 /-1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.6rem;
-  margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+margin: 0 auto;
 
-  p {
-    max-width: fit-content;
-  }
+p {
+  max-width: fit-content;
+}
 `;
 
-const listVariants = {
+// const CardInnerContainer = styled.div`
+// /*  
+//   border: var(--check);
+//   border-color: orange; */
+// `;
+
+// const OfferCard = styled(motion.div)`
+//   max-height: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   backdrop-filter: blur(2.5rem) saturate(0%);
+//   -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
+//   background-color: rgba(176, 123, 255, 0.63);
+//   border-radius: var(--md-radius);
+//   box-shadow: 0px 0px 0.5rem var(--neon-purple);
+//   padding: 3rem;
+//   flex: 1;
+//   transition: all .8s cubic-bezier(.19,1,.22,1), flex .8s cubic-bezier(.19,1,.22,1);
+
+//   cursor: pointer;
+
+//   h4 {
+//     font-size: var(--secondary-heading);
+//     font-weight: 400;
+//   }  
+
+//   &:hover {
+//     flex: 2 auto;
+//   }
+
+//   p {
+//     font-size: var(--md-text);
+//   }
+
+// `;
+
+// const OffersListItems = styled.li`
+//   /* making each item the same width in order to make the correctley aligned by setting  justify-content: start*/
+//   min-width: 27rem;
+//   /* max-width: fit-content; */
+//   text-align: start;
+//   font-size: var(--md-text);
+//   text-transform: capitalize;
+//   display: flex;
+//   align-items: center;
+//   justify-content: start;
+
+//   &::before {
+//     content: "";
+//     position: relative;
+//     display: block;
+//     background-color: var(--colour-grey-900);
+//     width: 0.8rem;
+//     height: 0.8rem;
+//     margin-right: 0.5rem;
+//   }
+// `;
+
+// const OfferCTA = styled(motion.div)`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 1rem;
+//   margin: 0 auto;
+
+//   p {
+//     max-width: fit-content;
+//   }
+// `;
+
+const childVariants = {
   initial: {
     y: 75,
     opacity: 0,
@@ -122,68 +118,75 @@ const listVariants = {
   }),
 };
 
+// const headingVariants = {
+
+//   hover: {
+//     fontWeight: 700,
+
+//     transition: {
+//       duration: 0.2,
+//       ease: "easeInOut"
+//     }
+    
+//   }
+// }
 
 export default function Offer() {
-  const targetRef = useRef(null);
-  const isInView = useInView(targetRef, { once: true, amount: 0.2 });
+  const viewRef = useRef(null);
+  const isInView = useInView(viewRef, { once: true, amount: 0.2 });
+  const [flipedCard, setFlipedCard] = useState();
+
+  const [scope, animate] = useAnimate();// scope is going to be forwarded to the children and manage (animate) them from the parent component here
+
+  function handleFlipping(event) {
+    //setting the scope to be the clicked card. 
+    // the .closest("#offer-card") to make sure the element to be animated is the card itself in case the user clicked on the h4
+    scope.current = event.target.closest("#offer-card");
+  }
 
   return (
-    <Section id="what-i-offer" ref={targetRef}>
+    <Section id="what-i-offer" ref={viewRef}>
       <AnimatedWrapper>
         <SectionHeading>what I offer?</SectionHeading>
       </AnimatedWrapper>
-      <Grid>
+
+      <CardsBox>
         {/* the custom value has 1 because it's to delay the comp 1s so the animated wrapper has time to complete */}
-        <OfferList
-          variants={listVariants}
-          custom={1}
-          initial="initial"
-          animate={isInView ? "animate" : ""}
-        >
-
-          <SectionSubHeading>Front-End Services</SectionSubHeading>
-          <OfferDetails>
-            My main focus is to provide a high-quality design that reflects the
-            message of my client's brand/services and ensure the interface is
-            user-friendly. Whether you need a design created from scratch or
-            want to transform your design into a fully functional web
-            application, I've got you covered.
-          </OfferDetails>
-          <div className="flex flex-col">
-            <OffersListItems>UI/UX Design</OffersListItems>
-            <OffersListItems>Wireframe design</OffersListItems>
-            <OffersListItems>Front-end develoment</OffersListItems>
-            <OffersListItems>Full Support</OffersListItems>
-          </div>
-
-        </OfferList>
-
-        <OfferList
-          variants={listVariants}
+        <OfferCard cardVariants={childVariants} isInView={isInView} onFlip={handleFlipping} heading="Front-End Services"/>
+        <OfferCard cardVariants={childVariants} isInView={isInView} delay={1.3} onFlip={handleFlipping} heading="Back-End Services"/>
+{/*         
+        <OfferCard
+        layout
+          variants={childVariants}
           custom={1.3}
           initial="initial"
           animate={isInView ? "animate" : ""}
-        >
+          whileHover="hover"
+          >
+          <CardInnerContainer>
 
-          <SectionSubHeading>Back-End Services</SectionSubHeading>
-          <OfferDetails>
+          <motion.h4 variants={headingVariants}>Back-End Services</motion.h4> */}
+           {/* <motion.p variants={paragraphVariants}>
             When working on a Back-end project, I prioritise performance,
             security and adaptability. I always aim to deliver results that
             exceed your expectations. Your satisfaction with my work is the most
             I would like.
-          </OfferDetails>
+          </motion.p> */}
+          {/*
           <div className="flex flex-col">
             <OffersListItems>Building API</OffersListItems>
             <OffersListItems>
               Designing and Creating NoSQL Database
             </OffersListItems>
             <OffersListItems>Full Support</OffersListItems>
-          </div>
+          </div> */}
 
-        </OfferList>
+        {/* </CardInnerContainer>
+        </OfferCard> */}
+      </CardsBox>
 
         <OfferCTA
-          variants={listVariants}
+          variants={childVariants}
           custom={2.2}
           initial="initial"
           animate={isInView ? "animate" : ""}
@@ -194,7 +197,7 @@ export default function Offer() {
           </p>
           <Button onClick={() => navigateToSection("contact-me")}>Contact me</Button>
         </OfferCTA>
-      </Grid>
+
     </Section>
   );
 }

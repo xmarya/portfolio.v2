@@ -37,7 +37,7 @@
   --backdrop-colour: rgba(255, 255, 255, 0.1);
 
 
-  --check-border: 1px solid pink;
+  --check: 1px solid pink;
   /* For dark mode */
   --image-grayscale: 0;
   --image-opacity: 100%;
@@ -86,11 +86,9 @@ a:focus-visible:not(:hover) {
 
 html {
   font-size: 62.5%;
-  /* scroll-snap-type: y mandatory; */
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  position: relative;
-  /* overflow: hidden; */
 }
 
 body {
@@ -108,6 +106,7 @@ h5,
 h6 {
   overflow-wrap: break-word;
   hyphens: auto;
+  text-wrap: balance;
 }
 
 p {
@@ -177,5 +176,8 @@ ol {
 }
 
 img {
+  display: block;
   max-width: 100%;
+  height: auto;
+  font-style: italic; /* for the alt */
 }

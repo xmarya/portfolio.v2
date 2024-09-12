@@ -24,7 +24,7 @@ export const timelineActivities = [
     {
         activity: "working || educating myself",
         note: "",
-        time: "7:00"
+        time: "7:30"
     },
     {
         activity: "FINALLY COMES! IT'S THE TIME FOR MY CUP OF COFFEE",
@@ -34,12 +34,12 @@ export const timelineActivities = [
     {
         activity: "my laptop battery starts asking for energy",
         note: "of course I ignore it",
-        time: "11:00"
+        time: "11:10"
     },
     {
         activity: "now its colour changes to the red",
         note: "which I can't ignore anymore",
-        time: "11:20"
+        time: "11:32"
     },
     {
         activity: "taking breakfast",

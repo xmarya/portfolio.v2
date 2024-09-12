@@ -61,7 +61,7 @@ export default function InitialLoader({isLoading}) {
             <AnimatePresence 
             // Disable ani nitial animations on the children they are
             // present when the component is firest rendered
-            initial={false}
+            // initial={false}
             // finish the exit animation before the rendering of the other components
             mode="wait"
             // fires when all the exiting nodes have completed animating out

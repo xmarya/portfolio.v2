@@ -31,7 +31,7 @@ export default function App() {
   const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    let loaderTime = setTimeout(() => setIsLoading(!isLoading), 5000);
+    let loaderTime = setTimeout(() => setIsLoading(!isLoading), 3000);
 
     return () => clearTimeout(loaderTime);
 

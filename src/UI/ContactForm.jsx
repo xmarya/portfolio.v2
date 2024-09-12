@@ -7,7 +7,6 @@ import { contactSchema } from "../data/zodValidator";
 import { Button } from "../UI/Button";
 import { AfterSubmit, Form, FormError, FormGrid, FormRow, Input, Label, Textarea } from "../UI/FormElements";
 import { Spinner } from "./Spinner";
-import { useEffect } from 'react';
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
@@ -76,9 +75,6 @@ export default function ContactForm() {
     const isInView = useInView(formRef, {once: true});
     const controls = useAnimation();
 
-    useEffect(() => {
-        console.log(isInView);
-    }, [isInView]);
 
     async function handleFormSubmit() {
         // TODO: making the template dynamic depending on the browser locale

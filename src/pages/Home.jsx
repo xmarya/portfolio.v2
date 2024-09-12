@@ -18,7 +18,7 @@ export default function Home() {
       <About/>
       <Tools/>
       <Offer/>
-      <OneDay/>
+      {/* <OneDay/> */}
       <MyWorks/>
       <ContactMe/>
     </StyledHome>

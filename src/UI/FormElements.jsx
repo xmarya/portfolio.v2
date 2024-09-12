@@ -17,14 +17,12 @@ export const Form = styled(motion.form)`
 `;
 
 export const FormGrid = styled(motion.div)`
-    width: 100%;
+    max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 26.5rem);
-    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(2, 26rem);
     grid-template-rows: auto;
     justify-content: end;
-    gap: 1.6rem;
-    
+    row-gap: 1.6rem;    
 `;
 
 export const FormRow = styled(motion.div)`
