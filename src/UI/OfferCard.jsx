@@ -1,5 +1,7 @@
 import { motion, useAnimate, useInView } from "framer-motion";
 import styled from "styled-components";
+import Overlay from "./Overlay"; // CHANGE LATER: change its close implementation in order to use it alone without the modal... or maybe no problem with using the modal
+import Modal from "./Modal";
 
 const CardInnerContainer = styled.div`
   /*  
@@ -30,7 +32,17 @@ const Card = styled(motion.div)`
     font-weight: 400;
   }
 
-  &:hover {
+  /* &:hover {
+    flex: 2 auto;
+  }
+
+  &[data-active="true"] {
+    background-color: pink;
+  } */
+  // TRANSLATE: apply the hover styles based on this condition => my data-active="true" AND I don't have any sibling AFTER-ME(~)  AND BEFORE-ME(+) which has data-activ="true"
+  &[data-active="true"],
+  &:hover:not(:has(+ [data-active="true"])),
+  &:hover:not(:has(~ [data-active="true"])) {
     flex: 2 auto;
   }
 
@@ -73,18 +85,20 @@ const headingVariants = {
   },
 };
 
-export default function OfferCard({cardVariants, delay = 1, isInView, forwardScope, onFlip, heading, children }) {
+export default function OfferCard({cardVariants, delay = 1, isInView, onFlip, heading, children }) {
   return (
-    <Card
-    id="offer-card"
-      layout
-      variants={cardVariants}
-      custom={delay}
-      initial="initial"
-      animate={isInView ? "animate" : ""}
-      whileHover="hover" // I want the heading hover effect to run when hovering the parent that is why I added here, not in the h4 element itself
-      onClick={onFlip}
-    >
+//    <Overlay>
+     <Card
+        id="offer-card"
+        data-active="false"
+        layout
+        variants={cardVariants}
+        custom={delay}
+        initial="initial"
+        animate={isInView ? "animate" : ""}
+        whileHover="hover" // I want the heading hover effect to run when hovering the parent that is why I added here, not in the h4 element itself
+        onClick={onFlip}
+        >
       <CardInnerContainer>
         <motion.h4 variants={headingVariants}>{heading}</motion.h4>
         {/* <p>
@@ -105,5 +119,7 @@ export default function OfferCard({cardVariants, delay = 1, isInView, forwardSco
       </CardInnerContainer>
 
     </Card>
+//    </Overlay>
+
   );
 }

@@ -134,14 +134,47 @@ const childVariants = {
 export default function Offer() {
   const viewRef = useRef(null);
   const isInView = useInView(viewRef, { once: true, amount: 0.2 });
-  const [flipedCard, setFlipedCard] = useState();
+  const [showOverlay, setShowOverlay] = useState(true);
 
   const [scope, animate] = useAnimate();// scope is going to be forwarded to the children and manage (animate) them from the parent component here
 
+  /* Calculate the values for the center of the viewport */
+  // const xCentre = Math.floor(window.innerWidth / 2);
+  // const yCentre = Math.floor(window.innerHeight / 2);
+
   function handleFlipping(event) {
-    //setting the scope to be the clicked card. 
-    // the .closest("#offer-card") to make sure the element to be animated is the card itself in case the user clicked on the h4
+
+    /* 
+    NOT WORKING (leaved for reference):
+    // 1- Get the parent of the clicked card, loop throught the children and set their dataset-active = "false":
+            // the closest() here to make sure the parentNode will be the parent of all targets, even if the user clicked on the h4 so the parent won't be the target itself
+    // const parentNode = event.target.closest("#offer-card").parentNode;
+    // parentNode?.children?.map(child => child.dataset.active = "false");
+
+    */
+
+    // 1- Get all the targets to loop over them and set/reset their dataset-active = "false":
+    const cards = document.querySelectorAll("#offer-card");
+    cards.forEach(elem => {
+      elem.dataset.active = "false"
+      // is the target already active and it has been double clicked ? make it false
+
+      // otherewaise, set it to true:
+    });
+
+    // 2- Assign the clicked target to animation scope:
     scope.current = event.target.closest("#offer-card");
+
+    // 3- scope.current's dataset.active = "true":
+    scope.current.dataset.active = "true";
+
+
+    // guard clause in case the click event was outside the card
+    // if(!scope.current) animate([scope.current, {flex: 1, y:0}, { duration: 0.1 }]);
+
+    // animate([
+    //   [scope.current, {flex: 1, y: -50, x: 50, rotateY: "-180deg", zIndex: 100}, { duration: 0.8 }]
+    // ]);
   }
 
   return (
@@ -152,8 +185,8 @@ export default function Offer() {
 
       <CardsBox>
         {/* the custom value has 1 because it's to delay the comp 1s so the animated wrapper has time to complete */}
-        <OfferCard cardVariants={childVariants} isInView={isInView} onFlip={handleFlipping} heading="Front-End Services"/>
-        <OfferCard cardVariants={childVariants} isInView={isInView} delay={1.3} onFlip={handleFlipping} heading="Back-End Services"/>
+        <OfferCard cardVariants={childVariants} isInView={isInView} onFlip={handleFlipping} showOverlay={showOverlay} heading="Front-End Services"/>
+        <OfferCard cardVariants={childVariants} isInView={isInView} delay={1.3} showOverlay={showOverlay} onFlip={handleFlipping} heading="Back-End Services"/>
 {/*         
         <OfferCard
         layout

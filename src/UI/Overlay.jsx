@@ -18,10 +18,10 @@ const Backdrop = styled(motion.div)`
     justify-content: center;
 `;
 
-export default function Overlay({children, onClick}) {
+export default function Overlay({children, visability = "hidden", onClick}) {
     return (
         <AnimatePresence>
-            <Backdrop onClick={onClick}
+            <Backdrop visability={visability} onClick={onClick}
                 initial={{opacity:0}}
                 animate={{opacity:1}}
                 exit={{opacity:0}}>
