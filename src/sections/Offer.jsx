@@ -16,7 +16,7 @@ const CardsBox = styled.div`
 
   border: var(--check);
   margin-bottom: 6rem;
-  `;
+`;
 
   
 const OfferCTA = styled(motion.div)`
@@ -30,78 +30,6 @@ p {
   max-width: fit-content;
 }
 `;
-
-// const CardInnerContainer = styled.div`
-// /*  
-//   border: var(--check);
-//   border-color: orange; */
-// `;
-
-// const OfferCard = styled(motion.div)`
-//   max-height: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   backdrop-filter: blur(2.5rem) saturate(0%);
-//   -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
-//   background-color: rgba(176, 123, 255, 0.63);
-//   border-radius: var(--md-radius);
-//   box-shadow: 0px 0px 0.5rem var(--neon-purple);
-//   padding: 3rem;
-//   flex: 1;
-//   transition: all .8s cubic-bezier(.19,1,.22,1), flex .8s cubic-bezier(.19,1,.22,1);
-
-//   cursor: pointer;
-
-//   h4 {
-//     font-size: var(--secondary-heading);
-//     font-weight: 400;
-//   }  
-
-//   &:hover {
-//     flex: 2 auto;
-//   }
-
-//   p {
-//     font-size: var(--md-text);
-//   }
-
-// `;
-
-// const OffersListItems = styled.li`
-//   /* making each item the same width in order to make the correctley aligned by setting  justify-content: start*/
-//   min-width: 27rem;
-//   /* max-width: fit-content; */
-//   text-align: start;
-//   font-size: var(--md-text);
-//   text-transform: capitalize;
-//   display: flex;
-//   align-items: center;
-//   justify-content: start;
-
-//   &::before {
-//     content: "";
-//     position: relative;
-//     display: block;
-//     background-color: var(--colour-grey-900);
-//     width: 0.8rem;
-//     height: 0.8rem;
-//     margin-right: 0.5rem;
-//   }
-// `;
-
-// const OfferCTA = styled(motion.div)`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 1rem;
-//   margin: 0 auto;
-
-//   p {
-//     max-width: fit-content;
-//   }
-// `;
 
 const childVariants = {
   initial: {
@@ -143,21 +71,21 @@ export default function Offer() {
   // const yCentre = Math.floor(window.innerHeight / 2);
 
   function handleFlipping(event) {
-
     /* 
     NOT WORKING (leaved for reference):
     // 1- Get the parent of the clicked card, loop throught the children and set their dataset-active = "false":
             // the closest() here to make sure the parentNode will be the parent of all targets, even if the user clicked on the h4 so the parent won't be the target itself
     // const parentNode = event.target.closest("#offer-card").parentNode;
-    // parentNode?.children?.map(child => child.dataset.active = "false");
-
+    // parentNode?.children?.map(child => child.dataset.active = "false"); // map doesn't loop over DOM nodes, they're not an array
     */
 
     // 1- Get all the targets to loop over them and set/reset their dataset-active = "false":
+    // NOTE: these initial checks and setup have nothing to do with the animations, that is why the assignment of the target to the scope is in a later step
     const cards = document.querySelectorAll("#offer-card");
     cards.forEach(elem => {
-      elem.dataset.active = "false"
-      // is the target already active and it has been double clicked ? make it false
+      elem.dataset.active = "false";
+
+      // is the target already active and it has been clicked again? make it false
 
       // otherewaise, set it to true:
     });

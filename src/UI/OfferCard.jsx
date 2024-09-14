@@ -9,7 +9,7 @@ const CardInnerContainer = styled.div`
   border-color: orange; */
 `;
 
-const Card = styled(motion.div)`
+const Card = styled(motion.button)`
   max-height: 100%;
   display: flex;
   flex-direction: column;
@@ -30,20 +30,37 @@ const Card = styled(motion.div)`
   h4 {
     font-size: var(--secondary-heading);
     font-weight: 400;
+
+    transition: all 0.2s ease-in-out;
   }
 
-  /* &:hover {
-    flex: 2 auto;
-  }
-
-  &[data-active="true"] {
-    background-color: pink;
-  } */
+  /* NOT WORKING (leaved for reference): 
   // TRANSLATE: apply the hover styles based on this condition => my data-active="true" AND I don't have any sibling AFTER-ME(~)  AND BEFORE-ME(+) which has data-activ="true"
   &[data-active="true"],
   &:hover:not(:has(+ [data-active="true"])),
-  &:hover:not(:has(~ [data-active="true"])) {
+  &:hover:not(:has(~ [data-active="true"])){
     flex: 2 auto;
+
+    h4 {
+      font-weight: 700;
+    }
+  }
+*/
+    
+
+  /* TRANSLATE: in this approache we're going to check the condition FROM THE PARENT VIEW, not from the sibiling to each other like the previous one
+                the trick here is to the direct child selector use > along with :has().
+                :has([data-active="true"]) => mean: does the PARENT have a a child its data-active="true" ?
+                if :not, then do these styles for your children in case on of them is hovered.
+                and as you already know, the &[data-active="true"] is to apply the same styles if the element is active
+  */
+  &[data-active="true"],
+  :not(:has([data-active="true"])) > &:hover {
+  flex: 2 auto;
+
+  h4 {
+    font-weight: 700;
+  }
   }
 
   p {
@@ -73,18 +90,6 @@ const OffersListItems = styled.li`
   }
 `;
 
-
-const headingVariants = {
-  hover: {
-    fontWeight: 700,
-
-    transition: {
-      duration: 0.2,
-      ease: "easeInOut",
-    },
-  },
-};
-
 export default function OfferCard({cardVariants, delay = 1, isInView, onFlip, heading, children }) {
   return (
 //    <Overlay>
@@ -96,11 +101,11 @@ export default function OfferCard({cardVariants, delay = 1, isInView, onFlip, he
         custom={delay}
         initial="initial"
         animate={isInView ? "animate" : ""}
-        whileHover="hover" // I want the heading hover effect to run when hovering the parent that is why I added here, not in the h4 element itself
         onClick={onFlip}
+        // OLD CODE (leaved for reference): whileHover="hover" // I want the heading hover effect to run when hovering the parent that is why I added here, not in the h4 element itself
         >
       <CardInnerContainer>
-        <motion.h4 variants={headingVariants}>{heading}</motion.h4>
+        <motion.h4>{heading}</motion.h4>
         {/* <p>
             My main focus is to provide a high-quality design that reflects the
             message of my client's brand/services and ensure the interface is

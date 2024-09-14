@@ -156,8 +156,7 @@ button {
 }
 
 select:disabled,
-input:disabled,
-button:disabled {
+input:disabled{
   background-color: var(--colour-grey-200);
   color: var(--colour-grey-500);
   border-color: var(--colour-grey-500);
