@@ -149,6 +149,8 @@ select:-webkit-autofill:focus {
 
 button {
   cursor: pointer;
+  background: none;
+  border: none;
 }
 
 *:disabled {

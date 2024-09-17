@@ -31,20 +31,20 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showLoader, setShowLoader] = useState(true);
 
-  useEffect(() => {
-    let loaderTime = setTimeout(() => setIsLoading(!isLoading), 3000);
+  // useEffect(() => {
+  //   let loaderTime = setTimeout(() => setIsLoading(!isLoading), 3000);
 
-    return () => clearTimeout(loaderTime);
+  //   return () => clearTimeout(loaderTime);
 
-  }, []); // don't set anything in the dependincies, we only want the initial animation to be at the first render of the page
+  // }, []); // don't set anything in the dependincies, we only want the initial animation to be at the first render of the page
 
 
-  useEffect(() => {
-    if(!isLoading){
-      let loaderExitTime = setTimeout(() => setShowLoader(false), 500);
-      return () => clearTimeout(loaderExitTime);
-    }
-  }, [isLoading]);
+  // useEffect(() => {
+  //   if(!isLoading){
+  //     let loaderExitTime = setTimeout(() => setShowLoader(false), 500);
+  //     return () => clearTimeout(loaderExitTime);
+  //   }
+  // }, [isLoading]);
   
   return ( 
     // showLoader ? 

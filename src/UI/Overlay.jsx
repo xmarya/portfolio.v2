@@ -12,21 +12,20 @@ const Backdrop = styled(motion.div)`
     background-color: var(--backdrop-colour);
     backdrop-filter: blur(2px);
     z-index: 1000;
-    /* transition: all 0.5s; */
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-export default function Overlay({children, visability = "hidden", onClick}) {
+export default function Overlay({visability = "hidden", children}) {
     return (
         <AnimatePresence>
-            <Backdrop visability={visability} onClick={onClick}
+            <Backdrop visability={visability}
                 initial={{opacity:0}}
                 animate={{opacity:1}}
                 exit={{opacity:0}}>
-            {children}
-        </Backdrop>
+                {children}
+            </Backdrop>
         </AnimatePresence>
     )
 }

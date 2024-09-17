@@ -47,8 +47,6 @@ const Content = styled(motion.div)`
         return css`
           height: fit-content;
           width: fit-content;
-          backdrop-filter: blur(2.5rem) saturate(0%);
-          -webkit-backdrop-filter: blur(2.5rem) saturate(0%);
           background-color: rgba(176, 123, 255, 0.63);
           border-radius: var(--md-radius);
           box-shadow: 0px 0px 0.5rem var(--neon-purple);

@@ -1,53 +1,42 @@
 import styled from "styled-components";
-import ContactMe from "../sections/ContactMe";
 import Overlay from "./Overlay";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { HiXMark } from "react-icons/hi2";
 
 const StyledModal = styled(motion.div)`
-    /* visibility: ${(props) => props.visability}; */
-    position: fixed;
-    width: clamp(80svh, 70rem, 50svw);
-    height: fit-content;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: var(--lg-radius);
-    box-shadow: var(--shadow-lg);
-    padding: 3.2rem 4rem;
-    /* padding: 2.4rem 4rem; */
-    /* transition: all 0.5s; */
+    
 `;
 
-const modalVariants = {
-    initial:{
-        y: "-100vh",
-        opacity:0,
-    },
-    animate: {
-        y:0,
-        opacity: 1,
-        transition: {
-            duration: 0.3,
-            type: "spring",
-            damping: 250,
-            stiffness: 50
-        }
-    },
-    exit: {
-        y: "100vh",
-        opacity:0,
+const Button = styled.button`
+    position: absolute;
+    top: 1.2rem;
+    left: 1.9rem;
+
+    &:hover {
+        background-color: var(--neon-grey-200);
     }
-}
 
-export default function Modal({children, onClose}) {
-     //useState ?? or useRef ?
+    & svg {
+        width: 2.4rem;
+        height: 2.4rem;
+        color: var(--colour-grey-600);
+    }
 
+`;
+
+
+export default function Modal({showModal = "visible", ref, children, onClose}) {
     return (
-        <Overlay onClick={onClose}>
+        <Overlay visability={showModal}>
             <AnimatePresence>
-                <StyledModal variants={modalVariants} initial="initial" animate="animate" exit="exit" onClick={event => event.stopPropagation()}> {/* prevent the browser default behaviour of BUBBLING the event, so we can avoid closing the Modal whenever any element inside it was clicked */}
-                    {children}
+                <StyledModal visability={showModal} onClick={onClose}> {/* prevent the browser default behaviour of BUBBLING the event, so we can avoid closing the Modal whenever any element inside it was clicked */}
+                    <Button onClick={onClose}>
+                        <HiXMark/>
+                    </Button>
+                    <div>
+                    {children || ref}
+                    </div>
                 </StyledModal>
             </AnimatePresence>
         </Overlay>
