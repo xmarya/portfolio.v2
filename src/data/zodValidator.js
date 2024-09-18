@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const contactSchema = z.object({
     name: z.string()
-    .min(6, { message: 'Please write a name with 6 characters at least.' })
+    .min(5, { message: 'Please write a name with 5 characters at least.' })
     .max(25, {message: "your name must be 25 characters at maximum."})
     .trim(),
     email: z.string().email({ message: 'Please enter a valid email.' }).trim(),

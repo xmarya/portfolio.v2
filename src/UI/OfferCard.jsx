@@ -1,6 +1,5 @@
-import { motion, useAnimate, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
-import { HiXMark } from "react-icons/hi2";
 
 
 
@@ -15,8 +14,7 @@ const Card = styled(motion.ul)`
   justify-content: center;
   background-color: rgba(176, 123, 255, 0.63);
   border-radius: var(--md-radius);
-  box-shadow: 0px 0px 0.5rem var(--neon-purple);
-  padding: 3rem;
+
   transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1),
     flex 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -26,8 +24,8 @@ const Card = styled(motion.ul)`
   & h4 {
     font-size: var(--secondary-heading);
     font-weight: 400;
-
-    transition: all 0.2s ease-in-out;
+    border: var(--check);
+    transition: all 0.2s ease-in-out; // for the hover
   }
 
   /* NOT WORKING (leaved for reference): 
@@ -58,6 +56,7 @@ const Card = styled(motion.ul)`
     font-weight: 700;
   }
   }
+
 `;
 
 const CardInnerContainer = styled(motion.div)`
@@ -75,54 +74,28 @@ const CardInnerContainer = styled(motion.div)`
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  /* padding: 0 2rem; */
 
 `;
 
-const Button = styled.button`
-    position: absolute;
-    top: 1.2rem;
-    left: 1.9rem;
-
-    &:hover {
-        background-color: var(--neon-grey-200);
-    }
-
-    & svg {
-        width: 2.4rem;
-        height: 2.4rem;
-        color: var(--neon-light-purple);
-        stroke-width: 0.1rem;
-    }
-
-`;
-
-export default function OfferCard({cardVariants, delay = 1, isInView, onAnimate, heading, onReset, children }) {
+export default function OfferCard({cardVariants, delay, isInView, isActive, setIsActive, heading, children }) {
 
   return (
-   <>
      <Card
         id="offer-card"
-        data-active="false"
         layout
+        data-active={isActive}
         variants={cardVariants}
         custom={delay}
         initial="initial"
         animate={isInView ? "animate" : ""}
-        onClick={onAnimate}
+        onClick={setIsActive}
         // OLD CODE (leaved for reference): whileHover="hover" // I want the heading hover effect to run when hovering the parent that is why I added here, not in the h4 element itself
         >
         <motion.h4>{heading}</motion.h4>
       <CardInnerContainer>
         {children}
-
-        <Button onClick={onReset}>
-            <HiXMark/>
-        </Button>
       </CardInnerContainer>
 
     </Card>
-    </>
-
   );
 }

@@ -1,7 +1,10 @@
 
 
-export const offers =[
-    {
+export const offers = [
+  {
+    type: "Front-End",
+    services: [
+      {
         title: "UI/UX design",
       },
       {
@@ -10,10 +13,19 @@ export const offers =[
       {
         title: "Front-end develoment",
       },
+    ]
+  },
+
+  {
+    type: "Back-End",
+    services: [
       {
         title: "Building API",
       },
       {
         title: "Designing and Creating SQL/NoSQL Database",
       },
+    ]
+  }
+    
 ];
