@@ -24,8 +24,9 @@ const Card = styled(motion.ul)`
   & h4 {
     font-size: var(--secondary-heading);
     font-weight: 400;
-    border: var(--check);
-    transition: all 0.2s ease-in-out; // for the hover
+
+    // 👇🏻 this line was causing the h4 to sqaush when the card is animated, I think it conflicting with  framer-motion setting.
+    /* transition: all 0.2s ease-in-out; // for the hover */
   }
 
   /* NOT WORKING (leaved for reference): 
