@@ -78,13 +78,13 @@ const CardInnerContainer = styled(motion.div)`
 
 `;
 
-export default function OfferCard({cardVariants, delay, isInView, isActive, setIsActive, heading, children }) {
+export default function OfferCard({cardVariants, delay, isInView, setIsActive, heading, children }) {
 
   return (
      <Card
         id="offer-card"
         layout
-        data-active={isActive}
+        data-active= "false"
         variants={cardVariants}
         custom={delay}
         initial="initial"
