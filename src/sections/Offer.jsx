@@ -15,6 +15,7 @@ const CardsBox = styled.div`
   display: flex;
   gap: 2.5rem;
   margin-bottom: 6rem;
+  box-shadow: var(--colour-grey-50);
 
 `;
 

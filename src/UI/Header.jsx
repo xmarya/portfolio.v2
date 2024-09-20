@@ -8,8 +8,9 @@ const StyledHeader = styled(motion.header)`
     height: 8rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 0 5rem;
+    /* justify-content: space-between; */
+    justify-content: center;
+    /* margin: 0 5rem; */
 `;
 
 // const navigationVariants = {
@@ -35,9 +36,9 @@ const StyledHeader = styled(motion.header)`
 export default function Header() {
     return (
         <StyledHeader>
-            <Logo/>         
+            {/* <Logo/>          */}
             <Navigation/>
-            <Language/>
+            {/* <Language/> */}
         </StyledHeader>
     )
 }
