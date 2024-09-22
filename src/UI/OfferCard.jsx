@@ -14,7 +14,6 @@ const Card = styled(motion.ul)`
   justify-content: center;
   background-color: rgba(176, 123, 255, 0.63);
   border-radius: var(--md-radius);
-  border: 0.16rem solid transparent;
   transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1),
     flex 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -52,8 +51,6 @@ const Card = styled(motion.ul)`
   &[data-active="true"],
   :not(:has([data-active="true"])) > &:hover {
   flex: 2 auto;
-  box-shadow: 0.45rem 0.45rem 0 0 var(--neon-purple);
-  transform: translate(-5rem, -9rem);
 
   & h4 {
     font-weight: 700;
@@ -77,8 +74,6 @@ const CardInnerContainer = styled(motion.div)`
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-
-  box-shadow: var(--colour-grey-50);
 
 `;
 

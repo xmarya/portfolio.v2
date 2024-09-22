@@ -1,24 +1,21 @@
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { SectionSubHeading } from "../UI/Headings";
-import { CentredSection, Section } from "../UI/Section";
+import { Section } from "../UI/Section";
 import CSS from "../UI/SVGs/CSS";
 import Express from "../UI/SVGs/Express";
 import Git from "../UI/SVGs/Git";
 import HTML from "../UI/SVGs/HTML";
 import JavaScript from "../UI/SVGs/JavaScript";
+import Mongoose from "../UI/SVGs/mongoose";
 import Next from "../UI/SVGs/Next";
 import Node from "../UI/SVGs/Node";
 import React from "../UI/SVGs/React";
 import Router from "../UI/SVGs/Router";
 import StyledComponents from "../UI/SVGs/StyledComponents";
-import Tailwind from "../UI/SVGs/Tailwind";
 import Supabase from "../UI/SVGs/supabase";
-import Mongoose from "../UI/SVGs/mongoose";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
-import { motion } from "framer-motion";
-import { useEffect } from "react";
-import { useAnimation } from "framer-motion";
-import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
+import Tailwind from "../UI/SVGs/Tailwind";
 
 const tools = [
   { component: "div" },

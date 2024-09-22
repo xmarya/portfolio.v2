@@ -70,12 +70,3 @@ export const CarouselSection = styled.section`
     top:0;
   }
 `;*/
-
-export const CentredSection = styled.section`
-  /* min-height: 90svh;
-  max-height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: var(--section-mt) auto 0; */
-`;

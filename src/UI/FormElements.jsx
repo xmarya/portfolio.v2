@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { motion } from "framer-motion";
 
 
-export const Form = styled(motion.form)`       
+export const Form = styled(motion.form)`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,7 @@ export const Form = styled(motion.form)`
 `;
 
 export const FormGrid = styled(motion.div)`
-    max-width: 100%;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 26rem);
     grid-template-rows: auto;
@@ -45,6 +45,8 @@ export const Label = styled.label`
 export const Input = styled.input`
     width: 90%;
     height: 3.5rem;
+    max-width: 90%;
+    max-height: 3.5rem;
     background-color: var(--colour-grey-900);
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
@@ -67,7 +69,9 @@ export const Input = styled.input`
 
 export const Textarea = styled.textarea`
     width: 88%;
+    max-width: 88%;
     height: 10rem;
+    max-height: 10rem;
     background-color: var(--colour-grey-900);
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);

@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { SectionSubHeading } from "../UI/Headings";
-import { CentredSection, Section } from "../UI/Section";
+import { Section } from "../UI/Section";
 import Timeline from "../UI/Timeline";
 import { timelineActivities } from "../data/timelineData";
 
@@ -78,7 +78,6 @@ export default function OneDay() {
   // TODO: add explanation for the free time... or maybe not
 
   return (
-    // <CentredSection>
     <Section display="flex">
       <AnimatedWrapper>
         <SectionSubHeading>A Day in my Life:</SectionSubHeading>
