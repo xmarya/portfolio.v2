@@ -1,5 +1,5 @@
 
-
+/* OLD CODE (leaved for reference): 
 export const tools = [
     {
         name: "React.js",
@@ -72,3 +72,40 @@ export const tools = [
     // svg: ""
     // },
 ];
+ */
+
+import Express from "../UI/SVGs/Express";
+import Next from "../UI/SVGs/Next";
+import Node from "../UI/SVGs/Node";
+import Router from "../UI/SVGs/Router";
+import React from "../UI/SVGs/React";
+import Mongoose from "../UI/SVGs/Mongoose";
+import Tailwind from "../UI/SVGs/Tailwind";
+import JavaScript from "../UI/SVGs/JavaScript";
+import Supabase from "../UI/SVGs/Supabase";
+import StyledComponents from "../UI/SVGs/StyledComponents";
+import HTML from "../UI/SVGs/HTML";
+import CSS from "../UI/SVGs/CSS";
+import Git from "../UI/SVGs/Git";
+
+export const tools = [
+    { component: "div" },
+    { component: <React /> },
+    { component: <Router /> },
+    { component: <Next /> },
+    { component: <Express /> },
+    { component: <Node /> },
+    { component: "div" },
+    { component: "div" },
+    { component: <Mongoose /> },
+    { component: <Tailwind /> },
+    { component: <JavaScript /> },
+    { component: <Supabase /> },
+    { component: <StyledComponents /> },
+    { component: "div" },
+    { component: "div" },
+    { component: <HTML /> },
+    { component: <CSS /> },
+    { component: <Git /> },
+    { component: "div" },
+  ];

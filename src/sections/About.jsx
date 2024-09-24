@@ -12,7 +12,7 @@ export default function About() {
         <p>
           I’m Marya. An IT graduate, I started my journy in full-stack
           development in 2020, then became a freelancer in 2023. I’m Experienced
-          in building websites for small and medium-sized businesses.
+          in building web apps for small and medium-sized businesses.
         </p>
       </AnimatedWrapper>
       <AnimatedWrapper>

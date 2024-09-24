@@ -23,7 +23,7 @@ export const offers = [
         title: "Building API",
       },
       {
-        title: "Designing and Creating SQL/NoSQL Database",
+        title: "Designing and Creating NoSQL Database",
       },
     ]
   }

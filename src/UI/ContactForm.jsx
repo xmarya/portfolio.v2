@@ -58,6 +58,7 @@ const exitVariants = {
 
     exitAfterSubmit: {
         opacity: 0,
+        zIndex: -10,
         transition: {
             delay: 3,
             duration: 0.5,
@@ -102,7 +103,7 @@ export default function ContactForm() {
         await controls.start("animateAfterSubmit");
         reset();
         await controls.start("exitAfterSubmit");
-        formRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-purple)";
+        formRef.current.style.boxShadow = "var(--shadow-md)";
 
     }
 

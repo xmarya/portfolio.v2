@@ -175,7 +175,7 @@ return (
       <CardsBox>
         {
           offers.map((offer, index) =>
-            <OfferCard key={index} cardVariants={childVariants} isInView={isInView} delay={index * 0.9} setIsActive={() => setActiveTarget((currentTarget) => currentTarget === index ? -1 : index)} onAnimate={handleAnimation} heading={`${offer.type} Services`}>
+            <OfferCard key={index} cardVariants={childVariants} isInView={isInView} setIsActive={() => setActiveTarget((currentTarget) => currentTarget === index ? -1 : index)} onAnimate={handleAnimation} heading={`${offer.type} Services`}>
               {
               offer.services.map((serv, index) =>
                 <OffersListItems key={index}>{serv.title}</OffersListItems>
@@ -183,19 +183,6 @@ return (
             </OfferCard>
           )
         }
-
-
-
-        {/* <OfferCard cardVariants={childVariants} isInView={isInView} isOpen={activeTarget === } setIsOpen={() => setActiveTarget} onAnimate={handleAnimation} heading="Front-End Services">
-          <OffersListItems>UI/UX Design</OffersListItems>
-          <OffersListItems>Wireframe design</OffersListItems>
-          <OffersListItems>Front-end develoment</OffersListItems>
-        </OfferCard>
-        
-        <OfferCard cardVariants={childVariants} isInView={isInView} delay={1.3} isOpen={activeTarget === } setIsOpen={() => setActiveTarget} onAnimate={handleAnimation} heading="Back-End Services">
-          <OffersListItems>Building API</OffersListItems>
-          <OffersListItems>Designing and Creating NoSQL Database</OffersListItems>
-        </OfferCard> */}
       </CardsBox>
 
         <OfferCTA

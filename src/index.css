@@ -16,6 +16,7 @@
   --colour-grey-900: #111827;
 
   --neon-purple: #b07bff;
+  --neon-light-purple: #d580ff;
   --neon-yellow: #ffff00;
   --neon-green: #00ff7f;
   --neon-red: #FF4C4C;
@@ -25,9 +26,8 @@
   --lg-radius: 1.2rem;
 
   --shadow-bg: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 10px 15px -3px rgb(176, 123, 255),
-    0 4px 6px -4px rgb(176, 123, 255);
+  0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.4);
   --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-xsm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --hover-shadow: 0px 0px 0.7rem var(--neon-purple);
@@ -187,6 +187,9 @@ video {
   font-style: italic;
   width: 100%;
   max-height: 100%;
-  aspect-ratio: 16/9;
-  object-fit: contain;
+  /* aspect-ratio: 16/9; */
+  /* object-fit: contain; */
+  /* the combination of the above settings creates an unwanted space at the top and the bottom of the video
+      and when trying to change the contain to cover the video will be cropped */
+  object-fit: cover;
 }

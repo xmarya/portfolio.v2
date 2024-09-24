@@ -14,6 +14,8 @@ const Card = styled(motion.ul)`
   justify-content: center;
   background-color: rgba(176, 123, 255, 0.63);
   border-radius: var(--md-radius);
+  box-shadow: var(--shadow-md);
+
   transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1),
     flex 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -50,11 +52,15 @@ const Card = styled(motion.ul)`
   */
   &[data-active="true"],
   :not(:has([data-active="true"])) > &:hover {
-  flex: 2 auto;
+    flex: 2 auto;
 
   & h4 {
     font-weight: 700;
   }
+  }
+
+  &[data-active="true"] {
+    /* box-shadow: var(--shadow-md); */
   }
 
 `;
@@ -77,7 +83,7 @@ const CardInnerContainer = styled(motion.div)`
 
 `;
 
-export default function OfferCard({cardVariants, delay, isInView, setIsActive, heading, children }) {
+export default function OfferCard({cardVariants, isInView, setIsActive, heading, children }) {
 
   return (
      <Card
@@ -85,7 +91,6 @@ export default function OfferCard({cardVariants, delay, isInView, setIsActive, h
         layout
         data-active= "false"
         variants={cardVariants}
-        custom={delay}
         initial="initial"
         animate={isInView ? "animate" : ""}
         onClick={setIsActive}

@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 
 
 export const Form = styled(motion.form)`
+    background-color: var(--colour-grey-800) ;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 0px 3.5rem var(--neon-purple);
+    box-shadow: var(--shadow-md);
     border-radius: var(--lg-radius);
     transition: all 0.5s ease-in; // for the shadows colours
 
@@ -22,7 +24,7 @@ export const FormGrid = styled(motion.div)`
     grid-template-columns: repeat(2, 26rem);
     grid-template-rows: auto;
     justify-content: end;
-    row-gap: 1.6rem;    
+    row-gap: 1.6rem;
 `;
 
 export const FormRow = styled(motion.div)`
@@ -43,11 +45,12 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
+    background-color: var(--colour-grey-800) ;
+
     width: 90%;
     height: 3.5rem;
     max-width: 90%;
     max-height: 3.5rem;
-    background-color: var(--colour-grey-900);
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
     padding: 1.2rem;
@@ -58,21 +61,22 @@ export const Input = styled.input`
     }
 
     &:focus {
+        background-color: var(--colour-grey-800); // to avoid the browser behaviour of changing the bg for input element focus state
         border-radius: var(--sm-radius);
         outline: 0.2rem solid var(--neon-purple);
         outline-offset: 0.2rem; // overriding the outline in the general :focus selector in index.css
-        background-color: var(--colour-grey-900);
         border-bottom: none;
     }
 
 `;
 
 export const Textarea = styled.textarea`
+    background-color: var(--colour-grey-800) ;
+
     width: 88%;
     max-width: 88%;
     height: 10rem;
     max-height: 10rem;
-    background-color: var(--colour-grey-900);
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
     resize: none;
@@ -97,7 +101,6 @@ export const Textarea = styled.textarea`
 
     &:focus {
         border-radius: var(--sm-radius);
-        background-color: var(--colour-grey-900);
         outline: 0.2rem solid var(--neon-purple);
         outline-offset: 0.2rem; // overriding the outline in the general :focus selector in index.css
         border-bottom: none;
@@ -118,7 +121,7 @@ export const FormError = styled.p`
 export const AfterSubmit = styled(motion.div)`
     width: 100%;
     min-height: 100%;
-    background-color: var(--colour-grey-900);
+    background-color: var(--colour-grey-800);
 
     position: absolute;
 
