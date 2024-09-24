@@ -37,6 +37,10 @@ const Works = styled(motion.div)`
     font-size: var(--md-text);
     padding: 1rem 2rem;
   }
+
+  @media (max-width: 48em) {
+    gap: 6rem;
+    }
 `;
 
 /*
@@ -95,7 +99,42 @@ const SkeletonVideo = styled.div`
   max-width: 90%;
   height: 60%;
   max-height: 60%;
+  border-radius: var(--md-radius);
   background: linear-gradient(130deg, var(--colour-grey-300), var(--colour-grey-400));
+
+  position: relative;
+
+&::after {
+  content: "BE THE NEXT CLIENT!";
+  position: absolute;
+  top: 0;
+  left:0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  font-size: var(--section-heading);
+  font-weight: 700;
+  text-align: center;
+  color: var(--colour-grey-0);
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(10deg);
+
+  animation: fadein 3s infinite;
+
+  @keyframes fadein {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.4; }
+  }
+
+  @media (max-width: 23em) {
+    font-size: var(--secondary-heading) ;
+    }
+
+}
 `;
 
 const SkeletonDetails = styled.div`
@@ -110,6 +149,7 @@ const VideoWrapper = styled.div`
   overflow: hidden;
 
   video {
+    border-radius: var(--md-radius);
     transition: transform 0.5s ease;
   }
 
@@ -183,7 +223,7 @@ export default function WorksList() {
         </DetailsContainer>
       </Project>
 
-      <EmptyProject variants={projectVariants} custom={0.7}>
+      <EmptyProject variants={projectVariants} custom={0.4}>
         <SkeletonTitle />
         <Divider/>
 
@@ -198,7 +238,8 @@ export default function WorksList() {
         <SkeletonDetails />
         {/* <h3>Be the next client!</h3> */}
       </EmptyProject>
-      <EmptyProject variants={projectVariants} custom={0.7}>
+
+      <EmptyProject variants={projectVariants} custom={0.4}>
         <SkeletonTitle />
         <Divider/>
 
@@ -213,7 +254,8 @@ export default function WorksList() {
         <SkeletonDetails />
         {/* <h3>Be the next client!</h3> */}
       </EmptyProject>
-      <EmptyProject variants={projectVariants} custom={0.7}>
+
+      <EmptyProject variants={projectVariants} custom={0.4}>
         <SkeletonTitle />
         <Divider/>
 
