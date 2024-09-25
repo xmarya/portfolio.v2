@@ -14,13 +14,13 @@ const StyledHome = styled.div`
 export default function Home() {
   return (
     <StyledHome>
-      {/* <Hero/>
+      <Hero/>
       <About/>
       <Tools/>
-      <Offer/> */}
+      <Offer/>
       {/* <OneDay/> */}
       <MyWorks/>
-      {/* <ContactMe/> */}
+      <ContactMe/>
     </StyledHome>
   );
 }

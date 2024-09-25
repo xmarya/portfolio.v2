@@ -112,6 +112,7 @@ const SkeletonVideo = styled.div`
   opacity: 1;
   width: 100%;
   height: 100%;
+  font-family: var(--en-main-font);
   font-size: var(--section-heading);
   font-weight: 700;
   text-align: center;
@@ -223,7 +224,7 @@ export default function WorksList() {
         </DetailsContainer>
       </Project>
 
-      <EmptyProject variants={projectVariants} custom={0.4}>
+      <EmptyProject variants={projectVariants} custom={0.6}>
         <SkeletonTitle />
         <Divider/>
 
@@ -239,7 +240,7 @@ export default function WorksList() {
         {/* <h3>Be the next client!</h3> */}
       </EmptyProject>
 
-      <EmptyProject variants={projectVariants} custom={0.4}>
+      <EmptyProject variants={projectVariants} custom={0.6}>
         <SkeletonTitle />
         <Divider/>
 
@@ -255,7 +256,7 @@ export default function WorksList() {
         {/* <h3>Be the next client!</h3> */}
       </EmptyProject>
 
-      <EmptyProject variants={projectVariants} custom={0.4}>
+      <EmptyProject variants={projectVariants} custom={0.6}>
         <SkeletonTitle />
         <Divider/>
 

@@ -30,7 +30,7 @@ export default function Tools() {
       <Section display="flex" ref={targetRef}>
 
         <AnimatedWrapper>
-          <SectionSubHeading>Technologies and Tools I use:</SectionSubHeading>
+          <SectionSubHeading>technologies and tools i use:</SectionSubHeading>
         </AnimatedWrapper>
 
         <ul className="w-[80%] flex flex-wrap items-center justify-around gap-14 pl-5">

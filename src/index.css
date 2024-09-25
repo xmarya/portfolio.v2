@@ -44,10 +44,10 @@
   --section-heading-mt: 1rem;
   --section-heading-mb: 4rem;
 
-  /* --ar-main-font:
-  --ar-secondary-font:
-  --en-main-font:
-  --en-secondary-font: */
+  --ar-main-font: "IBM Plex Sans Arabic", system-ui;
+  --ar-secondary-font: "Almarai", sans-serif;
+  --en-main-font: "Oswald", sans-serif;
+  --en-secondary-font: "Average Sans", sans-serif;
 
   --hero-heading: clamp(4rem, 8vw, 8rem);
   --section-heading: clamp(2.6rem, 5vw, 3.2rem);
@@ -102,18 +102,24 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--en-main-font);
   overflow-wrap: break-word;
   hyphens: auto;
   text-wrap: balance;
 }
 
 p {
+  font-family: var(--en-secondary-font);
   font-size: var(--p-text);
   max-width: 60ch;
-  /* CHANGE LATER: after deciding the new fonts */
   line-height: 1.4;
   /* text-wrap: balance; */
-  text-wrap: pretty;
+  /* text-wrap: pretty; */
+}
+
+label {
+  font-family: var(--en-secondary-font);
+
 }
 
 label::after {
@@ -126,7 +132,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+  font-family: var(--en-secondary-font);
   color: inherit;
 }
 
@@ -141,11 +147,12 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--colour-grey-200);
-  -webkit-box-shadow: 0 0 0px 1000px var(--colour-grey-900) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--colour-grey-800) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 
 button {
+  font-family: var(--en-main-font);
   cursor: pointer;
   background: none;
   border: none;
@@ -163,13 +170,16 @@ input:disabled{
 }
 
 a {
+  font-family: var(--en-secondary-font);
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+
 }
 
 ul,
 ol {
+  font-family: var(--en-secondary-font);
   display: block;
   list-style: none;
 }

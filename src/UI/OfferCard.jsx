@@ -81,6 +81,14 @@ const CardInnerContainer = styled(motion.div)`
   justify-content: space-evenly;
   flex-wrap: wrap;
 
+  @media (max-width: 28em) {
+    padding: 0 3rem;
+  }
+
+  @media (max-width: 22em) {
+    padding: 0 1rem;
+  }
+
 `;
 
 export default function OfferCard({cardVariants, isInView, setIsActive, heading, children }) {

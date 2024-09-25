@@ -7,7 +7,7 @@ export default function MyWorks() {
     return (
         <Section id="works">
             <AnimatedWrapper>
-                <SectionHeading>My Works</SectionHeading>
+                <SectionHeading>my works</SectionHeading>
             </AnimatedWrapper>
             
             <WorksList/>

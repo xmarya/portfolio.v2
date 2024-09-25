@@ -12,19 +12,37 @@ export const Form = styled(motion.form)`
     justify-content: center;
     box-shadow: var(--shadow-md);
     border-radius: var(--lg-radius);
-    transition: all 0.5s ease-in; // for the shadows colours
+    transition: box-shadow 0.5s ease-in; // for the shadows colours
 
     position: relative;
 
 `;
 
 export const FormGrid = styled(motion.div)`
-    width: 100%;
+    font-size: var(--lg-text);
+
+    max-width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 26rem);
     grid-template-rows: auto;
     justify-content: end;
     row-gap: 1.6rem;
+
+    input:hover,
+    textarea:hover {
+        border-bottom: 0;
+        border-radius: var(--sm-radius);
+        outline: 0.2rem solid var(--neon-purple);
+    }
+
+    input:focus,
+    textarea:focus{
+        border-radius: var(--sm-radius);
+        outline: 0.2rem solid var(--neon-purple);
+        outline-offset: 0.2rem; // overriding the outline in the general :focus selector in index.css
+        border-bottom: none;
+    }
+
 `;
 
 export const FormRow = styled(motion.div)`
@@ -45,7 +63,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-    background-color: var(--colour-grey-800) ;
+    background-color: var(--colour-grey-800);
 
     width: 90%;
     height: 3.5rem;
@@ -54,19 +72,6 @@ export const Input = styled.input`
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
     padding: 1.2rem;
-
-    &:hover {
-        border-radius: var(--sm-radius);
-        outline: 0.2rem solid var(--neon-purple);
-    }
-
-    &:focus {
-        background-color: var(--colour-grey-800); // to avoid the browser behaviour of changing the bg for input element focus state
-        border-radius: var(--sm-radius);
-        outline: 0.2rem solid var(--neon-purple);
-        outline-offset: 0.2rem; // overriding the outline in the general :focus selector in index.css
-        border-bottom: none;
-    }
 
 `;
 
@@ -77,7 +82,6 @@ export const Textarea = styled.textarea`
     max-width: 88%;
     height: 10rem;
     max-height: 10rem;
-    font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
     resize: none;
     padding: 1.2rem;
@@ -94,18 +98,6 @@ export const Textarea = styled.textarea`
         background-clip: padding-box; /* Ensures that the border is visible */
     }
 
-    &:hover {
-        border-radius: var(--sm-radius);
-        outline: 0.2rem solid var(--neon-purple);
-    }
-
-    &:focus {
-        border-radius: var(--sm-radius);
-        outline: 0.2rem solid var(--neon-purple);
-        outline-offset: 0.2rem; // overriding the outline in the general :focus selector in index.css
-        border-bottom: none;
-
-    }
 `;
 
 export const FormError = styled.p`

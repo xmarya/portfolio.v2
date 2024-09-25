@@ -28,12 +28,24 @@ export const SectionHeading = styled.h2`
     display: inline-block;
     position: relative;
     top: 0;
-    /* left: 15%; */
     width: 30rem;
     height: 0.01rem;
     background-color: var(--neon-purple);
     vertical-align: middle;
     margin-left: 1.6rem;
+
+    @media (max-width: 112.5em) {
+      width: 20rem;
+    }
+/* 
+    @media (max-width: 48em) {
+        width: 100%;
+    }
+
+    @media (max-width: 37.5em) {
+        margin-left: 1rem;
+    } */
+
   }
 `;
 

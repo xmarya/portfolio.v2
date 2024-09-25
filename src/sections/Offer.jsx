@@ -17,6 +17,16 @@ const CardsBox = styled.div`
   margin-bottom: 6rem;
   box-shadow: var(--colour-grey-50);
 
+  border: var(--check);
+
+  @media (max-width: 50em) {
+    min-height: 70svh;
+    max-height: 70svh;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
 `;
 
 const OffersListItems = styled(motion.li)`
@@ -33,10 +43,23 @@ align-items: center;
 justify-content: center;
 
 background-color: rgba(176, 123, 255, 0.63);
-/* background-color: var(--colour-grey-900); */
-/* box-shadow: 0px 0px 0.3rem var(--neon-purple); */
 border-radius: var(--sm-radius);
 padding: 0 1.5rem;
+
+@media (max-width: 40em) {
+  font-size: var(--lg-text);
+}
+
+@media (max-width: 32.5em) {
+  max-width: 15rem;
+  font-size: var(--md-text);
+}
+
+@media (max-width: 28em) {
+  max-width: 20rem;
+  height: 7rem;
+}
+
 `;
 
 const OfferCTA = styled(motion.div)`
@@ -169,7 +192,7 @@ export default function Offer() {
 return (
     <Section id="what-i-offer" ref={viewRef}>
       <AnimatedWrapper>
-        <SectionHeading>what I offer?</SectionHeading>
+        <SectionHeading>what i offer?</SectionHeading>
       </AnimatedWrapper>
 
       <CardsBox>

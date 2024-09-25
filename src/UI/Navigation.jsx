@@ -11,7 +11,7 @@ const StyledNavigation = styled.ol`
 `;
 
 const NavItem = styled(motion.li)`
-  font-size: var(--sm-text);
+  font-size: var(--md-text);
   counter-increment: nav-item 1;
 
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -36,16 +36,16 @@ export default function Navigation({}) {
   return (
     <StyledNavigation>
       <NavItem>
-        <NavLink href="#who-i-am">who I am ?</NavLink>
+        <NavLink href="#who-i-am">who i am ?</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="#what-i-offer">what I offer ?</NavLink>
+        <NavLink href="#what-i-offer">what i offer ?</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="#works">works</NavLink>
+        <NavLink href="#works">my works</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="#contact-me">contact</NavLink>
+        <NavLink href="#contact-me">contact me</NavLink>
       </NavItem>
     </StyledNavigation>
   );

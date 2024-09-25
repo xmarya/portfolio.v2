@@ -27,14 +27,15 @@ const WorkState = styled.div`
 `;
 
 export default function ContactMe() {
+  const ref = useRef(null);
 
   return (
-    <Section id="contact-me" display="grid">
+    <Section ref={ref} id="contact-me" display="grid">
         <AnimatedWrapper>
-            <SectionHeading>contact</SectionHeading>
+            <SectionHeading>contact me</SectionHeading>
         </AnimatedWrapper>
 
-      <ContactForm />
+      <ContactForm targetRef={ref} />
     </Section>
   );
 }

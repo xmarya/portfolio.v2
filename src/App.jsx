@@ -5,7 +5,6 @@ import AppLayout from "./UI/AppLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails";
-import useWindowSize from "./helpers/useWindowSize";
 
 
 const router = createBrowserRouter([

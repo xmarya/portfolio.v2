@@ -12,18 +12,18 @@ const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
 
 
-const rowVariants = {
+const formVariants = {
     initial: {
-        y: 50,
-        opacity: 0
+        y: 75,
+        opacity: 0,
     },
 
     animate: {
         y: 0,
         opacity: 1,
         transition: {
-            duration: 0.5,
-            delay: 1,
+            duration: 0.8,
+            delay: 0.8,
         }
     }
 }
@@ -67,13 +67,13 @@ const exitVariants = {
     }
 }
 
-export default function ContactForm() {
+export default function ContactForm({ targetRef }) {
     const {register, handleSubmit, reset, formState: {isSubmitting, isDirty, isValid, errors: formErrors}} = useForm({ mode: "onBlur", resolver: zodResolver(contactSchema)});
     
     const formRef = useRef(null);
     const afterSubmitRef = useRef(null);
 
-    const isInView = useInView(formRef, {once: true});
+    const isInView = useInView(targetRef, {once: true, amount: 0.2});
     const controls = useAnimation();
 
 
@@ -108,11 +108,11 @@ export default function ContactForm() {
     }
 
     return (
-        <Form ref={formRef} onSubmit={handleSubmit(handleFormSubmit)}>
+        <Form ref={formRef} variants={formVariants} initial="initial" animate={isInView ? "animate" : ""} onSubmit={handleSubmit(handleFormSubmit)}>
             
             <AnimatePresence>
                 <FormGrid variants={gridExitVariants} exit={controls}>
-                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-start-1 col-end-2">
+                    <FormRow className="col-start-1 col-end-2">
                         <Label htmlFor="name">Name:</Label>
                         <Input required type="text" name="name" id="name" 
                             {...register("name")}
@@ -122,7 +122,7 @@ export default function ContactForm() {
                         </FormError>
                     </FormRow>
 
-                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-start-2 -col-end-1">
+                    <FormRow className="col-start-2 -col-end-1">
                         <Label htmlFor="email">Email:</Label>
                         <Input required type="email" name="email" id="email" 
                             {...register("email")}
@@ -132,7 +132,7 @@ export default function ContactForm() {
                         </FormError>
                     </FormRow>
 
-                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-start-1 -col-end-1">
+                    <FormRow className="col-start-1 -col-end-1">
                         <Label htmlFor="details">Tell me about your project:</Label>
                         <Textarea required name="details" id="details"
                             {...register("details")}
@@ -142,7 +142,7 @@ export default function ContactForm() {
                         </FormError>
                     </FormRow>
 
-                    <FormRow variants={rowVariants} initial="initial" animate={isInView ? "animate" : ""} className="col-auto">
+                    <FormRow className="col-auto">
                         <Button disabled={!isDirty || !isValid}>
                         {isSubmitting ? <Spinner/> : "Send"}
                         </Button>

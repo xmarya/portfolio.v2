@@ -6,7 +6,7 @@ export default function About() {
   return (
     <Section id="who-i-am">
       <AnimatedWrapper>
-        <SectionHeading>who I am?</SectionHeading>
+        <SectionHeading>who i am?</SectionHeading>
       </AnimatedWrapper>
       <AnimatedWrapper>
         <p>
