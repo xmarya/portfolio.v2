@@ -26,14 +26,13 @@ export default function Tools() {
 
   return (
     <motion.div>
-      {/* <CentredSection ref={targetRef}> */}
       <Section display="flex" ref={targetRef}>
 
         <AnimatedWrapper>
           <SectionSubHeading>technologies and tools i use:</SectionSubHeading>
         </AnimatedWrapper>
 
-        <ul className="w-[80%] flex flex-wrap items-center justify-around gap-14 pl-5">
+        <ul className="w-[80%] border border-orange-500 flex flex-wrap items-center justify-around gap-14 pl-5">
           {tools.map((tool, index) => {
             return tool.component === "div" ? (
               <li key={index}>

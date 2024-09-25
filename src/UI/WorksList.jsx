@@ -73,6 +73,37 @@ const Divider = styled.div`
   opacity: 0.6;
 `;
 
+
+const VideoWrapper = styled.div`
+  padding: 0 2rem;
+  overflow: hidden;
+
+  video {
+    border-radius: var(--md-radius);
+    transition: transform 0.5s ease;
+  }
+
+  &:hover video {
+    transform: scale(1.05);
+  }
+`;
+
+const DetailsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  padding: 0 1.5rem;
+
+  p {
+    font-size: var(--xl-text);
+    text-align: center;
+  }
+`;
+
 const EmptyProject = styled(motion.div)`
   display: flex;
   flex-direction: column;
@@ -97,8 +128,8 @@ const SkeletonTitle = styled.div`
 const SkeletonVideo = styled.div`
   width: 90%;
   max-width: 90%;
-  height: 60%;
-  max-height: 60%;
+  height: 55%;
+  max-height: 55%;
   border-radius: var(--md-radius);
   background: linear-gradient(130deg, var(--colour-grey-300), var(--colour-grey-400));
 
@@ -143,34 +174,6 @@ const SkeletonDetails = styled.div`
   height: 2.5rem;
   background: linear-gradient(180deg, var(--colour-grey-300), var(--colour-grey-400));
   border-radius: var(--md-radius);
-`;
-
-const VideoWrapper = styled.div`
-  padding: 0 2rem;
-  overflow: hidden;
-
-  video {
-    border-radius: var(--md-radius);
-    transition: transform 0.5s ease;
-  }
-
-  &:hover video {
-    transform: scale(1.05);
-  }
-`;
-
-const DetailsContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-
-  padding: 0 1.5rem;
-
-  p {
-    font-size: var(--lg-text);
-  }
 `;
 
 const staggeredVariants = {

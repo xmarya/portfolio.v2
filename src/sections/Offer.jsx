@@ -17,8 +17,6 @@ const CardsBox = styled.div`
   margin-bottom: 6rem;
   box-shadow: var(--colour-grey-50);
 
-  border: var(--check);
-
   @media (max-width: 50em) {
     min-height: 70svh;
     max-height: 70svh;
@@ -66,11 +64,13 @@ const OfferCTA = styled(motion.div)`
 display: flex;
 flex-direction: column;
 align-items: center;
+justify-content: center;
 gap: 1rem;
 margin: 0 auto;
 
 p {
   max-width: fit-content;
+  text-align: center;
 }
 `;
 
@@ -84,7 +84,7 @@ const childVariants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      delay: customDelay * 1,
+      delay: customDelay,
     },
   }),
 };
@@ -198,7 +198,7 @@ return (
       <CardsBox>
         {
           offers.map((offer, index) =>
-            <OfferCard key={index} cardVariants={childVariants} isInView={isInView} setIsActive={() => setActiveTarget((currentTarget) => currentTarget === index ? -1 : index)} onAnimate={handleAnimation} heading={`${offer.type} Services`}>
+            <OfferCard key={index} cardVariants={childVariants} customDelay={index === 0 ? 1 : 1.3} isInView={isInView} setIsActive={() => setActiveTarget((currentTarget) => currentTarget === index ? -1 : index)} onAnimate={handleAnimation} heading={`${offer.type} Services`}>
               {
               offer.services.map((serv, index) =>
                 <OffersListItems key={index}>{serv.title}</OffersListItems>
@@ -210,7 +210,7 @@ return (
 
         <OfferCTA
           variants={childVariants}
-          custom={2.2}
+          custom={1.6}
           initial="initial"
           animate={isInView ? "animate" : ""}
         >

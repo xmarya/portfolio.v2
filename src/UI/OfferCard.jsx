@@ -91,7 +91,7 @@ const CardInnerContainer = styled(motion.div)`
 
 `;
 
-export default function OfferCard({cardVariants, isInView, setIsActive, heading, children }) {
+export default function OfferCard({cardVariants, customDelay, isInView, setIsActive, heading, children }) {
 
   return (
      <Card
@@ -100,6 +100,7 @@ export default function OfferCard({cardVariants, isInView, setIsActive, heading,
         data-active= "false"
         variants={cardVariants}
         initial="initial"
+        custom={customDelay}
         animate={isInView ? "animate" : ""}
         onClick={setIsActive}
         // OLD CODE (leaved for reference): whileHover="hover" // I want the heading hover effect to run when hovering the parent that is why I added here, not in the h4 element itself

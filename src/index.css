@@ -52,7 +52,7 @@
   --hero-heading: clamp(4rem, 8vw, 8rem);
   --section-heading: clamp(2.6rem, 5vw, 3.2rem);
   --secondary-heading: clamp(2.4rem, 5vw, 2.8rem);
-  --p-text: clamp(2rem, 5vw, 1.8rem);
+  --p-text: clamp(1.8rem, 4vw, 2rem);
 
   --xxl-text: 2.2rem;
   --xl-text: 1.8rem;
@@ -113,8 +113,7 @@ p {
   font-size: var(--p-text);
   max-width: 60ch;
   line-height: 1.4;
-  /* text-wrap: balance; */
-  /* text-wrap: pretty; */
+  text-wrap: pretty;
 }
 
 label {

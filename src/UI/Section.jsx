@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Section = styled.section`
+border: var(--check);
   min-height: 90svh;
   margin-top: var(--section-mt);
   

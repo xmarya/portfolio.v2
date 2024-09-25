@@ -17,6 +17,9 @@ dependencies:
   framer-motion:
     specifier: ^11.3.29
     version: 11.3.29(react-dom@18.3.1)(react@18.3.1)
+  hamburger-react:
+    specifier: ^2.5.1
+    version: 2.5.1(react@18.3.1)
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -1806,6 +1809,14 @@ packages:
     dependencies:
       get-intrinsic: 1.2.4
     dev: true
+
+  /hamburger-react@2.5.1(react@18.3.1):
+    resolution: {integrity: sha512-XlTIinYeYzLu76q4Vd9olwOJP0hFgAeZfJFX6tTT/ufTLhmOjI77CGFYIwGc6gcDeeT86660ZoKx3/L67vdZEw==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
+    dependencies:
+      react: 18.3.1
+    dev: false
 
   /has-bigints@1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}

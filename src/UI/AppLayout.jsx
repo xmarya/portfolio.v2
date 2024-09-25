@@ -11,6 +11,8 @@ const MainContainer = styled.main`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+
+  position: relative; // for the Mobile navigation.
 `;
 
 export default function AppLayout() {
@@ -24,6 +26,7 @@ export default function AppLayout() {
       if (section) navigateToSection(sectionId);
       }
   } ,[location]);
+
   return (
     <>
       <Header />

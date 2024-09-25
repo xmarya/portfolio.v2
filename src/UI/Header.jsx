@@ -3,6 +3,8 @@ import Navigation from "./Navigation";
 import Logo from "./Logo";
 import Language from "./Language";
 import { motion } from "framer-motion";
+import useWindowSize from "../helpers/useWindowSize";
+import HamburgerNav from "./HamburgerNav";
 
 const StyledHeader = styled(motion.header)`
     height: 8rem;
@@ -13,31 +15,15 @@ const StyledHeader = styled(motion.header)`
     /* margin: 0 5rem; */
 `;
 
-// const navigationVariants = {
-//     initial: {
-//         y: 75,
-//         opacity: 0
-//     },
-//     animate: (stagger) => ({
-//         y:0,
-//         opacity: 1,
-//         transition: {
-//             ease: "easeIn",
-//             delay: 1, // 1 is to delay until the hero animation completes,
-//             /*
-//             delayChildren: 0, // this will set a delay before the children start animating
-//             staggerChildren: 0.3 // this will set the time inbetween children animation
-//             */
-//         }
-//     })
-    
-// }
 
 export default function Header() {
+    const {width} = useWindowSize();
     return (
         <StyledHeader>
             {/* <Logo/>          */}
-            <Navigation/>
+            {
+                width > 600 ? <Navigation/> : <HamburgerNav/>
+            }
             {/* <Language/> */}
         </StyledHeader>
     )

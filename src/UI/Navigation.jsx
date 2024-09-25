@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import styled from "styled-components";
+import { navLinks } from "../data/navLinks";
 
 const StyledNavigation = styled.ol`
   display: flex;
@@ -10,18 +10,18 @@ const StyledNavigation = styled.ol`
   counter-reset: nav-item 0;
 `;
 
-const NavItem = styled(motion.li)`
+const NavItem = styled.li`
   font-size: var(--md-text);
   counter-increment: nav-item 1;
 
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   &:hover {
     color: var(--neon-purple);
   }
 `;
 
-const NavLink = styled.a`
+export const NavLink = styled.a`
   padding: 1rem;
 
   &::before {
@@ -32,21 +32,16 @@ const NavLink = styled.a`
   }
 `;
 
-export default function Navigation({}) {
+export default function Navigation() {
   return (
     <StyledNavigation>
-      <NavItem>
-        <NavLink href="#who-i-am">who i am ?</NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink href="#what-i-offer">what i offer ?</NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink href="#works">my works</NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink href="#contact-me">contact me</NavLink>
-      </NavItem>
+      {
+        navLinks.map((nav, index) =>
+          <NavItem key={index}>
+            <NavLink href={nav.link}>{nav.nav}</NavLink>
+          </NavItem>
+        )
+      }
     </StyledNavigation>
   );
 }
