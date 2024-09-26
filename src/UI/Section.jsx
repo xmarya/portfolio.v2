@@ -9,9 +9,8 @@ border: var(--check);
     props.display === "grid" &&
     css`
       display: grid;
-      /* grid-template-columns: max-content 1fr; */
-      grid-template-columns: repeat(2, minmax(min(20rem, 100%), 1fr));
-
+      grid-template-columns: repeat(auto-fill, minmax(min(40rem, 100%), 1fr));
+      grid-auto-rows: minmax(var(--row-min-height), 1fr);
     `};
 
   ${(props) =>

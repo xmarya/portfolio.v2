@@ -15,18 +15,19 @@ export const Form = styled(motion.form)`
     transition: box-shadow 0.5s ease-in; // for the shadows colours
 
     position: relative;
-
 `;
 
 export const FormGrid = styled(motion.div)`
     font-size: var(--lg-text);
 
-    max-width: 100%;
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 26rem);
+    grid-template-columns: repeat(2, minmax(15rem, 1fr));
     grid-template-rows: auto;
-    justify-content: end;
-    row-gap: 1.6rem;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    padding: 1rem 2rem;
 
     input:hover,
     textarea:hover {
@@ -43,15 +44,22 @@ export const FormGrid = styled(motion.div)`
         border-bottom: none;
     }
 
+    @media (max-width: 56em) {
+        grid-template-columns: 1fr;
+        padding: 2rem 4rem;
+    }
+
 `;
 
 export const FormRow = styled(motion.div)`
-
     ${Button} {
         justify-self: center;
         padding: 0.8rem 3rem;
     }
 
+    @media (max-width: 56em) {
+        grid-column: 1 / -1;
+    }
 `;
 
 export const Label = styled.label`
@@ -67,8 +75,6 @@ export const Input = styled.input`
 
     width: 90%;
     height: 3.5rem;
-    max-width: 90%;
-    max-height: 3.5rem;
     font-size: var(--md-text);
     border-bottom: 0.2rem solid var(--neon-purple);
     padding: 1.2rem;
@@ -79,9 +85,7 @@ export const Textarea = styled.textarea`
     background-color: var(--colour-grey-800) ;
 
     width: 88%;
-    max-width: 88%;
     height: 10rem;
-    max-height: 10rem;
     border-bottom: 0.2rem solid var(--neon-purple);
     resize: none;
     padding: 1.2rem;

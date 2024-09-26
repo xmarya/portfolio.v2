@@ -35,7 +35,7 @@ export default function ContactMe() {
             <SectionHeading>contact me</SectionHeading>
         </AnimatedWrapper>
 
-      <ContactForm targetRef={ref} />
+        <ContactForm targetRef={ref} />
     </Section>
   );
 }
