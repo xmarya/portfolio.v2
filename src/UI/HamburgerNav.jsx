@@ -8,7 +8,7 @@ import { NavLink } from "./Navigation";
 const BreadWrapper = styled.div`
   position: fixed;
   top: 3rem;
-  right: 5rem;
+  right: 3rem;
 
   z-index: 300;
 `;

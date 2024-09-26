@@ -8,6 +8,8 @@ export const HeroHeading = styled.h1`
 `;
 
 export const SectionHeading = styled.h2`
+  border: var(--check);
+
     font-size: var(--section-heading);
     font-weight: 600;
     position: relative;
@@ -37,11 +39,13 @@ export const SectionHeading = styled.h2`
     @media (max-width: 112.5em) {
       width: 20rem;
     }
-/* 
-    @media (max-width: 48em) {
-        width: 100%;
-    }
 
+    @media (max-width: 25em) {
+        width: 12rem;
+        margin-left: 0.6rem;
+
+    }
+/* 
     @media (max-width: 37.5em) {
         margin-left: 1rem;
     } */

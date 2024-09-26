@@ -1,57 +1,52 @@
-import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
-import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 import { SectionSubHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 import { tools } from "../data/tools";
+import useMeasure from "react-use-measure";
+import { useMotionValue } from "framer-motion";
+import { useEffect } from "react";
+import { animate } from "framer-motion";
 
-const staggeredVariants = {
-  initial: { visibility: "hidden", y: 75 },
-  animate: (index) => ({
-    visibility: "visible",
-    y: 0,
-    transition: { delay: 0.08 * index },
-  }),
-};
+const Scroller = styled(motion.div)`
+  border: var(--check);
+  border-color: chartreuse;
+  max-width: clamp(25rem, 85rem, 100%);
 
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  overflow: hidden;
+`;
+
+const ScrollInner = styled(motion.ul)`
+  width: max-content;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10rem;
+
+  padding-block: 1rem;
+`;
 
 export default function Tools() {
-  const targetRef = useRef();
-  const isInView = useInView(targetRef, { once: true, amount: 0.4 });
-  const controls = useAnimation();
-
+  const [measureRef, {width}] = useMeasure();
+  const xTranslation = useMotionValue(0);
+  
   useEffect(() => {
-    isInView ? controls.start("animate") : "";
-  }, [isInView, controls]);
-
+    let finalPosition = -width / 2 - 50 ; // the position where we're goning o reset the animation to the first elem of th array, divide by 2 because there is a copy of the tools array and the minus 50 because of the gap: 10rem. 10rem is 100px and we'll take its half, I really don't know why it works like this.
+    animate(xTranslation, [0, finalPosition], {duration: 20, ease:"linear", repeat: Infinity, repeatType: "loop", repeatDelay: 0 });
+  }, [xTranslation, width]);
+  
   return (
-    <motion.div>
-      <Section display="flex" ref={targetRef}>
+    <Section display="flex">
+        <SectionSubHeading>technologies and tools i use:</SectionSubHeading>
 
-        <AnimatedWrapper>
-          <SectionSubHeading>technologies and tools i use:</SectionSubHeading>
-        </AnimatedWrapper>
-
-        <ul className="w-[80%] border border-orange-500 flex flex-wrap items-center justify-around gap-14 pl-5">
-          {tools.map((tool, index) => {
-            return tool.component === "div" ? (
-              <li key={index}>
-                <div />
-              </li>
-            ) : (
-              <motion.li
-                variants={staggeredVariants}
-                initial="initial"
-                animate={controls}
-                custom={index + 1}
-                key={index}
-              >
-                {tool.component}
-              </motion.li>
-            );
-          })}
-        </ul>
-      </Section>
-    </motion.div>
+      <Scroller>
+        <ScrollInner ref={measureRef} style={{x: xTranslation}}>
+          {[...tools, ...tools].map((tool, index) => (
+            <li key={index}>{tool.component}</li>
+          ))}
+        </ScrollInner>
+      </Scroller>
+    </Section>
   );
 }

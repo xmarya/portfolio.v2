@@ -87,25 +87,21 @@ import StyledComponents from "../UI/SVGs/StyledComponents";
 import HTML from "../UI/SVGs/HTML";
 import CSS from "../UI/SVGs/CSS";
 import Git from "../UI/SVGs/Git";
+import FramerMotion from "../UI/SVGs/FramerMotion";
 
 export const tools = [
-    { component: "div" },
     { component: <React /> },
     { component: <Router /> },
     { component: <Next /> },
     { component: <Express /> },
     { component: <Node /> },
-    { component: "div" },
-    { component: "div" },
     { component: <Mongoose /> },
     { component: <Tailwind /> },
     { component: <JavaScript /> },
     { component: <Supabase /> },
     { component: <StyledComponents /> },
-    { component: "div" },
-    { component: "div" },
+    { component: <FramerMotion /> },
     { component: <HTML /> },
     { component: <CSS /> },
     { component: <Git /> },
-    { component: "div" },
   ];
