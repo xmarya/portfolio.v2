@@ -8,8 +8,6 @@ export const HeroHeading = styled.h1`
 `;
 
 export const SectionHeading = styled.h2`
-  border: var(--check);
-
     font-size: var(--section-heading);
     font-weight: 600;
     position: relative;
@@ -45,15 +43,19 @@ export const SectionHeading = styled.h2`
         margin-left: 0.6rem;
 
     }
-/* 
-    @media (max-width: 37.5em) {
-        margin-left: 1rem;
-    } */
-
   }
 `;
 
 export const SectionSubHeading = styled(motion.h3)`
     font-size: var(--xxl-text);
     margin-bottom: 3rem;
+`;
+
+export const ProjectName = styled(SectionHeading)`
+  position: static;
+  padding: 1rem;
+  margin: 0;
+  &::before,
+  &::after { display:none }
+
 `;

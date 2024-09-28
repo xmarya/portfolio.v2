@@ -9,7 +9,6 @@ import { TagsGroup } from "./TagsGroup";
 const Works = styled(motion.div)`
   --col-min-width: 40rem;
   --row-min-height: 20rem;
-  /* border:  var(--check); */
   display: grid;
   grid-template-columns: repeat(
     auto-fill,

@@ -9,8 +9,6 @@ import { useEffect } from "react";
 import { animate } from "framer-motion";
 
 const Scroller = styled(motion.div)`
-  border: var(--check);
-  border-color: chartreuse;
   max-width: clamp(25rem, 85rem, 100%);
 
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
@@ -22,7 +20,7 @@ const ScrollInner = styled(motion.ul)`
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 10rem;
+  gap: 6rem;
 
   padding-block: 1rem;
 `;
@@ -32,8 +30,8 @@ export default function Tools() {
   const xTranslation = useMotionValue(0);
   
   useEffect(() => {
-    let finalPosition = -width / 2 - 50 ; // the position where we're goning o reset the animation to the first elem of th array, divide by 2 because there is a copy of the tools array and the minus 50 because of the gap: 10rem. 10rem is 100px and we'll take its half, I really don't know why it works like this.
-    animate(xTranslation, [0, finalPosition], {duration: 20, ease:"linear", repeat: Infinity, repeatType: "loop", repeatDelay: 0 });
+    let finalPosition = -width / 2 - 30 ; // the position where we're goning o reset the animation to the first elem of th array, divide by 2 because there is a copy of the tools array and the minus 50 because of the gap: 6rem. 6rem is 60px and we'll take its half, I really don't know why it works like this.
+    animate(xTranslation, [0, finalPosition], {duration: 25, ease:"linear", repeat: Infinity, repeatType: "loop", repeatDelay: 0 });
   }, [xTranslation, width]);
   
   return (
