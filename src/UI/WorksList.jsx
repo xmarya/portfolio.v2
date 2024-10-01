@@ -5,6 +5,10 @@ import { Button } from "./Button";
 import { SectionSubHeading } from "./Headings";
 import { Tag } from "./Tag";
 import { TagsGroup } from "./TagsGroup";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { useAnimation } from "framer-motion";
+import { useEffect } from "react";
 
 const Works = styled(motion.div)`
   --col-min-width: 40rem;
@@ -198,8 +202,17 @@ const projectVariants = {
 };
 
 export default function WorksList() {
+
+  const viewRef = useRef(null);
+  const isInView = useInView(viewRef, {once: true, amount: 0.2});
+  const controls = useAnimation();
+
+  useEffect(() => {
+    isInView ? controls.start("animate") : "";
+  }, [isInView]);
+
   return (
-    <Works variants={staggeredVariants} initial="initial" animate="animate">
+    <Works ref={viewRef} variants={staggeredVariants} initial="initial" animate={controls}>
       <Project
         to="/project/yosor-exp"
         target="_blank"

@@ -1,13 +1,9 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { SectionSubHeading } from "./Headings";
-import { useScroll } from "framer-motion";
-import { useRef } from "react";
 import { useTransform } from "framer-motion";
 
 const StickyContainer = styled.div`
-  border: var(--check);
-  border-color: chartreuse;
   width: 100%;
   height: 100svh;
 
@@ -19,7 +15,11 @@ const StickyContainer = styled.div`
   justify-content: center;
 
   padding: 0 10rem;
-  margin: 70svh 0; // more space to scroll before the first and after the last card.
+  margin: 60svh 0 90svh; // more space to scroll before the first and after the last card.
+
+  @media (max-width: 38em) {
+    padding: 0;
+  }
 `;
 
 /* OLD CODE (leaved for reference): 
@@ -62,7 +62,6 @@ align-items: start;
 */
 
 const DetailsContainer = styled(motion.div)`
-  background-color: var(--colour-grey-800);
   width: 100%;
   height: 40rem;
 
@@ -74,6 +73,12 @@ const DetailsContainer = styled(motion.div)`
 
   position: relative; // I made it relative so I can specify its top property.
   top: -5rem; // this is related to the parallax animation logic of the card, and to not make everything in the page centred position, which is very dull looking
+
+  @media (max-width: 53em) {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
 `;
 const Description = styled(motion.div)`
   border: var(--check);
@@ -81,12 +86,21 @@ const Description = styled(motion.div)`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0 2rem;
+
+  @media (max-width: 53em) {
+    align-items: center;
+  }
+
 `;
 
 const Video = styled(motion.div)`
   border: var(--check);
   border-color: chocolate;
   width: 100%;
+
+  display: flex;
+  justify-content: center;
 
   padding: 0 2rem;
   overflow: hidden;
@@ -101,26 +115,33 @@ const Video = styled(motion.div)`
   }
 `;
 
-export default function ProjectDetails({ details, topPosition, scalingProgress, scalingRange, finalStackingScale }) { // the scallingRange will start when the card reaches its sticky position
-  const {descriptionTitle, description, vidSrc} = details;
+const Devider = styled.div`
+  width: 1px;
+  height: 80%;
+  background-color: var(--colour-grey-200);
+  opacity: 0.6;
 
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "start start"],
-  });
-  // const scale = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
+  @media (max-width: 53em) {
+    display: none;
+  }
+`;
+
+export default function ProjectDetails({ details, bgColour, topPosition, scalingProgress, scalingRange, finalStackingScale }) { // the scallingRange will start when the card reaches its sticky position
+  const {descriptionTitle, description, vidSrc} = details;
   const globalScalingProgress = useTransform(scalingProgress, scalingRange, [1, finalStackingScale]);
 
   return (
-      <StickyContainer ref={targetRef}>
-        <DetailsContainer style={{scale: globalScalingProgress, top: `calc(-5rem + (${topPosition} * 2.5rem))`}}>
+      <StickyContainer>
+        <DetailsContainer style={{backgroundColor: `var(--neon-dark-purple-${bgColour})` ,scale: globalScalingProgress, top: `calc(-5rem + (${topPosition} * 3rem))`}}>
           <Description>
             <SectionSubHeading>{descriptionTitle}</SectionSubHeading>
             {description.map((desc, index) =>
             <p key={index}>{desc}</p>
             )}
           </Description>
+
+          <Devider/>
+          
           <Video>{vidSrc}</Video>
         </DetailsContainer>
       </StickyContainer>

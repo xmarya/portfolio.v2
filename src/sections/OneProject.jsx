@@ -104,6 +104,7 @@ export default function OneProject({ projectName }) {
           return (
             <ProjectDetails
               key={index}
+              bgColour={index + 1}
               details={det}
               topPosition={index}
               scalingProgress={scrollYProgress}
