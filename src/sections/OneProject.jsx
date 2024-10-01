@@ -1,32 +1,33 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { FaLink } from "react-icons/fa";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
-import { ProjectName, SectionSubHeading } from "../UI/Headings";
-import { Description, DetailsContainer, StickyBox, Video } from "../UI/ProjectDetails";
+import { ProjectName } from "../UI/Headings";
+import ProjectDetails from "../UI/ProjectDetails";
+import getProject from "../data/projectsDetails";
+import { useRef } from "react";
+import { useScroll } from "framer-motion";
 // import { FaTiktok } from "react-icons/fa";
 // import { FaInstagram } from "react-icons/fa";
 
-
 const ProjectHeader = styled.div`
-    border:  var(--check);
-    background-color: var(--colour-grey-900);
-    mask: linear-gradient(180deg, transparent, white 0%, white 80%, transparent);
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 15rem;
-    max-height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 0.4rem;
-    padding: 2rem 1rem;
+  border: var(--check);
+  background-color: var(--colour-grey-900);
+  /* mask: linear-gradient(180deg, transparent, white 0%, white 80%, transparent); */
+  /* position: sticky;
+    top: 0; */
+  width: 100%;
+  height: 15rem;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.4rem;
+  padding: 2rem 1rem;
 
-    z-index: 10;
+  /* z-index: 10; */
 `;
 
 const IconsBox = styled(Link)`
@@ -48,18 +49,34 @@ const IconsBox = styled(Link)`
 `;
 
 export default function OneProject({ projectName }) {
-  const targetRef = useRef(null);
-    const {scrollYProgress} = useScroll({target: targetRef, offset: ["2% start", "end start"]});
-    const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-    const scale = useTransform(scrollYProgress, [0, 0.2], [0.8, 1]);
+  const { id, name, year, webLink, githubRepo, overview, details } =
+    getProject(projectName);
+
+  const scallingPrecentage = Number((100 / details.length / 100).toFixed(2));
+
+  /*TRANSLATE:
+    let's say the length is 4 => 100 / 4 = 25, then get the precentage by deviding once again by 100 => 0.25
+    the toFixed to get only two difits after the dot, but it make the value type a string 
+    so I had to convert it to a number.
+
+    index = 0 * 0.25 => 0
+    index = 1 * 0.25 => 0.25
+    index = 2 * 0.25 => 0.5
+    and so on.
+  */
+
+  const stackingRef = useRef(null);
+  // the effect of stacking the cards must be GLOBALED, which means related to a parent, and depending on the scrollYProgress of the parent the cards' scaling value will be varient
+  const { scrollYProgress } = useScroll({
+    target: stackingRef,
+    offset: ["start start", "end end"],
+  });
 
   return (
     <>
       <ProjectHeader>
         <AnimatedWrapper>
-          <ProjectName>
-            {projectName}
-          </ProjectName>
+          <ProjectName>{name}</ProjectName>
         </AnimatedWrapper>
 
         <motion.div
@@ -71,75 +88,31 @@ export default function OneProject({ projectName }) {
             transition: { delay: 1, duration: 0.3, staggerChildren: 0.2 },
           }}
         >
-          <IconsBox
-            to="https://www.yosorexp.com/?_t=homepage&_a=index"
-            target="_blank"
-          >
+          <IconsBox to={webLink} target="_blank">
             <FaLink />
           </IconsBox>
-          <IconsBox to="https://github.com/xmarya/YosorExp" target="_blank">
+          <IconsBox to={githubRepo} target="_blank">
             <TbBrandGithubFilled />
           </IconsBox>
         </motion.div>
       </ProjectHeader>
-      <DetailsContainer>  
 
-          <StickyBox ref={targetRef}>
-          <Description style={{opacity, scale}}>
-            <SectionSubHeading>DESCRIPTION578</SectionSubHeading>
-          </Description>
-
-          <Video style={{opacity, scale}}>VIDEO</Video>
-          </StickyBox>
-
-
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-
-          <Description>
-            <SectionSubHeading>DESCRIPTION875421</SectionSubHeading>
-          </Description>
-          <Video>VIDEO</Video>
-          
-      </DetailsContainer>
+      <motion.div ref={stackingRef} className="min-w-full min-h-full">
+        {details.map((det, index) => {
+          const howMuchToScale = 1 - (details.length - index) * 0.05;
+          // 1 is the original scale value for any element, using this formula, the first card will get the lowest scale value
+          return (
+            <ProjectDetails
+              key={index}
+              details={det}
+              topPosition={index}
+              scalingProgress={scrollYProgress}
+              scalingRange={[index * scallingPrecentage, 1]}
+              finalStackingScale={howMuchToScale}
+            />
+          );
+        })}
+      </motion.div>
     </>
   );
 }

@@ -7,7 +7,7 @@ const StyledProjectDetails = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 3rem;
+    /* gap: 3rem; */
 
     position: relative;
 `;
