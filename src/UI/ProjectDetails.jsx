@@ -15,9 +15,11 @@ const StickyContainer = styled.div`
   justify-content: center;
 
   padding: 0 10rem;
-  margin: 60svh 0 90svh; // more space to scroll before the first and after the last card.
+  /* margin: 60svh 0 95svh; // more space to scroll before the first and after the last card. */
+  margin-top: 60svh;
+  margin-bottom: 95svh;
 
-  @media (max-width: 38em) {
+  @media (max-width: 54em) {
     padding: 0;
   }
 `;
@@ -62,20 +64,25 @@ align-items: start;
 */
 
 const DetailsContainer = styled(motion.div)`
+  container-type: inline-size;
   width: 100%;
-  height: 40rem;
+  min-height:  40rem;
+  max-height:  45rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
   border-radius: var(--lg-radius);
   box-shadow: var(--shadow-md);
 
   position: relative; // I made it relative so I can specify its top property.
   top: -5rem; // this is related to the parallax animation logic of the card, and to not make everything in the page centred position, which is very dull looking
+  overflow: hidden;
 
-  @media (max-width: 53em) {
+  @media (max-width: 54em) {
     flex-direction: column;
+    align-items: start;
     justify-content: space-evenly;
   }
 
@@ -86,11 +93,26 @@ const Description = styled(motion.div)`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 0 2rem;
 
-  @media (max-width: 53em) {
-    align-items: center;
+  p {
+    border: var(--check);
+    font-size: clamp(1.6rem, 2.5cqi, 2rem);
+    margin-bottom: 0.7rem;
   }
+
+  @media (max-width: 54em) {
+    align-items: center;
+
+    p {
+      align-self: center;
+      /* font-size: 1.5rem; */
+      text-wrap: balance;
+    }
+  }
+
 
 `;
 
@@ -121,7 +143,7 @@ const Devider = styled.div`
   background-color: var(--colour-grey-200);
   opacity: 0.6;
 
-  @media (max-width: 53em) {
+  @media (max-width: 54em) {
     display: none;
   }
 `;
@@ -140,9 +162,15 @@ export default function ProjectDetails({ details, bgColour, topPosition, scaling
             )}
           </Description>
 
-          <Devider/>
-          
-          <Video>{vidSrc}</Video>
+          {
+            vidSrc &&
+            <>
+              <Devider/>
+              <Video>{vidSrc}</Video>
+            </>
+
+          }
+
         </DetailsContainer>
       </StickyContainer>
   );
