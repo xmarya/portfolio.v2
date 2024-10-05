@@ -9,6 +9,7 @@ import ProjectDetails from "../UI/ProjectDetails";
 import getProject from "../data/projectsDetails";
 import { useRef } from "react";
 import { useScroll } from "framer-motion";
+import Testimonials from "../UI/Testimonials";
 // import { FaTiktok } from "react-icons/fa";
 // import { FaInstagram } from "react-icons/fa";
 
@@ -25,7 +26,7 @@ const ProjectHeader = styled.div`
   align-items: center;
   justify-content: start;
   gap: 0.4rem;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
 
   /* z-index: 10; */
 `;
@@ -49,7 +50,7 @@ const IconsBox = styled(Link)`
 `;
 
 export default function OneProject({ projectName }) {
-  const { id, name, year, webLink, githubRepo, overview, details } =
+  const { id, name, year, webLink, githubRepo, details } =
     getProject(projectName);
 
   const scallingPrecentage = Number((100 / details.length / 100).toFixed(2));
@@ -114,6 +115,8 @@ export default function OneProject({ projectName }) {
           );
         })}
       </motion.div>
+
+      <Testimonials projectName={name}/>
     </>
   );
 }

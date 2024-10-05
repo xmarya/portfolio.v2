@@ -14,14 +14,10 @@ const StickyContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  padding: 0 10rem;
   /* margin: 60svh 0 95svh; // more space to scroll before the first and after the last card. */
-  margin-top: 60svh;
-  margin-bottom: 95svh;
+  margin-top: calc(60svh + 10rem);
+  margin-bottom: calc(90svh + 10rem);
 
-  @media (max-width: 54em) {
-    padding: 0;
-  }
 `;
 
 /* OLD CODE (leaved for reference): 
@@ -66,15 +62,15 @@ align-items: start;
 const DetailsContainer = styled(motion.div)`
   container-type: inline-size;
   width: 100%;
-  min-height:  40rem;
-  max-height:  45rem;
+  min-height: 40rem;
+  max-height: 45rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
   border-radius: var(--lg-radius);
   box-shadow: var(--shadow-md);
+  padding: 1.5rem;
 
   position: relative; // I made it relative so I can specify its top property.
   top: -5rem; // this is related to the parallax animation logic of the card, and to not make everything in the page centred position, which is very dull looking
@@ -85,9 +81,8 @@ const DetailsContainer = styled(motion.div)`
     align-items: start;
     justify-content: space-evenly;
   }
-
 `;
-const Description = styled(motion.div)`
+const Description = styled.div`
   border: var(--check);
   border-color: aquamarine;
   width: 100%;
@@ -95,7 +90,6 @@ const Description = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 2rem;
 
   p {
     border: var(--check);
@@ -108,33 +102,25 @@ const Description = styled(motion.div)`
 
     p {
       align-self: center;
-      /* font-size: 1.5rem; */
       text-wrap: balance;
     }
   }
-
-
 `;
 
-const Video = styled(motion.div)`
+const Video = styled.div`
   border: var(--check);
   border-color: chocolate;
   width: 100%;
 
   display: flex;
-  justify-content: center;
+  flex-grow: 0;
 
-  padding: 0 2rem;
   overflow: hidden;
 
   video {
     border-radius: var(--md-radius);
-    transition: transform 0.5s ease;
   }
 
-  &:hover video {
-    transform: scale(1.05);
-  }
 `;
 
 const Devider = styled.div`
@@ -148,30 +134,49 @@ const Devider = styled.div`
   }
 `;
 
-export default function ProjectDetails({ details, bgColour, topPosition, scalingProgress, scalingRange, finalStackingScale }) { // the scallingRange will start when the card reaches its sticky position
-  const {descriptionTitle, description, vidSrc} = details;
-  const globalScalingProgress = useTransform(scalingProgress, scalingRange, [1, finalStackingScale]);
+export default function ProjectDetails({
+  details,
+  bgColour,
+  topPosition,
+  scalingProgress,
+  scalingRange,
+  finalStackingScale,
+}) {
+  // the scallingRange will start when the card reaches its sticky position
+  const { descriptionTitle, description, vidSrc } = details;
+  const globalScalingProgress = useTransform(scalingProgress, scalingRange, [
+    1,
+    finalStackingScale,
+  ]);
 
   return (
-      <StickyContainer>
-        <DetailsContainer style={{backgroundColor: `var(--neon-dark-purple-${bgColour})` ,scale: globalScalingProgress, top: `calc(-5rem + (${topPosition} * 3rem))`}}>
-          <Description>
-            <SectionSubHeading>{descriptionTitle}</SectionSubHeading>
-            {description.map((desc, index) =>
+    <StickyContainer>
+      <DetailsContainer
+        style={{
+          backgroundColor: `var(--neon-dark-purple-${bgColour})`,
+          scale: globalScalingProgress,
+          top: `calc(-5rem + (${topPosition} * 3rem))`,
+        }}
+      >
+        <Description>
+          <SectionSubHeading>{descriptionTitle}</SectionSubHeading>
+          {description.map((desc, index) => (
             <p key={index}>{desc}</p>
-            )}
-          </Description>
+          ))}
+        </Description>
 
-          {
-            vidSrc &&
-            <>
-              <Devider/>
-              <Video>{vidSrc}</Video>
-            </>
-
-          }
-
-        </DetailsContainer>
-      </StickyContainer>
+        {vidSrc && (
+          <>
+            <Devider />
+            <Video>
+              <video loop muted autoPlay playsInline>
+                <source src={vidSrc} type="video/mp4" />
+                Your browser does not support the video format.
+              </video>
+            </Video>
+          </>
+        )}
+      </DetailsContainer>
+    </StickyContainer>
   );
 }
