@@ -13,8 +13,8 @@ const SocialIcons = styled.ul`
   gap: 1.5rem;
 
   svg {
-    width: 3rem;
-    height: 3rem;
+    width: clamp(1.5rem, 3rem, 3.5rem);
+    height: clamp(1.5rem, 3rem, 3.5rem);
 
     &:hover {
       fill: var(--neon-purple);
@@ -26,7 +26,6 @@ const SocialIcons = styled.ul`
 export default function Footer() {
   return (
     <footer className="bg-gray-800 flex flex-col items-center">
-        <p className="text-xl italic">want to know more about me ?</p>
       <SocialIcons>
         <Link to="https://www.instagram.com/marya.webfullstack" target="_blank">
           <FaInstagram />

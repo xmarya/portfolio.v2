@@ -53,10 +53,12 @@
   --en-main-font: "Oswald", sans-serif;
   --en-secondary-font: "Average Sans", sans-serif;
 
-  --hero-heading: clamp(4rem, 8vw, 8rem);
+  --hero-heading: clamp(3rem, 8vw, 8rem);
   --section-heading: clamp(2.6rem, 5vw, 3.2rem);
   --secondary-heading: clamp(2.4rem, 5vw, 2.8rem);
-  --p-text: clamp(1rem, 4vw, 2rem);
+  /* --p-text: clamp(1rem, 4vw, 2rem); */
+  --p-text: clamp(1.6rem, 2.5cqi, 2rem);
+  --button-text: clamp(1.4rem, 1.6rem, 1.8rem);
 
   --xxl-text: 2.2rem;
   --xl-text: 1.8rem;
@@ -72,10 +74,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  /* Creating animations for dark mode */
-  /* transition: background-color 0.3s, border 0.3s; */
-
-  overflow: visible;
 }
 
 /* 

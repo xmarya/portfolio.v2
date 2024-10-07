@@ -3,12 +3,14 @@ import styled from "styled-components";
 export const Button = styled.button`
   background-color: var(--colour-grey-900);
   color: var(--neon-purple);
-  font-size: var(--lg-text);
+  font-size: var(--button-text);
   font-weight: 500;
   border-radius: var(--md-radius);
   border: 0.2rem solid var(--neon-purple);
 
-  padding: 1.6rem 3.2rem;
+  /* padding: 1.6rem 3.2rem; */
+  padding-block: clamp(0.8rem, 1.6rem, 1.8rem);
+  padding-inline: clamp(1.2rem, 3.2rem, 3.6rem);
 
   &:disabled {
     background-color: var(--colour-grey-200);

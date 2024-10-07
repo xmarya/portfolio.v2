@@ -14,7 +14,7 @@ const StyledHero = styled.section`
   margin-top: calc(var(--section-mt) - 15rem);
 
   p {
-    font-size: var(--p-text);
+    font-size: clamp(1.6rem, 2.5cqi, 2rem);
     color: var(--colour-grey-400);
     margin-top: 2rem;
   }
