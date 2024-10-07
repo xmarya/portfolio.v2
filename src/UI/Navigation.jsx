@@ -32,13 +32,18 @@ export const NavLink = styled.a`
   }
 `;
 
+function handleNavigation(link) {
+  let home = window.location.origin;
+  window.location.replace(home + link)
+}
+
 export default function Navigation() {
   return (
     <StyledNavigation>
       {
         navLinks.map((nav, index) =>
           <NavItem key={index}>
-            <NavLink href={nav.link}>{nav.nav}</NavLink>
+            <NavLink onClick={() => handleNavigation(nav.link)} href={nav.link}>{nav.nav}</NavLink>
           </NavItem>
         )
       }

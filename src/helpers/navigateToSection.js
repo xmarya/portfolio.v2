@@ -1,4 +1,5 @@
 
+// this helper funcion is for the buttons
 
 export default function navigateToSection(sectionId) {
     // Update the URL hash
