@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { navLinks } from "../data/navLinks";
+import { Link } from "react-router-dom";
 
 const StyledNavigation = styled.ol`
   display: flex;
@@ -21,7 +22,7 @@ const NavItem = styled.li`
   }
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
   padding: 1rem;
 
   &::before {
@@ -32,10 +33,6 @@ export const NavLink = styled.a`
   }
 `;
 
-function handleNavigation(link) {
-  let home = window.location.origin;
-  window.location.replace(home + link)
-}
 
 export default function Navigation() {
   return (
@@ -43,7 +40,7 @@ export default function Navigation() {
       {
         navLinks.map((nav, index) =>
           <NavItem key={index}>
-            <NavLink onClick={() => handleNavigation(nav.link)} href={nav.link}>{nav.nav}</NavLink>
+            <NavLink to={`/${nav.link}`}>{nav.nav}</NavLink>
           </NavItem>
         )
       }
