@@ -4,15 +4,17 @@ import Header from "./Header";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import navigateToSection from "../helpers/navigateToSection";
+import Footer from "./Footer";
 
 const MainContainer = styled.main`
+
   max-width: 90%;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 
   position: relative; // for the Mobile navigation.
+
 `;
 
 export default function AppLayout() {
@@ -33,6 +35,7 @@ export default function AppLayout() {
       <MainContainer>
         <Outlet />
       </MainContainer>
+      <Footer/>
     </>
   );
 }

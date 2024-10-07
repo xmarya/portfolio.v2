@@ -10,8 +10,7 @@ import getProject from "../data/projectsDetails";
 import { useRef } from "react";
 import { useScroll } from "framer-motion";
 import Testimonials from "../UI/Testimonials";
-// import { FaTiktok } from "react-icons/fa";
-// import { FaInstagram } from "react-icons/fa";
+
 
 const ProjectHeader = styled.div`
   /* mask: linear-gradient(180deg, transparent, white 0%, white 80%, transparent); */

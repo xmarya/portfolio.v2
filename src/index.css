@@ -42,7 +42,7 @@
   --backdrop-colour: rgba(255, 255, 255, 0.1);
 
 
-  --check: 1px solid pink;
+  --check: 3px solid pink;
 
   --section-mt: 25rem;
   --section-heading-mt: 1rem;
@@ -74,6 +74,8 @@
   margin: 0;
   /* Creating animations for dark mode */
   /* transition: background-color 0.3s, border 0.3s; */
+
+  overflow: visible;
 }
 
 /* 
@@ -91,12 +93,12 @@ html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scrollbar-width: thin;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--colour-grey-900);
   max-width: 128rem;
-  min-height: 100vh;
   color: var(--colour-grey-200);
 }
 

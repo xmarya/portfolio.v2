@@ -41,7 +41,7 @@ const gridExitVariants = {
 
 const exitVariants = {
     initial: {
-        y: 200,
+        y: "100%",
         opacity: 0,
         zIndex: -10
     },
@@ -152,7 +152,7 @@ export default function ContactForm({ targetRef }) {
 
             <AnimatePresence>
                 <AfterSubmit ref={afterSubmitRef} variants={exitVariants} initial="initial" animate={controls} exit={controls}>
-                    <p></p>
+                    <p>thhhhanksuuu</p>
                 </AfterSubmit>
             </AnimatePresence>
 

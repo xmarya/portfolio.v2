@@ -26,8 +26,8 @@ const router = createBrowserRouter([
 
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showLoader, setShowLoader] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [showLoader, setShowLoader] = useState(true);
 
   // useEffect(() => {
   //   let loaderTime = setTimeout(() => setIsLoading(!isLoading), 3000);

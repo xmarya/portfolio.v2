@@ -26,7 +26,7 @@ const projects = [
           "Following this, the main services are presented, each paired with an icon for clarity and visual appeal. ",
           "Company statistics are dynamically displayed through a high-speed counter, leading into an interactive testimonial slider, which can be navigated manually or automatically. The page concludes with a contact form.",
         ],
-        vidSrc: "/vids/vid1.mp4",
+        vidSrc: "/vids/yosor-exp/vid1.mp4",
         keyfeatures: [
           "Company tagline, image, and CTA in brand colour.",
           "Services section with icons for clarity.",
@@ -40,7 +40,7 @@ const projects = [
           "This page elaborates on the company's services, structured to provide clear steps for getting started with YosorExp, making the process intuitive for users. ",
           "The drop-shipping section features smooth transitions of brand colours in the background, complementing the overall design.",
         ],
-        vidSrc: "/vids/vid1.mp4",
+        vidSrc: "/vids/yosor-exp/vid1.mp4",
         keyfeatures: [
           '"How to start" section designed as steps for clarity.',
           'Smooth brand colour transitions in "Drop-shipping" section.',
@@ -51,7 +51,7 @@ const projects = [
         description: [
           "The Partner Details page highlights the advantages of joining as a partner, with prominent CTA buttons for registration",
         ],
-        vidSrc: "/vids/vid1.mp4",
+        vidSrc: "/vids/yosor-exp/vid1.mp4",
         keyfeatures: ["Highlighting the advantages of becoming a partner.",
             "Prominent CTA buttons for fast access to the registration page."
         ],
@@ -61,7 +61,7 @@ const projects = [
         description: [
           "The Seller Details page explains the benefits of becoming a seller, with a section designed like a step-by-step guide for them to connect their store to the company's system.",
         ],
-        vidSrc: "/vids/vid1.mp4",
+        vidSrc: "/vids/yosor-exp/vid1.mp4",
         keyfeatures: ["A step-by-step guide designed section for the sellers to connect their store to the company's system."],
       },
       {
@@ -69,7 +69,7 @@ const projects = [
         description: [
           "Every page is designed to be fully responsive, ensuring optimal viewing and interaction across all device types, from desktops to mobile devices.",
         ],
-        vidSrc: "/vids/vid1.mp4",
+        vidSrc: "/vids/yosor-exp/vid1.mp4",
         keyfeatures: ["Ensuring optimal viewing and interaction across all device types."],
       },
     ],

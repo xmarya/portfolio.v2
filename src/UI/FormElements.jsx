@@ -15,6 +15,7 @@ export const Form = styled(motion.form)`
     transition: box-shadow 0.5s ease-in; // for the shadows colours
 
     position: relative;
+    overflow: hidden;
 `;
 
 export const FormGrid = styled(motion.div)`
@@ -116,16 +117,16 @@ export const FormError = styled.p`
 
 export const AfterSubmit = styled(motion.div)`
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     background-color: var(--colour-grey-800);
+    border-radius: var(--lg-radius);
 
     position: absolute;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 6rem;
-
+    padding: 0 1.5rem;
     p {
         font-size: var(--secondary-heading);
         text-align: center;

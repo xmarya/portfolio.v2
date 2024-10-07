@@ -221,7 +221,7 @@ export default function WorksList() {
         <Divider/>
         <VideoWrapper>
           <video loop muted autoPlay playsInline>
-            <source src="/vids/vid1.mp4" type="video/mp4" />
+            <source src={`/vids/yosor-exp/vid1.mp4`} type="video/mp4" />
             Your browser does not support the video format.
           </video>
         </VideoWrapper>

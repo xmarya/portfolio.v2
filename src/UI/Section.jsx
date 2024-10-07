@@ -22,7 +22,7 @@ export const Section = styled.section`
     `};
 
     &:last-of-type {
-      margin-bottom: 6rem;
+      margin-bottom: 50svh;
     }
 
   p {
