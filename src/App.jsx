@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import InitialLoader from "./UI/Animation/InitialLoader";
 import AppLayout from "./UI/AppLayout";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails";
 
 
@@ -19,10 +18,10 @@ const router = createBrowserRouter([
         element: <ProjectDetails/>
       },
   ]},
-  {
-    path:"/administrator",
-    element: <Login/>
-  },
+  // {
+  //   path:"/administrator",
+  //   element: <Login/>
+  // },
 ]);
 
 

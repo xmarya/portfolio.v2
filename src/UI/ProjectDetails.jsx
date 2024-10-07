@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { SectionSubHeading } from "./Headings";
 import { useTransform } from "framer-motion";
+import useWindowSize from "../helpers/useWindowSize";
 
 const StickyContainer = styled.div`
   width: 100%;
@@ -15,9 +16,12 @@ const StickyContainer = styled.div`
   justify-content: center;
 
   /* margin: 60svh 0 95svh; // more space to scroll before the first and after the last card. */
-  margin-top: calc(60svh + 10rem);
-  margin-bottom: calc(90svh + 10rem);
+  margin-top: calc(65svh + 3rem);
+  margin-bottom: calc(95svh + 3rem);
 
+  @media (max-width: 54em) {
+    padding: 0;
+  }
 `;
 
 /* OLD CODE (leaved for reference): 
@@ -62,15 +66,14 @@ align-items: start;
 const DetailsContainer = styled(motion.div)`
   container-type: inline-size;
   width: 100%;
-  min-height: 40rem;
-  max-height: 45rem;
+  min-height:  40rem;
+  max-height:  45rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--lg-radius);
   box-shadow: var(--shadow-md);
-  padding: 1.5rem;
 
   position: relative; // I made it relative so I can specify its top property.
   top: -5rem; // this is related to the parallax animation logic of the card, and to not make everything in the page centred position, which is very dull looking
@@ -81,18 +84,21 @@ const DetailsContainer = styled(motion.div)`
     align-items: start;
     justify-content: space-evenly;
   }
+
+  @media (max-width: 21em) {
+    min-height:  30rem;
+  max-height:  35rem;
+  }
 `;
 const Description = styled.div`
-  border: var(--check);
-  border-color: aquamarine;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
 
   p {
-    border: var(--check);
     font-size: clamp(1.6rem, 2.5cqi, 2rem);
     margin-bottom: 0.7rem;
   }
@@ -105,20 +111,61 @@ const Description = styled.div`
       text-wrap: balance;
     }
   }
+
 `;
 
-const Video = styled.div`
-  border: var(--check);
-  border-color: chocolate;
+const VideoContainer = styled.div`
   width: 100%;
 
   display: flex;
-  flex-grow: 0;
+  justify-content: center;
 
+  padding: 0 1rem;
   overflow: hidden;
+
+  @media (max-width: 21em) {
+    aspect-ratio: 24 / 14;
+  }
 
   video {
     border-radius: var(--md-radius);
+  }
+
+`;
+
+const KeyFeatures = styled.ul`
+/* flex-shrink: 0;
+flex-grow: 1; */
+width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  margin-bottom: 2rem;
+
+  li {
+    font-size: clamp(1.5rem, 2.5cqi, 2rem);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+    content: "";
+    position: relative;
+    display: block;
+    background-color: var(--colour-grey-200);
+    width: clamp(0.4rem, 0.8rem, 1rem);
+    height: clamp(0.4rem, 0.8rem, 1rem);
+    margin-right: 0.5rem;
+  }
+  }
+
+  @media (max-width: 21em) {
+    display: none;
   }
 
 `;
@@ -134,49 +181,56 @@ const Devider = styled.div`
   }
 `;
 
-export default function ProjectDetails({
-  details,
-  bgColour,
-  topPosition,
-  scalingProgress,
-  scalingRange,
-  finalStackingScale,
-}) {
-  // the scallingRange will start when the card reaches its sticky position
-  const { descriptionTitle, description, vidSrc } = details;
-  const globalScalingProgress = useTransform(scalingProgress, scalingRange, [
-    1,
-    finalStackingScale,
-  ]);
+export default function ProjectDetails({ details, bgColour, topPosition, scalingProgress, scalingRange, finalStackingScale }) { // the scallingRange will start when the card reaches its sticky position
+  const {descriptionTitle, description, keyfeatures, vidSrc} = details;
+  const globalScalingProgress = useTransform(scalingProgress, scalingRange, [1, finalStackingScale]);
+  const { width} = useWindowSize();
+
+  const mqTablets = 864; // ==> 54em
+  const mqMobiles = 336; // ==> 21em
+
 
   return (
-    <StickyContainer>
-      <DetailsContainer
-        style={{
-          backgroundColor: `var(--neon-dark-purple-${bgColour})`,
-          scale: globalScalingProgress,
-          top: `calc(-5rem + (${topPosition} * 3rem))`,
-        }}
-      >
-        <Description>
-          <SectionSubHeading>{descriptionTitle}</SectionSubHeading>
-          {description.map((desc, index) => (
-            <p key={index}>{desc}</p>
-          ))}
-        </Description>
+    width <= mqMobiles && descriptionTitle === "Overview" ? "" :
+      <StickyContainer>
+        <DetailsContainer style={{backgroundColor: `var(--neon-dark-purple-${bgColour})` ,scale: globalScalingProgress, top: `calc(-5rem + (${topPosition} * 3rem))`}}>
+          <Description>
+            <SectionSubHeading>{descriptionTitle}</SectionSubHeading>
 
-        {vidSrc && (
-          <>
-            <Devider />
-            <Video>
-              <video loop muted autoPlay playsInline>
+            {
+              width <= mqTablets ?
+              <KeyFeatures>
+                  {
+                    keyfeatures.map((feat, index) =>
+                      <li key={index}>{feat}</li>
+                    )
+                  }
+                </KeyFeatures>
+              
+              :
+              
+              description.map((desc, index) =>
+                <p key={index}>{desc}</p>
+              )
+            
+            }
+          </Description>
+
+          {
+            vidSrc &&
+            <>
+              <Devider/>
+              <VideoContainer>
+                <video loop muted autoPlay playsInline>
                 <source src={vidSrc} type="video/mp4" />
                 Your browser does not support the video format.
               </video>
-            </Video>
-          </>
-        )}
-      </DetailsContainer>
-    </StickyContainer>
+              </VideoContainer>
+            </>
+
+          }
+
+        </DetailsContainer>
+      </StickyContainer>
   );
 }

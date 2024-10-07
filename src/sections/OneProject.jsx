@@ -14,8 +14,6 @@ import Testimonials from "../UI/Testimonials";
 // import { FaInstagram } from "react-icons/fa";
 
 const ProjectHeader = styled.div`
-  border: var(--check);
-  background-color: var(--colour-grey-900);
   /* mask: linear-gradient(180deg, transparent, white 0%, white 80%, transparent); */
   /* position: sticky;
     top: 0; */
