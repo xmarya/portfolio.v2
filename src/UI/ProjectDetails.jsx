@@ -67,7 +67,7 @@ const DetailsContainer = styled(motion.div)`
   container-type: inline-size;
   width: 100%;
   min-height:  40rem;
-  max-height:  45rem;
+  height:  45rem;
 
   display: flex;
   align-items: center;
@@ -90,6 +90,7 @@ const DetailsContainer = styled(motion.div)`
   max-height:  35rem;
   }
 `;
+
 const Description = styled.div`
   width: 100%;
   display: flex;
@@ -134,8 +135,7 @@ const VideoContainer = styled.div`
 `;
 
 const KeyFeatures = styled.ul`
-/* flex-shrink: 0;
-flex-grow: 1; */
+
 width: 100%;
   display: flex;
   flex-direction: column;
@@ -168,17 +168,6 @@ width: 100%;
     display: none;
   }
 
-`;
-
-const Devider = styled.div`
-  width: 1px;
-  height: 80%;
-  background-color: var(--colour-grey-200);
-  opacity: 0.6;
-
-  @media (max-width: 54em) {
-    display: none;
-  }
 `;
 
 export default function ProjectDetails({ details, bgColour, topPosition, scalingProgress, scalingRange, finalStackingScale }) { // the scallingRange will start when the card reaches its sticky position
@@ -219,7 +208,6 @@ export default function ProjectDetails({ details, bgColour, topPosition, scaling
           {
             vidSrc &&
             <>
-              <Devider/>
               <VideoContainer>
                 <video loop muted autoPlay playsInline>
                 <source src={vidSrc} type="video/mp4" />

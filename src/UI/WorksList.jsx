@@ -9,6 +9,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useAnimation } from "framer-motion";
 import { useEffect } from "react";
+import { Divider } from "./Divider";
 
 const Works = styled(motion.div)`
   --col-min-width: 40rem;
@@ -68,14 +69,6 @@ const Project = styled(MotionLink)`
     transform: translateY(-1rem) !important;
   }
 `;
-
-const Divider = styled.div`
-  width: 80%;
-  height: 1px;
-  background-color: var(--colour-grey-500);
-  opacity: 0.6;
-`;
-
 
 const VideoWrapper = styled.div`
   padding: 0 2rem;
@@ -218,14 +211,14 @@ export default function WorksList() {
         target="_blank"
         variants={projectVariants} custom={1}>
         <SectionSubHeading>YosorEXP (2023)</SectionSubHeading>
-        <Divider/>
+        <Divider type="horizontal"/>
         <VideoWrapper>
           <video loop muted autoPlay playsInline>
             <source src={`/vids/yosor-exp/vid1.mp4`} type="video/mp4" />
             Your browser does not support the video format.
           </video>
         </VideoWrapper>
-        <Divider/>
+        <Divider type="horizontal"/>
 
         <DetailsContainer>
           <TagsGroup>

@@ -4,6 +4,11 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 import { SectionSubHeading } from "./Headings";
+import { useEffect } from "react";
+import getWeatherDate from "../helpers/getWeather";
+import { Divider } from "./Divider";
+import { useState } from "react";
+import { Spinner } from "./Spinner";
 
 
 const StyledFooter = styled.footer`
@@ -12,20 +17,19 @@ const StyledFooter = styled.footer`
   grid-template-columns: repeat(auto-fill, minmax(min(45rem, 100%), 1fr));
   align-items: stretch;
   justify-content: stretch;
-  row-gap: 4rem;
+  row-gap: clamp(2rem, 6vw, 10rem); 
+
   padding: 1.6rem;
 
   & > * {
-    border: var(--check);
     display: flex;
+    align-items: center;
     justify-content: center;
   }
 
   p.text-lg {
     grid-column: 1 / -1;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 `
 ;
@@ -34,6 +38,7 @@ const Brief = styled.div`
   container-type: inline-size;
   flex-direction: column;
   text-align: center;
+  padding-top: 1.5rem;
 
 
   ${SectionSubHeading} {
@@ -49,9 +54,7 @@ const Brief = styled.div`
 ;
 
 const SocialIcons = styled.ul`
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: 2.5rem;
 
   svg {
     width: clamp(1.5rem, 2.5rem, 3.5rem);
@@ -68,22 +71,54 @@ const SocialIcons = styled.ul`
 const PeakToNow = styled.div`
       grid-column: 1 / -1;
 
-      display: flex;
       flex-wrap: wrap;
-      align-items: center;
       justify-content: space-evenly;
 
+      & > * {
+    flex-grow: 1; // making each of the children has an equal width to avoid the jumping layout when the api data has arrived.
+  }
+
+  @media (max-width: 37.5em) {
+    // 600px
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
 `;
 
-const Divider = styled.div`
-  width: 80%;
-  height: 1px;
-  background-color: var(--colour-grey-500);
-  opacity: 0.6;
-  margin-block: 2rem;
+const Widget = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: var(--lg-text);
+
+  span {
+    text-transform: capitalize;
+  }
 `;
+
 
 export default function Footer() {
+
+  const [widgets, setWidgets] = useState({});
+
+  useEffect(() => {
+    async function fetchWidgetsData() {
+      const {weather, tempreture, localTimeDate} = await getWeatherDate();
+      setWidgets({weatherToday: weather[0]?.description, tempreture, date: localTimeDate[0], time: localTimeDate[1]});
+    }
+
+    fetchWidgetsData(); // this only for the fisrt render
+
+    // this is triggered every 1 minute to demonstrate the changing of the time after the first render.
+    const widgetsInterval = setInterval(fetchWidgetsData, 60000); // means one minute.
+
+    return () => clearInterval(widgetsInterval);
+    
+  });
+
   return (
     <StyledFooter>
       <Brief>
@@ -106,16 +141,39 @@ export default function Footer() {
       </SocialIcons>
 
       <PeakToNow>
-        <div>state right now</div>
-        <div>time/date</div>
-        <div>shiran mada</div>
+        <Widget>
+          <span className="text-2xl">state right now</span>
+        </Widget>
+        <Widget>
+          {
+            !widgets?.time ? 
+            <Spinner/>
+            :
+            <>
+            <span>{widgets?.time.toUpperCase()}</span>
+            <span className="text-2xl">{widgets?.date}</span>
+            </>
+          }
+        </Widget>
+        <Widget>
+        {
+            !widgets?.time ? 
+            <Spinner/>
+            :
+            <>
+          <span>{Math.round(widgets?.tempreture)}°C</span>
+          <span className="text-2xl">{widgets?.weatherToday}</span>
+          </>
+
+        }
+        </Widget>
       </PeakToNow>
 
       <p className="text-lg italic max-w-full">
-        <Divider/>
+        <Divider type="horizontal"/>
         built with a cup of coffee and a sprinkle of passion.
         <span>&copy;2024</span>
-        </p>
+      </p>
     </StyledFooter>
   );
 }
