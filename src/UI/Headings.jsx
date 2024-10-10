@@ -1,18 +1,26 @@
 import { motion } from "framer-motion";
-import styled from "styled-components";
-
+import styled, { css } from "styled-components";
 
 export const HeroHeading = styled.h1`
-    font-size: var(--hero-heading);
-    line-height: 1.3;
+  font-size: var(--hero-heading);
+
+  ${(props) => {
+    return props.isArabic
+      ? css`
+          line-height: 1.2;
+        `
+      : css`
+          line-height: 1.3;
+        `;
+  }}
 `;
 
 export const SectionHeading = styled.h2`
-    font-size: var(--section-heading);
-    font-weight: 600;
-    position: relative;
-    margin-top: var(--section-heading-mt);
-    margin-bottom: var(--section-heading-mb);
+  font-size: var(--section-heading);
+  font-weight: 600;
+  position: relative;
+  margin-top: var(--section-heading-mt);
+  margin-bottom: var(--section-heading-mb);
 
   &::before {
     content: "0" counter(section-heading) ".";
@@ -20,7 +28,16 @@ export const SectionHeading = styled.h2`
     counter-increment: section-heading 1;
     color: var(--neon-purple);
     font-size: clamp(var(--lg-text), 3vw, 2rem);
-    margin-right: 0.4rem;
+
+    ${(props) => {
+      return props.isArabic
+        ? css`
+            margin-left: 0.4rem;
+          `
+        : css`
+            margin-right: 0.4rem;
+          `;
+    }}
   }
 
   &::after {
@@ -32,23 +49,39 @@ export const SectionHeading = styled.h2`
     height: 0.01rem;
     background-color: var(--neon-purple);
     vertical-align: middle;
-    margin-left: 1.6rem;
+
+    ${(props) => {
+      return props.isArabic
+        ? css`
+            margin-right: 1.6rem;
+          `
+        : css`
+            margin-left: 1.6rem;
+          `;
+    }}
 
     @media (max-width: 112.5em) {
       width: 20rem;
     }
 
     @media (max-width: 25em) {
-        width: 12rem;
-        margin-left: 0.6rem;
-
+      width: 12rem;
+      ${(props) => {
+        return props.isArabic
+          ? css`
+              margin-right: 0.6rem;
+            `
+          : css`
+              margin-left: 0.6rem;
+            `;
+      }}
     }
   }
 `;
 
 export const SectionSubHeading = styled(motion.h3)`
-    font-size: var(--xxl-text);
-    margin-bottom: 3rem;
+  font-size: var(--xxl-text);
+  margin-bottom: 3rem;
 `;
 
 export const ProjectName = styled(SectionHeading)`
@@ -56,6 +89,7 @@ export const ProjectName = styled(SectionHeading)`
   padding: 1rem;
   margin: 0;
   &::before,
-  &::after { display:none }
-
+  &::after {
+    display: none;
+  }
 `;

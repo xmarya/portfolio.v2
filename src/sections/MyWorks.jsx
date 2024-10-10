@@ -3,11 +3,11 @@ import { SectionHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 import WorksList from "../UI/WorksList";
 
-export default function MyWorks() {
+export default function MyWorks({isArabic}) {
     return (
         <Section id="works">
             <AnimatedWrapper>
-                <SectionHeading>my works</SectionHeading>
+                <SectionHeading isArabic={isArabic}>my works</SectionHeading>
             </AnimatedWrapper>
             
             <WorksList/>

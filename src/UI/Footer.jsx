@@ -9,6 +9,7 @@ import getWeatherDate from "../helpers/getWeather";
 import { Divider } from "./Divider";
 import { useState } from "react";
 import { Spinner } from "./Spinner";
+import { WorkState } from "./WorkState";
 
 
 const StyledFooter = styled.footer`
@@ -70,12 +71,14 @@ const SocialIcons = styled.ul`
 
 const PeakToNow = styled.div`
       grid-column: 1 / -1;
-
       flex-wrap: wrap;
-      justify-content: space-evenly;
 
       & > * {
     flex-grow: 1; // making each of the children has an equal width to avoid the jumping layout when the api data has arrived.
+  }
+
+  span {
+    text-transform: capitalize;
   }
 
   @media (max-width: 37.5em) {
@@ -93,10 +96,6 @@ const Widget = styled.div`
   justify-content: center;
   gap: 0.4rem;
   font-size: var(--lg-text);
-
-  span {
-    text-transform: capitalize;
-  }
 `;
 
 
@@ -106,8 +105,9 @@ export default function Footer() {
 
   useEffect(() => {
     async function fetchWidgetsData() {
-      const {weather, tempreture, localTimeDate} = await getWeatherDate();
-      setWidgets({weatherToday: weather[0]?.description, tempreture, date: localTimeDate[0], time: localTimeDate[1]});
+      // const {weather, tempreture, localTimeDate} = await getWeatherDate();
+      // setWidgets({weatherToday: weather[0]?.description, tempreture, date: localTimeDate[0], time: localTimeDate[1]});
+      // console.log(widgets?.time);
     }
 
     fetchWidgetsData(); // this only for the fisrt render
@@ -141,9 +141,10 @@ export default function Footer() {
       </SocialIcons>
 
       <PeakToNow>
-        <Widget>
-          <span className="text-2xl">state right now</span>
-        </Widget>
+        <WorkState state="available">
+          <span className="text-2xl">available to work</span>
+        </WorkState>
+
         <Widget>
           {
             !widgets?.time ? 
@@ -156,16 +157,16 @@ export default function Footer() {
           }
         </Widget>
         <Widget>
-        {
+          {
             !widgets?.time ? 
             <Spinner/>
             :
             <>
-          <span>{Math.round(widgets?.tempreture)}°C</span>
-          <span className="text-2xl">{widgets?.weatherToday}</span>
-          </>
+              <span>{Math.round(widgets?.tempreture)}°C</span>
+              <span className="text-2xl">{widgets?.weatherToday}</span>
+            </>
 
-        }
+          }
         </Widget>
       </PeakToNow>
 

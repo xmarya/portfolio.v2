@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { animate } from "framer-motion";
 
 const Scroller = styled(motion.div)`
+direction: ltr !important; // to not be affected by the direction in the arabic interface
   max-width: clamp(25rem, 85rem, 100%);
 
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);

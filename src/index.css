@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+:root.en {
   --colour-grey-0: #fff;
   --colour-grey-50: #f9fafb;
   --colour-grey-100: #f3f4f6;
@@ -48,10 +49,10 @@
   --section-heading-mt: 1rem;
   --section-heading-mb: 4rem;
 
-  --ar-main-font: "IBM Plex Sans Arabic", system-ui;
-  --ar-secondary-font: "Almarai", sans-serif;
-  --en-main-font: "Oswald", sans-serif;
-  --en-secondary-font: "Average Sans", sans-serif;
+  /* --ar-main-font: "IBM Plex Sans Arabic", system-ui;
+  --ar-secondary-font: "Almarai", sans-serif; */
+  --main-font: "Oswald", sans-serif;
+  --secondary-font: "Average Sans", sans-serif;
 
   --hero-heading: clamp(3rem, 8vw, 8rem);
   --section-heading: clamp(2.6rem, 5vw, 3.2rem);
@@ -66,6 +67,12 @@
   --md-text: 1.4rem;
   --sm-text: 1.3rem;
   --xsm-text: 1.2rem;
+}
+
+:root.ar {
+  direction: rtl;
+  --main-font: "IBM Plex Sans Arabic", system-ui;
+  --secondary-font: "Almarai", sans-serif;
 }
 
 *,
@@ -92,6 +99,8 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   overflow-x: hidden;
+
+
 }
 
 body {
@@ -106,14 +115,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--en-main-font);
+  font-family: var(--main-font);
   overflow-wrap: break-word;
   hyphens: auto;
   text-wrap: balance;
 }
 
 p {
-  font-family: var(--en-secondary-font);
+  font-family: var(--secondary-font);
   font-size: var(--p-text);
   max-width: 60ch;
   line-height: 1.4;
@@ -121,7 +130,7 @@ p {
 }
 
 label {
-  font-family: var(--en-secondary-font);
+  font-family: var(--secondary-font);
 
 }
 
@@ -135,7 +144,7 @@ input,
 button,
 textarea,
 select {
-  font-family: var(--en-secondary-font);
+  font-family: var(--secondary-font);
   color: inherit;
 }
 
@@ -155,7 +164,7 @@ select:-webkit-autofill:focus {
 }
 
 button {
-  font-family: var(--en-main-font);
+  font-family: var(--main-font);
   cursor: pointer;
   background: none;
   border: none;
@@ -173,7 +182,7 @@ input:disabled{
 }
 
 a {
-  font-family: var(--en-secondary-font);
+  font-family: var(--secondary-font);
   color: inherit;
   text-decoration: none;
   cursor: pointer;
@@ -182,7 +191,7 @@ a {
 
 ul,
 ol {
-  font-family: var(--en-secondary-font);
+  font-family: var(--secondary-font);
   display: block;
   list-style: none;
 }

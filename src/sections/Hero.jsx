@@ -25,7 +25,7 @@ const StyledHero = styled.section`
 `;
 
 
-export default function Hero() {
+export default function Hero({isArabic}) {
   return (
         <StyledHero>
 
@@ -33,7 +33,7 @@ export default function Hero() {
         <LookAtMe>Hi there, I’m</LookAtMe>
         </AnimatedWrapper>
 
-        <HeroHeading>
+        <HeroHeading isArabic={isArabic}>
         <AnimatedWrapper>
           Your Full-stack Developer,
         </AnimatedWrapper>

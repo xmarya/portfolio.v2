@@ -90,7 +90,7 @@ const childVariants = {
 };
 
 
-export default function Offer() {
+export default function Offer({isArabic}) {
   const viewRef = useRef(null);
   const isInView = useInView(viewRef, { once: true, amount: 0.2 });
   const [activeTarget, setActiveTarget] = useState(-1); // means nothing is active
@@ -192,7 +192,7 @@ export default function Offer() {
 return (
     <Section id="what-i-offer" ref={viewRef}>
       <AnimatedWrapper>
-        <SectionHeading>what i offer?</SectionHeading>
+        <SectionHeading isArabic={isArabic}>what i offer?</SectionHeading>
       </AnimatedWrapper>
 
       <CardsBox>

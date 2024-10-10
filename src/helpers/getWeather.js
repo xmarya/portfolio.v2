@@ -35,8 +35,6 @@ const formattedDateTime = new Intl.DateTimeFormat('en-GB', {
   hour12: true      // Use 24-hour format (set to true for 12-hour format with AM/PM)
 }).format(localTime);
 
-console.log(formattedDateTime);
-
 return formattedDateTime.split("at");
 
 }

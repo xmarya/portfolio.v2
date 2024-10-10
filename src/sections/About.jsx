@@ -2,11 +2,11 @@ import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { SectionHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
 
-export default function About() {
+export default function About({isArabic}) {
   return (
     <Section id="who-i-am">
       <AnimatedWrapper>
-        <SectionHeading>who i am?</SectionHeading>
+        <SectionHeading isArabic={isArabic}>who i am?</SectionHeading>
       </AnimatedWrapper>
       <AnimatedWrapper>
         <p>

@@ -4,10 +4,11 @@ import InitialLoader from "./UI/Animation/InitialLoader";
 import AppLayout from "./UI/AppLayout";
 import Home from "./pages/Home";
 import ProjectDetails from "./pages/ProjectDetails";
+import {LanguageSwitcher} from "./helpers/LanguageSwitcher";
 
 
 const router = createBrowserRouter([
-  {element: <AppLayout/>,
+  {element: <LanguageSwitcher><AppLayout/></LanguageSwitcher>,
     children:[
       {
         path:"/",

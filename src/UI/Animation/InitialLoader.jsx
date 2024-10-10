@@ -57,7 +57,6 @@ export default function InitialLoader({isLoading}) {
 
     return (
         <LoaderContainer>
-            {/* TODO: add AnimatePresence the options  */}
             <AnimatePresence 
             // Disable ani nitial animations on the children they are
             // present when the component is firest rendered

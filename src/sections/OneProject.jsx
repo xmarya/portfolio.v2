@@ -9,7 +9,6 @@ import ProjectDetails from "../UI/ProjectDetails";
 import getProject from "../data/projectsDetails";
 import { useRef } from "react";
 import { useScroll } from "framer-motion";
-import Testimonials from "../UI/Testimonials";
 
 
 const ProjectHeader = styled.div`
@@ -113,7 +112,7 @@ export default function OneProject({ projectName }) {
         })}
       </motion.div>
 
-      <Testimonials projectName={name}/>
+      {/* <Testimonials projectName={name}/> */}
     </>
   );
 }

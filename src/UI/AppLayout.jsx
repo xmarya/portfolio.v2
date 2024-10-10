@@ -31,7 +31,7 @@ export default function AppLayout() {
 
   return (
     <>
-      <Header />
+      <Header/>
       <MainContainer>
         <Outlet />
       </MainContainer>

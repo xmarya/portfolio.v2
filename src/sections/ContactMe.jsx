@@ -6,13 +6,13 @@ import ContactForm from "../UI/ContactForm";
 import { useRef } from "react";
 
 
-export default function ContactMe() {
+export default function ContactMe({isArabic}) {
   const ref = useRef(null);
 
   return (
     <Section ref={ref} id="contact-me" display="grid">
         <AnimatedWrapper>
-            <SectionHeading>contact me</SectionHeading>
+            <SectionHeading isArabic={isArabic}>contact me</SectionHeading>
         </AnimatedWrapper>
 
         <ContactForm targetRef={ref} />

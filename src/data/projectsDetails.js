@@ -73,6 +73,10 @@ const projects = [
         keyfeatures: ["Ensuring optimal viewing and interaction across all device types."],
       },
     ],
+    testimonial: {
+      original: "",
+      translated: ""
+    }
   },
 ];
 
