@@ -29,7 +29,7 @@ export const dictionary = {
         `I would like to talk more but without further ado let me
           introduce what the developer-me can offer to you!`,
       ],
-      ar: [`أنا ماريه خريجة من قسم تقنية المعلومات. بدأت رحلتي في تطوير برامج الويب عام 2020, و في 2023 بدأت في العمل الحُر. مجالي هو بناء برامج الويب للشركات الصغيرة و متوسطة الحجم.`, 
+      ar: [`أنا ماريه خريجة من قسم تقنية المعلومات. بدأت رحلتي في تطوير برامج الويب عام 2020, و في 2023 بدأت في العمل الحُر. مجالي هو بناء برامج الويب ذات حجم صغير إلى متوسط.`, 
         `أنا شغوفة بمجال عملي كما تملؤني الحماسة للغوص في عالم البرمجة حيث أواجه تحديات جديدة و أكتسب مهارات أكثر.`,
         `أود الاسهاب في الحديث لكن لنبدأ في المهم ودعوني أعرفكم على ما يمكنني تقديمه!`],
     },
@@ -111,6 +111,12 @@ export const dictionary = {
       ar: "أعمالي",
     },
   },
+  project: {
+    sectionHeading: {
+      en: "my works",
+      ar: "أعمالي",
+    },
+  },
   contact: {
     sectionHeading: {
       en: "contact me",
@@ -129,13 +135,16 @@ export const dictionary = {
       ar: "أخبرني عن مشروعك:"
     },
   },
-  project: {
-    sectionHeading: {
-      en: "",
-      ar: "",
-    },
-  },
   footer: {
+    brief: {
+      en:"Don’t Hesitate!",
+      ar:"لنبدأ العمل معًا!"
+    },
+    paragraph: {
+      en:`Looking to create something special? <br /> I’m just an email away.
+          Let’s build something amazing together.`,
+      ar:"تبحث عن مبرمج ويب مميز؟ <br /> تواصل معي حتى أبدأ ببناء شيء رائع و ينال إعجابك."
+    },
     workState: {
       available: {
         en:"available for work",

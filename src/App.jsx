@@ -4,27 +4,32 @@ import InitialLoader from "./UI/Animation/InitialLoader";
 import AppLayout from "./UI/AppLayout";
 import Home from "./pages/Home";
 import Project from "./pages/Project";
-import {LanguageSwitcher} from "./helpers/LanguageSwitcher";
-
+import Login from "./pages/Login";
+import { LanguageProvider } from "./helpers/LanguageContext";
 
 const router = createBrowserRouter([
-  {element: <LanguageSwitcher><AppLayout/></LanguageSwitcher>,
-    children:[
+  {
+    element: (
+      <LanguageProvider>
+        <AppLayout />
+      </LanguageProvider>
+    ),
+    children: [
       {
-        path:"/",
-        element: <Home/>
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/project/:projectName",
-        element: <Project/>
+        path: "/project/:projectName",
+        element: <Project />,
       },
-  ]},
-  // {
-  //   path:"/administrator",
-  //   element: <Login/>
-  // },
+    ],
+  },
+  {
+    path:"/administrator",
+    element: <Login/>
+  },
 ]);
-
 
 export default function App() {
   // const [isLoading, setIsLoading] = useState(true);
@@ -37,19 +42,17 @@ export default function App() {
 
   // }, []); // don't set anything in the dependincies, we only want the initial animation to be at the first render of the page
 
-
   // useEffect(() => {
   //   if(!isLoading){
   //     let loaderExitTime = setTimeout(() => setShowLoader(false), 500);
   //     return () => clearTimeout(loaderExitTime);
   //   }
   // }, [isLoading]);
-  
-  return ( 
-    // showLoader ? 
+
+  return (
+    // showLoader ?
     //     <InitialLoader isLoading={isLoading}/>
     //     :
-        <RouterProvider router={router}/>
-
-  )
+    <RouterProvider router={router} />
+  );
 }

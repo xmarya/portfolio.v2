@@ -1,10 +1,7 @@
-import { useLanguageSwitcher } from "../helpers/LanguageSwitcher";
+import { useLanguageContext } from "../helpers/LanguageContext";
 import { Button } from "./Button";
 
 export default function LanguagesButton() {
-    const {switchLanguage} = useLanguageSwitcher();
-    return (
-        <Button onClick={switchLanguage}>change direction</Button>
-    )
+  const { switchLanguage } = useLanguageContext();
+  return <Button onClick={switchLanguage}>change direction</Button>;
 }
-

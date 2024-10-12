@@ -38,12 +38,10 @@ export default function Hero({language}) {
 
         <HeroHeading>
         <AnimatedWrapper>
-          {/* Your Full-stack Developer, */}
           {hero.heroHeading[language][0]}
         </AnimatedWrapper>
 
           <AnimatedWrapper>
-            {/* Marya Alharbi! */}
           {hero.heroHeading[language][1]}
             </AnimatedWrapper>
         </HeroHeading>
