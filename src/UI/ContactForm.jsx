@@ -7,6 +7,7 @@ import { contactSchema } from "../data/zodValidator";
 import { Button } from "../UI/Button";
 import { AfterSubmit, Form, FormError, FormGrid, FormRow, Input, Label, Textarea } from "../UI/FormElements";
 import { Spinner } from "./Spinner";
+import { dictionary } from '../data/dictionary';
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_PUBLIC_KEY;
@@ -67,7 +68,8 @@ const exitVariants = {
     }
 }
 
-export default function ContactForm({ targetRef }) {
+export default function ContactForm({ targetRef, language }) {
+    const {contact, button} = dictionary;
     const {register, handleSubmit, reset, formState: {isSubmitting, isDirty, isValid, errors: formErrors}} = useForm({ mode: "onBlur", resolver: zodResolver(contactSchema)});
     
     const formRef = useRef(null);
@@ -77,7 +79,9 @@ export default function ContactForm({ targetRef }) {
     const controls = useAnimation();
 
 
-    async function handleFormSubmit() {
+    async function handleFormSubmit(event) {
+        event.preventDefault();
+
         // TODO: making the template dynamic depending on the browser locale
         // if locale === "en" ? TEMPLATE_ID_EN : TEMPLATE_ID_AR
         // TODO: adding the domain URL in emaijs service after deploying the app.
@@ -113,38 +117,41 @@ export default function ContactForm({ targetRef }) {
             <AnimatePresence>
                 <FormGrid variants={gridExitVariants} exit={controls}>
                     <FormRow className="col-start-1 col-end-2">
-                        <Label htmlFor="name">Name:</Label>
+                        <Label htmlFor="name">{contact.nameLabel[language]}</Label>
                         <Input required type="text" name="name" id="name" 
                             {...register("name")}
                         />
-                        <FormError hasError={!!formErrors?.name?.message}>
-                            {formErrors?.name?.message || ""}
+                        <FormError role="alert" aria-live="assertive" aria-atomic="true"
+                                    hasError={!!formErrors?.name?.message}>
+                            {formErrors?.name?.message[language] || ""}
                         </FormError>
                     </FormRow>
 
                     <FormRow className="col-start-2 -col-end-1">
-                        <Label htmlFor="email">Email:</Label>
+                        <Label htmlFor="email">{contact.emailLabel[language]}</Label>
                         <Input required type="email" name="email" id="email" 
                             {...register("email")}
                         />
-                        <FormError hasError={!!formErrors?.email?.message}>
-                            {formErrors?.email?.message || ""}
+                        <FormError role="alert" aria-live="assertive" aria-atomic="true"
+                                    hasError={!!formErrors?.email?.message}>
+                            {formErrors?.email?.message[language] || ""}
                         </FormError>
-                    </FormRow>
+                    </FormRow> 
 
                     <FormRow className="col-start-1 -col-end-1">
-                        <Label htmlFor="details">Tell me about your project:</Label>
+                        <Label htmlFor="details">{contact.messageLabel[language]}</Label>
                         <Textarea required name="details" id="details"
                             {...register("details")}
                             />
-                        <FormError hasError={!!formErrors?.details?.message}>
-                            {formErrors?.details?.message || ""}
+                        <FormError role="alert" aria-live="assertive" aria-atomic="true"
+                                    hasError={!!formErrors?.details?.message}>
+                            {formErrors?.details?.message[language] || ""}
                         </FormError>
                     </FormRow>
 
                     <FormRow className="col-auto">
-                        <Button disabled={!isDirty || !isValid}>
-                        {isSubmitting ? <Spinner/> : "Send"}
+                        <Button disabled={!isDirty || !isValid} type='submit'>
+                        {isSubmitting ? <Spinner/> : `${button.send[language]}`}
                         </Button>
                     </FormRow>             
                 </FormGrid>

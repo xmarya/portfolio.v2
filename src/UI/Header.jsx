@@ -3,6 +3,7 @@ import Navigation from "./Navigation";
 import useWindowSize from "../helpers/useWindowSize";
 import HamburgerNav from "./HamburgerNav";
 import LanguagesButton from "./LanguagesButton";
+import { useLanguageSwitcher } from "../helpers/LanguageSwitcher";
 
 const StyledHeader = styled.header`
     height: 8rem;
@@ -15,12 +16,13 @@ const StyledHeader = styled.header`
 
 
 export default function Header() {
+    const {language} = useLanguageSwitcher();
     const {width} = useWindowSize();
 
     return (
         <StyledHeader>
             {
-                width > 600 ? <Navigation/> : <HamburgerNav/>
+                width > 600 ? <Navigation language={language}/> : <HamburgerNav language={language}/>
             }
             <LanguagesButton/>
         </StyledHeader>

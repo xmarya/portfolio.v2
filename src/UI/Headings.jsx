@@ -3,16 +3,17 @@ import styled, { css } from "styled-components";
 
 export const HeroHeading = styled.h1`
   font-size: var(--hero-heading);
+  line-height: 1.3;
 
-  ${(props) => {
-    return props.isArabic
+  /* ${(props) => {
+    return props.language === "ar"
       ? css`
           line-height: 1.2;
         `
       : css`
           line-height: 1.3;
         `;
-  }}
+  }} */
 `;
 
 export const SectionHeading = styled.h2`
@@ -30,7 +31,7 @@ export const SectionHeading = styled.h2`
     font-size: clamp(var(--lg-text), 3vw, 2rem);
 
     ${(props) => {
-      return props.isArabic
+      return props.language === "ar"
         ? css`
             margin-left: 0.4rem;
           `
@@ -51,7 +52,7 @@ export const SectionHeading = styled.h2`
     vertical-align: middle;
 
     ${(props) => {
-      return props.isArabic
+      return props.language === "ar"
         ? css`
             margin-right: 1.6rem;
           `
@@ -67,7 +68,7 @@ export const SectionHeading = styled.h2`
     @media (max-width: 25em) {
       width: 12rem;
       ${(props) => {
-        return props.isArabic
+        return props.language === "ar"
           ? css`
               margin-right: 0.6rem;
             `

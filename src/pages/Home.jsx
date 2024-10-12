@@ -15,17 +15,15 @@ export const StyledHome = styled.div`
 export default function Home() {
   const {language} = useLanguageSwitcher();
 
-  console.log("lang", language);
-
   return (
     <StyledHome>
-      <Hero isArabic={language === "ar" ? true : false}/>
-      <About isArabic={language === "ar" ? true : false}/>
-      <Tools/>
-      <Offer isArabic={language === "ar" ? true : false}/>
+      <Hero language={language}/>
+      <About language={language}/>
+      <Tools language={language}/>
+      <Offer language={language}/>
       {/* <OneDay/> */}
-      <MyWorks isArabic={language === "ar" ? true : false}/>
-      <ContactMe isArabic={language === "ar" ? true : false}/>
+      <MyWorks language={language}/>
+      <ContactMe language={language}/>
     </StyledHome>
   );
 }

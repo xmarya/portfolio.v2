@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import OneProject from "../sections/OneProject";
+import ProjectDetails from "../sections/ProjectDetails";
 import { useParams } from "react-router-dom";
 
 const StyledProjectDetails = styled.div`
@@ -11,12 +11,12 @@ const StyledProjectDetails = styled.div`
     position: relative;
 `;
 
-export default function ProjectDetails() {
+export default function Project() {
     const {projectName} = useParams();
 
     return (
         <StyledProjectDetails>
-            <OneProject projectName={projectName}/>
+            <ProjectDetails projectName={projectName}/>
         </StyledProjectDetails>
     )
 }

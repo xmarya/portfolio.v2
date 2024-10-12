@@ -7,7 +7,8 @@ import { Section } from "../UI/Section";
 import OfferCard from "../UI/OfferCard";
 import { Button } from "../UI/Button";
 import { SectionHeading } from "../UI/Headings";
-import { offers } from "../data/offersData";
+import { offersData } from "../data/offersData";
+import { dictionary } from "../data/dictionary";
 
 const CardsBox = styled.div`
   min-height: 50svh;
@@ -90,7 +91,9 @@ const childVariants = {
 };
 
 
-export default function Offer({isArabic}) {
+export default function Offer({language}) {
+  const {offers, button} = dictionary;
+
   const viewRef = useRef(null);
   const isInView = useInView(viewRef, { once: true, amount: 0.2 });
   const [activeTarget, setActiveTarget] = useState(-1); // means nothing is active
@@ -192,13 +195,13 @@ export default function Offer({isArabic}) {
 return (
     <Section id="what-i-offer" ref={viewRef}>
       <AnimatedWrapper>
-        <SectionHeading isArabic={isArabic}>what i offer?</SectionHeading>
+        <SectionHeading language={language}>{offers.sectionHeading[language]}</SectionHeading>
       </AnimatedWrapper>
 
       <CardsBox>
         {
-          offers.map((offer, index) =>
-            <OfferCard key={index} cardVariants={childVariants} customDelay={index === 0 ? 1 : 1.3} isInView={isInView} setIsActive={() => setActiveTarget((currentTarget) => currentTarget === index ? -1 : index)} onAnimate={handleAnimation} heading={`${offer.type} Services`}>
+          offers.offersData[language].map((offer, index) =>
+            <OfferCard key={index} cardVariants={childVariants} customDelay={index === 0 ? 1 : 1.3} isInView={isInView} setIsActive={() => setActiveTarget((currentTarget) => currentTarget === index ? -1 : index)} onAnimate={handleAnimation} heading={`${offer.type}`}>
               {
               offer.services.map((serv, index) =>
                 <OffersListItems key={index}>{serv.title}</OffersListItems>
@@ -215,10 +218,11 @@ return (
           animate={isInView ? "animate" : ""}
         >
           <p>
-            So don’t hesitate to reach out&mdash;you’re one step away from your
-            web application.
+            {/* So don’t hesitate to reach out&mdash;you’re one step away from your
+            web application. */}
+            {offers.paragraph[language]}
           </p>
-          <Button onClick={() => navigateToSection("contact-me")}>Contact me</Button>
+          <Button onClick={() => navigateToSection("contact-me")}>{button[language]}</Button>
         </OfferCTA>
 
     </Section>

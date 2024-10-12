@@ -89,7 +89,7 @@ import CSS from "../UI/SVGs/CSS";
 import Git from "../UI/SVGs/Git";
 import FramerMotion from "../UI/SVGs/FramerMotion";
 
-export const tools = [
+export const toolsSvg = [
     { component: <React /> },
     { component: <Router /> },
     { component: <Next /> },

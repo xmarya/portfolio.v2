@@ -10,6 +10,8 @@ import { Divider } from "./Divider";
 import { useState } from "react";
 import { Spinner } from "./Spinner";
 import { WorkState } from "./WorkState";
+import { useLanguageSwitcher } from "../helpers/LanguageSwitcher";
+import { dictionary } from "../data/dictionary";
 
 
 const StyledFooter = styled.footer`
@@ -100,14 +102,16 @@ const Widget = styled.div`
 
 
 export default function Footer() {
+  const {language} = useLanguageSwitcher();
+  const {footer} = dictionary;
 
   const [widgets, setWidgets] = useState({});
 
   useEffect(() => {
     async function fetchWidgetsData() {
-      // const {weather, tempreture, localTimeDate} = await getWeatherDate();
-      // setWidgets({weatherToday: weather[0]?.description, tempreture, date: localTimeDate[0], time: localTimeDate[1]});
-      // console.log(widgets?.time);
+
+      const {weather, tempreture, localTimeDate} = await getWeatherDate(language);
+      setWidgets({weatherToday: weather[0]?.description, tempreture, date: localTimeDate[0], time: localTimeDate[1]});
     }
 
     fetchWidgetsData(); // this only for the fisrt render
@@ -117,7 +121,7 @@ export default function Footer() {
 
     return () => clearInterval(widgetsInterval);
     
-  });
+  }, []);
 
   return (
     <StyledFooter>
@@ -127,22 +131,22 @@ export default function Footer() {
       </Brief>
 
       <SocialIcons>
-        <Link to="https://www.instagram.com/marya.webfullstack" target="_blank">
+        <Link to="https://www.instagram.com/marya.webfullstack" target="_blank" aria-label="Instagram account">
           <FaInstagram />
         </Link>
 
-        <Link to="https://www.tiktok.com/@marya.webfullstack" target="_blank">
+        <Link to="https://www.tiktok.com/@marya.webfullstack" target="_blank" aria-label="Tiktok account">
           <FaTiktok />
         </Link>
 
-        <Link to="https://github.com/xmarya/" target="_blank">
+        <Link to="https://github.com/xmarya/" target="_blank" aria-label="Github repository">
           <TbBrandGithubFilled />
         </Link>
       </SocialIcons>
 
       <PeakToNow>
         <WorkState state="available">
-          <span className="text-2xl">available to work</span>
+          <span className="text-2xl">{footer.workState.available[language]}</span>
         </WorkState>
 
         <Widget>
@@ -156,6 +160,7 @@ export default function Footer() {
             </>
           }
         </Widget>
+
         <Widget>
           {
             !widgets?.time ? 

@@ -8,9 +8,9 @@ export const Button = styled.button`
   border-radius: var(--md-radius);
   border: 0.2rem solid var(--neon-purple);
 
-  /* padding: 1.6rem 3.2rem; */
-  padding-block: clamp(0.8rem, 1.6rem, 1.8rem);
-  padding-inline: clamp(1.2rem, 3.2rem, 3.6rem);
+  padding: 1.2rem 2.4rem;
+  /* padding-block: clamp(0.8rem, 1.6rem, 1.8rem);
+  padding-inline: clamp(1.2rem, 3.2rem, 3.6rem); */
 
   &:disabled {
     background-color: var(--colour-grey-200);

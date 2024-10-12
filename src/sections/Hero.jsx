@@ -5,6 +5,7 @@ import { Button } from "../UI/Button";
 import { HeroHeading } from "../UI/Headings";
 import { LookAtMe } from "../UI/LookAtMe";
 import navigateToSection from "../helpers/navigateToSection";
+import { dictionary } from "../data/dictionary";
 
 
 const StyledHero = styled.section`
@@ -25,33 +26,40 @@ const StyledHero = styled.section`
 `;
 
 
-export default function Hero({isArabic}) {
+export default function Hero({language}) {
+  const {hero, button} = dictionary;
+
   return (
         <StyledHero>
 
         <AnimatedWrapper>
-        <LookAtMe>Hi there, I’m</LookAtMe>
+        <LookAtMe>{hero.tinyHeading[language]}</LookAtMe>
         </AnimatedWrapper>
 
-        <HeroHeading isArabic={isArabic}>
+        <HeroHeading>
         <AnimatedWrapper>
-          Your Full-stack Developer,
+          {/* Your Full-stack Developer, */}
+          {hero.heroHeading[language][0]}
         </AnimatedWrapper>
-          {/* <br /> */}
+
           <AnimatedWrapper>
-            Marya Alharbi!
+            {/* Marya Alharbi! */}
+          {hero.heroHeading[language][1]}
             </AnimatedWrapper>
         </HeroHeading>
 
         <AnimatedWrapper>
         <p>
-          A girl who enjoys building and designing web applications.
+          {hero.paragraph[language]}
         </p>
         </AnimatedWrapper>
+        
         <motion.div
           initial={{y: 25, opacity:0}}
           animate={{y:0, opacity:1 , transition: {delay: 0.8, type: "just", duration: 0.5, ease: "easeIn"}}}>
-          <Button onClick={() => navigateToSection("contact-me")}>Contact me</Button>
+          <Button onClick={() => navigateToSection("contact-me")}>
+            {button[language]}
+          </Button>
         </motion.div>
       </StyledHero>
     )

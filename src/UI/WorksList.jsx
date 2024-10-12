@@ -133,6 +133,7 @@ const SkeletonVideo = styled.div`
 
 &::after {
   content: "BE THE NEXT CLIENT!";
+  direction: ltr !important;
   position: absolute;
   top: 0;
   left:0;

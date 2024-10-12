@@ -1,6 +1,6 @@
 
 
-export const offers = [
+export const offersData = [
   {
     type: "Front-End",
     services: [

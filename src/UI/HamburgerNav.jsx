@@ -52,7 +52,7 @@ const MobileNavItem = styled(motion.li)`
   }
 `;
 
-export default function HamburgerNav() {
+export default function HamburgerNav({language}) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
@@ -67,6 +67,8 @@ export default function HamburgerNav() {
           toggled={isOpen}
           size={32}
           toggle={setIsOpen}
+          role="button"
+          aria-label="Navigation menu"
         />
       </BreadWrapper>
       <AnimatePresence>
@@ -93,7 +95,7 @@ export default function HamburgerNav() {
                   onClick={() => setIsOpen((open) => !open)}
                   href={nav.link}
                 >
-                  {nav.nav}
+                  {nav.nav[language]}
                 </NavLink>
               </MobileNavItem>
             ))}

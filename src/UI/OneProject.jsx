@@ -170,7 +170,7 @@ width: 100%;
 
 `;
 
-export default function ProjectDetails({ details, bgColour, topPosition, scalingProgress, scalingRange, finalStackingScale }) { // the scallingRange will start when the card reaches its sticky position
+export default function OneProject({ details, bgColour, topPosition, scalingProgress, scalingRange, finalStackingScale }) { // the scallingRange will start when the card reaches its sticky position
   const {descriptionTitle, description, keyfeatures, vidSrc} = details;
   const globalScalingProgress = useTransform(scalingProgress, scalingRange, [1, finalStackingScale]);
   const { width} = useWindowSize();

@@ -34,13 +34,13 @@ export const NavLink = styled(Link)`
 `;
 
 
-export default function Navigation() {
+export default function Navigation({language}) {
   return (
     <StyledNavigation>
       {
         navLinks.map((nav, index) =>
           <NavItem key={index}>
-            <NavLink to={`/${nav.link}`}>{nav.nav}</NavLink>
+            <NavLink to={`/${nav.link}`}>{nav.nav[language]}</NavLink>
           </NavItem>
         )
       }

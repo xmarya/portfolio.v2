@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { SectionSubHeading } from "../UI/Headings";
 import { Section } from "../UI/Section";
-import { tools } from "../data/tools";
+import { toolsSvg } from "../data/tools";
 import useMeasure from "react-use-measure";
 import { useMotionValue } from "framer-motion";
 import { useEffect } from "react";
 import { animate } from "framer-motion";
+import { dictionary } from "../data/dictionary";
 
 const Scroller = styled(motion.div)`
 direction: ltr !important; // to not be affected by the direction in the arabic interface
@@ -26,7 +27,8 @@ const ScrollInner = styled(motion.ul)`
   padding-block: 1rem;
 `;
 
-export default function Tools() {
+export default function Tools({language}) {
+  const {tools} = dictionary;
   const [measureRef, {width}] = useMeasure();
   const xTranslation = useMotionValue(0);
   
@@ -37,11 +39,11 @@ export default function Tools() {
   
   return (
     <Section display="flex">
-        <SectionSubHeading>technologies and tools i use:</SectionSubHeading>
+        <SectionSubHeading>{tools.sectionHeading[language]}</SectionSubHeading>
 
       <Scroller>
         <ScrollInner ref={measureRef} style={{x: xTranslation}}>
-          {[...tools, ...tools].map((tool, index) => (
+          {[...toolsSvg, ...toolsSvg].map((tool, index) => (
             <li key={index}>{tool.component}</li>
           ))}
         </ScrollInner>

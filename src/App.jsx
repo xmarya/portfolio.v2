@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import InitialLoader from "./UI/Animation/InitialLoader";
 import AppLayout from "./UI/AppLayout";
 import Home from "./pages/Home";
-import ProjectDetails from "./pages/ProjectDetails";
+import Project from "./pages/Project";
 import {LanguageSwitcher} from "./helpers/LanguageSwitcher";
 
 
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/project/:projectName",
-        element: <ProjectDetails/>
+        element: <Project/>
       },
   ]},
   // {

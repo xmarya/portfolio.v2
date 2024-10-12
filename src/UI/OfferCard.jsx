@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 
 
-const Card = styled(motion.ul)`
+const Card = styled(motion.div)`
   position: relative;
 
   flex: 1;
