@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { ProjectName } from "../UI/Headings";
-import getProject from "../data/projectsDetails";
+import {getProject} from "../data/projectsDetails";
 import { useRef } from "react";
 import { useScroll } from "framer-motion";
 import OneProject from "../UI/OneProject";
+import { useLanguageContext } from "../helpers/LanguageContext";
 
 
 const ProjectHeader = styled.div`
@@ -46,10 +47,10 @@ const IconsBox = styled(Link)`
 `;
 
 export default function ProjectDetails({ projectName }) {
-  const { id, name, year, webLink, githubRepo, details } =
-    getProject(projectName);
+  const {language} = useLanguageContext();
+  const { webLink, githubRepo, details, testimonial } = getProject(projectName, language);
 
-  const scallingPrecentage = Number((100 / details.length / 100).toFixed(2));
+  const scallingPrecentage = Number((100 / details.pages.length / 100).toFixed(2));
 
   /*TRANSLATE:
     let's say the length is 4 => 100 / 4 = 25, then get the precentage by deviding once again by 100 => 0.25
@@ -73,7 +74,7 @@ export default function ProjectDetails({ projectName }) {
     <>
       <ProjectHeader>
         <AnimatedWrapper>
-          <ProjectName>{name}</ProjectName>
+          <ProjectName>{details.name}</ProjectName>
         </AnimatedWrapper>
 
         <motion.div
@@ -85,7 +86,7 @@ export default function ProjectDetails({ projectName }) {
             transition: { delay: 1, duration: 0.3, staggerChildren: 0.2 },
           }}
         >
-          <IconsBox to={webLink} target="_blank" aria-label="web app link">
+          <IconsBox to={webLink} target="_blank" aria-label="website link">
             <FaLink />
           </IconsBox>
           <IconsBox to={githubRepo} target="_blank" aria-label="Project Github repository">
@@ -95,8 +96,8 @@ export default function ProjectDetails({ projectName }) {
       </ProjectHeader>
 
       <motion.div ref={stackingRef} className="min-w-full min-h-full">
-        {details.map((det, index) => {
-          const howMuchToScale = 1 - (details.length - index) * 0.05;
+        {details.pages.map((det, index) => {
+          const howMuchToScale = 1 - (details.pages.length - index) * 0.05;
           // 1 is the original scale value for any element, using this formula, the first card will get the lowest scale value
           return (
             <OneProject
@@ -112,7 +113,7 @@ export default function ProjectDetails({ projectName }) {
         })}
       </motion.div>
 
-      {/* <Testimonials projectName={name}/> */}
+      {/* <Testimonials testimonial={testimonial}/> */}
     </>
   );
 }

@@ -10,7 +10,7 @@ const BreadWrapper = styled.div`
   top: 3rem;
   right: 3rem;
 
-  z-index: 300;
+  z-index: 500;
 `;
 
 const MobileNavigation = styled(motion.ol)`

@@ -7,7 +7,6 @@ import { Section } from "../UI/Section";
 import OfferCard from "../UI/OfferCard";
 import { Button } from "../UI/Button";
 import { SectionHeading } from "../UI/Headings";
-import { offersData } from "../data/offersData";
 import { dictionary } from "../data/dictionary";
 
 const CardsBox = styled.div`

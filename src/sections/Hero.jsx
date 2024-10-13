@@ -36,7 +36,7 @@ export default function Hero({language}) {
         <LookAtMe>{hero.tinyHeading[language]}</LookAtMe>
         </AnimatedWrapper>
 
-        <HeroHeading>
+        <HeroHeading language={language}>
         <AnimatedWrapper>
           {hero.heroHeading[language][0]}
         </AnimatedWrapper>

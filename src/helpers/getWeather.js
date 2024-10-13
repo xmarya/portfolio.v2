@@ -35,7 +35,7 @@ const formattedDateTime = new Intl.DateTimeFormat(language, {
   minute: '2-digit', // 2-digit minute
   hour12: true      // Use 24-hour format (set to true for 12-hour format with AM/PM)
 }).format(localTime);
-console.log("fdtbs", formattedDateTime);
+
 return formattedDateTime.split(splitter);
 
 }

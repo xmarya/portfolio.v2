@@ -5,15 +5,12 @@ export const HeroHeading = styled.h1`
   font-size: var(--hero-heading);
   line-height: 1.3;
 
-  /* ${(props) => {
-    return props.language === "ar"
-      ? css`
-          line-height: 1.2;
+  ${(props) => {
+    return props.language === "ar" &&
+       css`
+          font-weight: 700;
         `
-      : css`
-          line-height: 1.3;
-        `;
-  }} */
+  }}
 `;
 
 export const SectionHeading = styled.h2`
@@ -81,6 +78,12 @@ export const SectionHeading = styled.h2`
 `;
 
 export const SectionSubHeading = styled(motion.h3)`
+${(props) => {
+    return props.language === "ar" &&
+       css`
+          font-weight: bolder;
+        `
+  }}
   font-size: var(--xxl-text);
   margin-bottom: 3rem;
 `;

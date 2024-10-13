@@ -6,18 +6,19 @@ const projects = [
     githubRepo: "https://github.com/xmarya/YosorExp",
     en: {
       name: "YosorExp",
-      details: [
+      brief: "a multi-page website for a startup e-commerce company.",
+      pages: [
         {
           descriptionTitle: "Overview",
           description: [
-            "I designed the web app with a clean colour palette, using basic tones for text and background, and the brand's colours strategically to highlight key elements. The animations were kept simple and subtle to enhance rather than distract from the content.",
-            "All pages have the same footer containing links to all web app pages, the company's social media accounts, and the logo.",
-            "After collaborating with the client to finalise the design, I built the web app with a focus on functionality and user experience.",
+            "I designed the website with a clean colour palette, using basic tones for text and background, and the brand's colours strategically to highlight key elements. The animations were kept simple and subtle to enhance rather than distract from the content.",
+            "All pages have the same footer containing links to all website pages, the company's social media accounts, and the logo.",
+            "After collaborating with the client to finalise the design, I built the website with a focus on functionality and user experience.",
           ],
           keyfeatures: [
             "Brand's colours strategically to highlight key elements.",
             "Simple and subtle animations to not distract from the content.",
-            "A footer containing web app pages' links, the company's social media accounts, and the logo.",
+            "A footer containing website pages' links, the company's social media accounts, and the logo.",
           ],
         },
         {
@@ -82,7 +83,8 @@ const projects = [
     },
     ar: {
       name: "يُسر إكس بي",
-      details: [
+      brief: "موقع ويب متعدد الصفحات لشركة تجارة إلكترونية ناشئة.",
+      pages: [
         {
           descriptionTitle: "نظرة عامة",
           description: [
@@ -102,8 +104,7 @@ const projects = [
           description: [
             "تبدأ الصفحة بصورة توضح الفكرة العامة حول ما تقدمه الشركة بالإضافة إلى عبارة الشركة الترويجية مصحوبة بزر (call-to-action) ملونة بأحد ألوان العلامة التجارية لجعله أكثر بروزًا.",
             "بعد ذلك، تم تقديم خدمات الشركة الرئيسية كل منها مقترنة بأيقونة لزيادة جاذبية المحتوى و وضوحه.",
-            "ثم يتم عرض إنجازات الشركة و بعض الإحصائيات على شكل عدّاد يتزايد بشكل سريع و من ثمّ يتم استعراض عينة من بعض تعليقات المستخدمين بشكل تلقائي أو يدوي باستخدام أسهم لوحة المفاتيح أو الضغط على أزرار السابق/التالي.",
-            "تنتهي الصفحة بنموذج للتواصل السريع.",
+            "ثم يتم عرض إنجازات الشركة و بعض الإحصائيات على شكل عدّاد يتزايد بشكل سريع و من ثمّ يتم استعراض عينة من بعض تعليقات المستخدمين بشكل تلقائي أو يدوي باستخدام أسهم لوحة المفاتيح أو الضغط على أزرار السابق/التالي. تنتهي الصفحة بنموذج للتواصل السريع.",
          ],
           vidSrc: "/vids/yosor-exp/vid1.mp4",
           keyfeatures: [
@@ -159,14 +160,22 @@ const projects = [
       ],
     },
     testimonial: {
-      original: "",
-      translated: "",
+      original: "مرره عجبني تصميم صراحه اكثر من رائع يعطيك الف عافية ع شغل",
+      translated: "I really liked the design, it is more than wonderful. Thank you for your work.",
     },
   },
 ];
 
-export default function getProject(id) {
+export function getProject(id, language) {
   const project = projects.find((proj) => proj.id === id);
 
-  return project;
+  return {...project, details: project[language]};
+}
+
+export function getProjectsBrief(language) {
+  const tinyProjects = projects.map(tp => {
+    return {year: tp.year, name: tp[language].name, brief: tp[language].brief}
+  }) ;
+
+  return tinyProjects;
 }

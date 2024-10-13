@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { navLinks } from "../data/navLinks";
 import { Link } from "react-router-dom";
 
@@ -29,7 +29,16 @@ export const NavLink = styled(Link)`
     content: "0" counter(nav-item) ".";
     font-size: 1.2rem;
     color: var(--neon-purple);
-    margin-right: 0.5rem;
+
+    ${(props) => {
+      return props.language === "ar"
+        ? css`
+            margin-left: 0.4rem;
+          `
+        : css`
+            margin-right: 0.4rem;
+          `;
+    }}
   }
 `;
 
@@ -40,7 +49,7 @@ export default function Navigation({language}) {
       {
         navLinks.map((nav, index) =>
           <NavItem key={index}>
-            <NavLink to={`/${nav.link}`}>{nav.nav[language]}</NavLink>
+            <NavLink language={language} to={`/${nav.link}`}>{nav.nav[language]}</NavLink>
           </NavItem>
         )
       }

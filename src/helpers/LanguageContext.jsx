@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { createContext, useContext, useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
 const LanguageContext = createContext();
 
 function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useLocalStorage("en", "language");
 
   useEffect(() => {
     // documentElement is the html tag.
@@ -19,6 +20,7 @@ function LanguageProvider({ children }) {
 
   function switchLanguage() {
     setLanguage((current) => (current === "en" ? "ar" : "en"));
+    useLocalStorage(language);
   }
 
   return (

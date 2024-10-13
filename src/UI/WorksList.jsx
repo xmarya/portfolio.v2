@@ -10,6 +10,7 @@ import { useRef } from "react";
 import { useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { Divider } from "./Divider";
+import {getProjectsBrief} from "../data/projectsDetails";
 
 const Works = styled(motion.div)`
   --col-min-width: 40rem;
@@ -195,8 +196,9 @@ const projectVariants = {
   }),
 };
 
-export default function WorksList() {
-
+export default function WorksList({language}) {
+  const tinyProjects = getProjectsBrief(language);
+console.log(tinyProjects);
   const viewRef = useRef(null);
   const isInView = useInView(viewRef, {once: true, amount: 0.2});
   const controls = useAnimation();
@@ -207,11 +209,13 @@ export default function WorksList() {
 
   return (
     <Works ref={viewRef} variants={staggeredVariants} initial="initial" animate={controls}>
-      <Project
+      {
+        tinyProjects.map(tp => 
+          <Project
         to="/project/yosor-exp"
         target="_blank"
         variants={projectVariants} custom={1}>
-        <SectionSubHeading>YosorEXP (2023)</SectionSubHeading>
+        <SectionSubHeading language={language}>{`${tp.name} (${tp.year})`}</SectionSubHeading>
         <Divider type="horizontal"/>
         <VideoWrapper>
           <video loop muted autoPlay playsInline>
@@ -229,9 +233,11 @@ export default function WorksList() {
             <Tag>JavaScript</Tag>
           </TagsGroup>
           
-          <p>a multi-page web app for a startup e-commerce company.</p>
+          <p>{`${tp.brief}`}</p>
         </DetailsContainer>
       </Project>
+        )
+      }
 
       <EmptyProject variants={projectVariants} custom={0.6}>
         <SkeletonTitle />

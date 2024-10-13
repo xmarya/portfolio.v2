@@ -17,7 +17,7 @@ export const StyledFooter = styled.footer`
   grid-template-columns: repeat(auto-fill, minmax(min(45rem, 100%), 1fr));
   align-items: stretch;
   justify-content: stretch;
-  row-gap: clamp(2rem, 6vw, 10rem);
+  row-gap: clamp(3.5rem, 6vw, 10rem);
 
   padding: 1.6rem;
 
