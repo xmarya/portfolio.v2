@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import getWeatherDate from "../helpers/getWeather";
+import useWeather from "../helpers/getWeather";
 import { useLanguageContext } from "../helpers/LanguageContext";
 import { useWorkStateContext, WorkStateProvider } from "../helpers/WorkStateContext";
 import { Spinner } from "./Spinner";
@@ -66,32 +66,35 @@ export const WorkStateWidget = styled.div`
 
 
 export default function PeakToNow() {
-    const { language } = useLanguageContext();
-    const {workState} = useWorkStateContext();
-    const [widgets, setWidgets] = useState({});
-      const { footer } = dictionary;
+  const { language } = useLanguageContext();
+  const {workState} = useWorkStateContext();
+  const { footer } = dictionary;
 
+  const {isLoading, data, error} = useWeather(language);
 
-  useEffect(() => {
-    async function fetchWidgetsData() {
-      const { weather, tempreture, localTimeDate } = await getWeatherDate(language);
-      setWidgets({
-        weatherToday: weather[0]?.description,
-        tempreture,
-        date: localTimeDate[0],
-        time: localTimeDate[1],
-      });
-    }
-
-    fetchWidgetsData(); // this only for the fisrt render
-
-    // this is triggered every 1 minute to demonstrate the changing of the time after the first render.
-    const widgetsInterval = setInterval(fetchWidgetsData, 60000); // means one minute.
-
-    return () => clearInterval(widgetsInterval);
-  }, []);
-
-    return (
+  /* OLD CODE (leaved for reference): BEFORE USING REACT-QUERY
+  // useEffect(() => {
+    //   async function fetchWidgetsData() {
+      //     const { weather, tempreture, localTimeDate } = await getWeatherDate(language);
+      //     setWidgets({
+        //       weatherToday: weather[0]?.description,
+        //       tempreture,
+        //       date: localTimeDate[0],
+        //       time: localTimeDate[1],
+        //     });
+        //   }
+        
+        //   fetchWidgetsData(); // this only for the fisrt render
+        
+        //   // this is triggered every 1 minute to demonstrate the changing of the time after the first render.
+        //   const widgetsInterval = setInterval(fetchWidgetsData, 60000); // means one minute.
+        
+        //   return () => clearInterval(widgetsInterval);
+        // }, []);
+        
+        */
+    
+        return (
         <WidgetsContainer>
             <WorkStateWidget state={workState}>
             <span className="text-2xl">
@@ -100,23 +103,23 @@ export default function PeakToNow() {
             </WorkStateWidget>
 
             <Widget>
-                {!widgets?.time ? (
+                {isLoading ? (
                     <Spinner />
                 ) : (
                     <>
-                    <span>{widgets?.time.toUpperCase()}</span>
-                    <span className="text-2xl">{widgets?.date}</span>
+                    <span>{data?.time.toUpperCase()}</span>
+                    <span className="text-2xl">{data?.date}</span>
                     </>
                 )}
             </Widget>
 
             <Widget>
-                {!widgets?.time ? (
+                {isLoading ? (
                     <Spinner />
                 ) : (
                     <>
-                    <span>{Math.round(widgets?.tempreture)}°C</span>
-                    <span className="text-2xl">{widgets?.weatherToday}</span>
+                    <span>{Math.round(data?.tempreture)}°C</span>
+                    <span className="text-2xl">{data?.weatherToday}</span>
                     </>
                 )}
             </Widget>

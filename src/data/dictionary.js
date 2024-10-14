@@ -134,6 +134,16 @@ export const dictionary = {
       en: "Tell me about your project:",
       ar: "أخبرني عن مشروعك:"
     },
+    submission: {
+      success: {
+        en:"Thank you for your email.",
+        ar:"شكرًا على رسالتك."
+      },
+      error: {
+        en:"Something went wrong, Please try to send your email again.",
+        ar:"حدث مشكلة أثناء الإرسال, الرجاء المحاولة مجددًا."
+      },
+    }
   },
   footer: {
     brief: {

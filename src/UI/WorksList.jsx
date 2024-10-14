@@ -198,7 +198,7 @@ const projectVariants = {
 
 export default function WorksList({language}) {
   const tinyProjects = getProjectsBrief(language);
-console.log(tinyProjects);
+
   const viewRef = useRef(null);
   const isInView = useInView(viewRef, {once: true, amount: 0.2});
   const controls = useAnimation();
@@ -212,6 +212,7 @@ console.log(tinyProjects);
       {
         tinyProjects.map(tp => 
           <Project
+          key={tp.name}
         to="/project/yosor-exp"
         target="_blank"
         variants={projectVariants} custom={1}>
@@ -219,7 +220,7 @@ console.log(tinyProjects);
         <Divider type="horizontal"/>
         <VideoWrapper>
           <video loop muted autoPlay playsInline>
-            <source src={`/vids/yosor-exp/vid1.mp4`} type="video/mp4" />
+            <source src={tp.fullVid} type="video/mp4" />
             Your browser does not support the video format.
           </video>
         </VideoWrapper>

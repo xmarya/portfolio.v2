@@ -83,7 +83,7 @@ export default function ContactForm({ targetRef, language }) {
         event.preventDefault();
 
         // TODO: making the template dynamic depending on the browser locale
-        // if locale === "en" ? TEMPLATE_ID_EN : TEMPLATE_ID_AR
+        // const TEMPLATE_ID = language === "en" ? TEMPLATE_ID_EN : TEMPLATE_ID_AR;
         // TODO: adding the domain URL in emaijs service after deploying the app.
 
         const result = await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {publicKey: PUBLIC_KEY});
@@ -96,12 +96,12 @@ export default function ContactForm({ targetRef, language }) {
 
         if (styleType === "success") {
             formRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-green)";
-            afterSubmitRef.current.children[0].innerText = "Thank you for your email."
+            afterSubmitRef.current.children[0].innerText = contact.submission.success[language];
         }
         
         else {
             formRef.current.style.boxShadow = "0px 0px 3.5rem var(--neon-red)";
-            afterSubmitRef.current.children[0].innerText = "Something went wrong, Please try to send your email again";
+            afterSubmitRef.current.children[0].innerText = contact.submission.error[language];
         }
 
         await controls.start("animateAfterSubmit");
@@ -159,7 +159,7 @@ export default function ContactForm({ targetRef, language }) {
 
             <AnimatePresence>
                 <AfterSubmit ref={afterSubmitRef} variants={exitVariants} initial="initial" animate={controls} exit={controls}>
-                    <p>thhhhanksuuu</p>
+                    <p></p>
                 </AfterSubmit>
             </AnimatePresence>
 

@@ -13,7 +13,7 @@ const MainContainer = styled.main`
   flex-direction: column;
   margin: 0 auto;
 
-  position: relative; // for the Mobile navigation.
+  position: relative; // for the Hamburger nad the language button.
 
 `;
 

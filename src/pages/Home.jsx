@@ -19,8 +19,8 @@ export default function Home() {
     <StyledHome>
       <Hero language={language} />
       <About language={language} />
-      <Tools language={language} />
       <Offer language={language} />
+      <Tools language={language} />
       {/* <OneDay/> */}
       <MyWorks language={language} />
       <ContactMe language={language} />

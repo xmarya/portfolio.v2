@@ -33,6 +33,8 @@ const IconsBox = styled(Link)`
   display: flex;
   align-items: center;
   display: block;
+  transition: fill 0.15s ease-in;
+
 
   svg {
     display: block;
@@ -41,7 +43,6 @@ const IconsBox = styled(Link)`
 
     &:hover {
       fill: var(--neon-purple);
-      transition: fill 0.15s ease-in;
     }
   }
 `;

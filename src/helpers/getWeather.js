@@ -1,17 +1,34 @@
+import { useQuery } from "@tanstack/react-query";
+
 const apiKey = import.meta.env.VITE_OPEN_WEATHER;
+
+/* CHANGE LATER: to be useQuery hook in order to reflect the lang parameter changing in the interface */
 
 //https://api.openweathermap.org/data/2.5/weather?q=jeddah&appid=51fa681dbbdebbeef979475c8c6b68e3
 
 const apiLink = `https://api.openweathermap.org/data/2.5/weather?q=jeddah&appid=${apiKey}&units=metric`;
 
-export default async function getWeatherDate(language) {
+export default function useWeather(language) {
+  const {isLoading, data, error} = useQuery({
+    queryKey:["language", language],
+    queryFn: () => getWeatherDate(language)
+  });
+
+  return {isLoading, data, error};
+}
+
+async function getWeatherDate(language) {
 
     const data = await fetch(apiLink.concat(`&lang=${language}`));
     const {weather, main, timezone} = await data.json();
 
     const localTimeDate = convertTimezone(timezone, language);
 
-    return {weather, tempreture: main.temp, localTimeDate};
+    const weatherToday = weather[0]?.description;
+    const date =  localTimeDate[0];
+    const time =  localTimeDate[1];
+
+    return {weatherToday, tempreture: main.temp, date, time};
 }
 
 function convertTimezone(timezone, language) {

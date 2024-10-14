@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Project from "./pages/Project";
 import Login from "./pages/Login";
 import { LanguageProvider } from "./helpers/LanguageContext";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient({
+  defaultOptions:{
+    queries:{
+      staleTime: 0 // immediate refresh
+    }
+  }
+})
+
 export default function App() {
   // const [isLoading, setIsLoading] = useState(true);
   // const [showLoader, setShowLoader] = useState(true);
@@ -53,6 +62,8 @@ export default function App() {
     // showLoader ?
     //     <InitialLoader isLoading={isLoading}/>
     //     :
+    <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
+    </QueryClientProvider>
   );
 }
