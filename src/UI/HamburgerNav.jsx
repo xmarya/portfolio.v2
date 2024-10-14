@@ -93,8 +93,7 @@ export default function HamburgerNav({language}) {
               >
                 <NavLink
                   onClick={() => setIsOpen((open) => !open)}
-                  href={nav.link}
-                >
+                  to={`/${nav.link}`}>
                   {nav.nav[language]}
                 </NavLink>
               </MobileNavItem>
