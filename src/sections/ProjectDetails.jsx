@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaLink } from "react-icons/fa";
 import { TbBrandGithubFilled } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import AnimatedWrapper from "../UI/Animation/AnimatedWrapper";
 import { ProjectName } from "../UI/Headings";
@@ -12,6 +12,14 @@ import OneProject from "../UI/OneProject";
 import { useLanguageContext } from "../helpers/LanguageContext";
 
 
+const StyledProjectDetails = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    /* gap: 3rem; */
+
+    position: relative;
+`;
 const ProjectHeader = styled.div`
   /* mask: linear-gradient(180deg, transparent, white 0%, white 80%, transparent); */
   /* position: sticky;
@@ -72,7 +80,8 @@ export default function ProjectDetails({ projectName }) {
   });
 
   return (
-    <>
+    <StyledProjectDetails>
+
       <ProjectHeader>
         <AnimatedWrapper>
           <ProjectName>{details.name}</ProjectName>
@@ -115,6 +124,7 @@ export default function ProjectDetails({ projectName }) {
       </motion.div>
 
       {/* <Testimonials testimonial={testimonial}/> */}
-    </>
+
+      </StyledProjectDetails>
   );
 }
