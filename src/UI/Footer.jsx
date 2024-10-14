@@ -50,7 +50,7 @@ export const Brief = styled.div`
   }
 `;
 
-export const SocialIcons = styled.ul`
+export const SocialIcons = styled.div`
   gap: 2.5rem;
 
   svg {
