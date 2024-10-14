@@ -28,6 +28,7 @@ export const StyledFooter = styled.footer`
   }
 
   p.text-lg {
+    direction: ltr !important;
     grid-column: 1 / -1;
     flex-direction: column;
   }
