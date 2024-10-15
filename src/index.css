@@ -4,6 +4,7 @@
 
 :root,
 :root.en {
+  direction: ltr;
   --colour-grey-0: #fff;
   --colour-grey-50: #f9fafb;
   --colour-grey-100: #f3f4f6;
