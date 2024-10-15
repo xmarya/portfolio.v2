@@ -69,7 +69,7 @@ export default function PeakToNow() {
   const {workState} = useWorkStateContext();
   const { footer } = dictionary;
 
-  const {isLoading, data, error} = useWeather(language);
+  const {isLoading, data} = useWeather(language);
 
   /* OLD CODE (leaved for reference): BEFORE USING REACT-QUERY
   // useEffect(() => {
@@ -106,7 +106,7 @@ export default function PeakToNow() {
                     <Spinner />
                 ) : (
                     <>
-                    <span>{data?.time.toUpperCase()}</span>
+                    {/* <span>{data?.time.toUpperCase()}</span> */}
                     <span className="text-2xl">{data?.date}</span>
                     </>
                 )}
