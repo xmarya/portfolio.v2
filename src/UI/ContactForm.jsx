@@ -79,9 +79,7 @@ export default function ContactForm({ targetRef, language }) {
     const controls = useAnimation();
 
 
-    async function handleFormSubmit(event) {
-        event.preventDefault();
-
+    async function handleFormSubmit() {
         // TODO: making the template dynamic depending on the browser locale
         // const TEMPLATE_ID = language === "en" ? TEMPLATE_ID_EN : TEMPLATE_ID_AR;
         // TODO: adding the domain URL in emaijs service after deploying the app.
