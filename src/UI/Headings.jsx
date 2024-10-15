@@ -16,8 +16,6 @@ export const HeroHeading = styled.h1`
 
 export const SectionHeading = styled.h2`
 width: 100%;
-    border: var(--check);
-border-color: red;
   font-size: var(--section-heading);
   font-weight: 600;
   position: relative;
@@ -44,13 +42,12 @@ border-color: red;
 
   &::after {
     content: "";
-    border: var(--check);
+    border: 1px solid var(--neon-purple);
     display: inline-block;
     position: relative;
     top: 0;
     width: 30rem;
     height: 0.01rem;
-    background-color: var(--neon-purple);
     vertical-align: middle;
 
     ${(props) => {
