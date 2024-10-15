@@ -42,7 +42,7 @@ width: 100%;
 
   &::after {
     content: "";
-    border: 1px solid var(--neon-purple);
+    border: 0.01rem solid var(--neon-purple);
     display: inline-block;
     position: relative;
     top: 0;
