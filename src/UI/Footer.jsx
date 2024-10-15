@@ -102,9 +102,9 @@ export default function Footer() {
         </Link>
       </SocialIcons>
 
-      {/* <WorkStateProvider>
+      <WorkStateProvider>
         <PeakToNow/>
-      </WorkStateProvider> */}
+      </WorkStateProvider>
 
       <p className="text-lg italic max-w-full">
         <Divider type="horizontal" />

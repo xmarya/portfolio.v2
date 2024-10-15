@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import useWeather from "../helpers/getWeather";
 import { useLanguageContext } from "../helpers/LanguageContext";
-import { useWorkStateContext, WorkStateProvider } from "../helpers/WorkStateContext";
+import { useWorkStateContext } from "../helpers/WorkStateContext";
 import { Spinner } from "./Spinner";
 import { dictionary } from "../data/dictionary";
 
