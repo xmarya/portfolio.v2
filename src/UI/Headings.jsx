@@ -8,6 +8,7 @@ export const HeroHeading = styled.h1`
   ${(props) => {
     return props.language === "ar" &&
        css`
+         line-height: 1.6;
           font-weight: 700;
         `
   }}

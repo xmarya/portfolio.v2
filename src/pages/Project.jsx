@@ -7,7 +7,7 @@ export default function Project() {
     const {projectName} = useParams();
 
     return (
-            <ProjectDetails projectName={projectName}/>
+        <ProjectDetails projectName={projectName}/>
     )
 }
 
