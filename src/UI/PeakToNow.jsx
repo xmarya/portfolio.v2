@@ -106,7 +106,7 @@ export default function PeakToNow() {
                     <Spinner />
                 ) : (
                     <>
-                    {/* <span>{data?.time.toUpperCase()}</span> */}
+                    <span>{data?.time}</span>
                     <span className="text-2xl">{data?.date}</span>
                     </>
                 )}
