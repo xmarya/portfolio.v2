@@ -44,8 +44,8 @@ const childrenVariants = {
 const wrapperVriants = {
     initial: {left: 0, right: 0},
     animateWrapper: {
-        left: "100%",
-        right: "100%",
+        left: "100vw",
+        right: "100vw",
         transition: {
             duration: 0.5,
             ease: "easeIn"

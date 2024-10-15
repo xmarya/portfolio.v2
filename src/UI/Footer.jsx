@@ -9,7 +9,6 @@ import { Divider } from "./Divider";
 import { SectionSubHeading } from "./Headings";
 import PeakToNow from "./PeakToNow";
 import { WorkStateProvider } from "../helpers/WorkStateContext";
-import en from "zod/locales/en.js";
 
 export const StyledFooter = styled.footer`
   background-color: var(--colour-grey-800);
@@ -103,9 +102,9 @@ export default function Footer() {
         </Link>
       </SocialIcons>
 
-      <WorkStateProvider>
+      {/* <WorkStateProvider>
         <PeakToNow/>
-      </WorkStateProvider>
+      </WorkStateProvider> */}
 
       <p className="text-lg italic max-w-full">
         <Divider type="horizontal" />

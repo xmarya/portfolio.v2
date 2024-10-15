@@ -11,7 +11,7 @@ export const dictionary = {
     },
     paragraph: {
       en: "A girl who enjoys building and designing web applications",
-      ar: "فتاة تجد المتعة في بناء و تصميم الواجهات الأمامية والخلفية",
+      ar: "فتاة تجد المتعة في برمجة و تصميم الواجهات الأمامية والخلفية",
     },
   },
   about: {

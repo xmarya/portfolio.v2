@@ -35,7 +35,7 @@ export default function AppLayout() {
       <MainContainer>
         <Outlet />
       </MainContainer>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 }
