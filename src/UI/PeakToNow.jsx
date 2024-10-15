@@ -106,8 +106,8 @@ export default function PeakToNow() {
                     <Spinner />
                 ) : (
                     <>
-                    <span>{data?.time}</span>
-                    <span className="text-2xl">{data?.date}</span>
+                    <div>{data?.time}</div>
+                    <div className="text-2xl">{data?.date}</div>
                     </>
                 )}
             </Widget>
@@ -117,8 +117,8 @@ export default function PeakToNow() {
                     <Spinner />
                 ) : (
                     <>
-                    <span>{Math.round(data?.tempreture)}°C</span>
-                    <span className="text-2xl">{data?.weatherToday}</span>
+                    <div>{Math.round(data?.tempreture)}°C</div>
+                    <div className="text-2xl">{data?.weatherToday}</div>
                     </>
                 )}
             </Widget>

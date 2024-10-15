@@ -15,6 +15,9 @@ export const HeroHeading = styled.h1`
 `;
 
 export const SectionHeading = styled.h2`
+width: 100%;
+    border: var(--check);
+border-color: red;
   font-size: var(--section-heading);
   font-weight: 600;
   position: relative;
@@ -41,6 +44,7 @@ export const SectionHeading = styled.h2`
 
   &::after {
     content: "";
+    border: var(--check);
     display: inline-block;
     position: relative;
     top: 0;
