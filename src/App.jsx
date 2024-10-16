@@ -64,9 +64,9 @@ export default function App() {
         <InitialLoader isLoading={isLoading}/>
         :
     <QueryClientProvider client={queryClient}>
-      <HelemtProvider>
+      <HelmetProvider>
         <RouterProvider router={router} />
-      </HelemtProvider>
+      </HelmetProvider>
     </QueryClientProvider>
   );
 }
