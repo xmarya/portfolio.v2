@@ -7,6 +7,7 @@ import Project from "./pages/Project";
 import Login from "./pages/Login";
 import { LanguageProvider } from "./helpers/LanguageContext";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +64,9 @@ export default function App() {
         <InitialLoader isLoading={isLoading}/>
         :
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <HelemtProvider>
+        <RouterProvider router={router} />
+      </HelemtProvider>
     </QueryClientProvider>
   );
 }

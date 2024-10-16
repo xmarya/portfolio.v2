@@ -7,6 +7,8 @@ import Tools from "../sections/Tools";
 import ContactMe from "../sections/ContactMe";
 import MyWorks from "../sections/MyWorks";
 import { useLanguageContext } from "../helpers/LanguageContext";
+import { Helmet } from "react-helmet-async";
+import { dictionary } from "../data/dictionary";
 
 export const StyledHome = styled.div`
   counter-reset: section-heading 0;
@@ -14,8 +16,14 @@ export const StyledHome = styled.div`
 
 export default function Home() {
   const { language } = useLanguageContext();
+  const {meta} = dictionary;
 
   return (
+    <>
+    <Helmet>
+                <title>Marya Alharbi</title>
+                <meta name='description' content={meta.home[language]} />
+            </Helmet>
     <StyledHome>
       <Hero language={language} />
       <About language={language} />
@@ -25,5 +33,6 @@ export default function Home() {
       <MyWorks language={language} />
       <ContactMe language={language} />
     </StyledHome>
+    </>
   );
 }

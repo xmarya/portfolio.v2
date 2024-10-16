@@ -1,5 +1,15 @@
 // it's ordered by sections
 export const dictionary = {
+  meta: {
+    home: {
+      en: "Full-stack web developer specialising in responsive web applications. front-end and back-end development. Explore my portfolio to see my projects and contact me for custom web solutions.",
+      ar:"مبرمجة و مصممة برامج الويب و واجهاته الأمامية و الخلفية. استكشف مشاريعي السابقة و تواصل معي للحصول على حلول ويب تلبي احتياجم"
+    },
+    project: {
+      en: "One of my previous projects which I had fun working on. It's a multi-page website for a startup e-commerce company.",
+      ar:"أحد مشاريعي السابقة و الذي قضيت وقتًا ممتعًا في العمل عليه. إنه موقع ويب متعدد الصفحات لشركة تجارة إلكترونية ناشئة."
+    },
+  },
   hero: {
     tinyHeading: {
       en: "Hi there, I’m",
