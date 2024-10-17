@@ -41,19 +41,21 @@ export const dictionary = {
       ],
       ar: [`أنا ماريه خريجة من قسم تقنية المعلومات. بدأت رحلتي في تطوير برامج الويب عام 2020, و في 2023 بدأت في العمل الحُر. مجالي هو بناء برامج الويب ذات حجم صغير إلى متوسط.`, 
         `أنا شغوفة بمجال عملي كما تملؤني الحماسة للغوص في عالم البرمجة حيث أواجه تحديات جديدة و أكتسب مهارات أكثر.`,
-        `أود الاسهاب في الحديث لكن لنبدأ في المهم ودعوني أعرفكم على ما يمكنني تقديمه!`],
+        `أود الاسهاب في الحديث لكن لنبدأ في المهم ودعني أعرفك على ما يمكنني تقديمه لك!`],
     },
-  },
-  tools:{
-    sectionHeading: {
-        en: "technologies and tools i use:",
-        ar: "التقنيات التي أستخدمها:",
-      },
   },
   offers: {
     sectionHeading: {
       en: "what i offer?",
       ar: "ماذا أقدم لك؟",
+    },
+    paragraph: {
+      en:["I develop impactful web applications and websites that reflect your message and brand goals. I elevate your brand's identity using the best design and coding practices, leading to happy and satisfied target audiences.",
+        "Also, I can code your existing design, and re-design and re-build your old web application/website."
+      ],
+      ar:["أنا أقوم بتطوير تطبيقات ومواقع ويب تعكس رسالتك وأهداف علامتك لجمهورك المستهدف. وأقدمك للعملاء الجدد باستخدام أفضل طرق التصميم والبرمجة، مما يؤدي إلى إرضاء كافة أنواع العملاء.",
+        " كما يمكنني برمجة تصاميم جاهزة وإعادة تصميم وبناء تطبيق الويب/موقع الويب القديم لديك."
+      ]
     },
     offersData: {
         en: [{
@@ -110,10 +112,16 @@ export const dictionary = {
           ]
         }]
     },
-    paragraph: {
+    ctaParagraph: {
         en:`So don’t hesitate to reach out——you’re one step away from your web application.`,
         ar:"لا تتردد في التواصل معي—أنت على بُعد خطوة واحدة من برنامج الويب الخاص بك"
     }
+  },
+  tools:{
+    sectionHeading: {
+        en: "technologies and tools i use:",
+        ar: "التقنيات التي أستخدمها:",
+      },
   },
   works: {
     sectionHeading: {

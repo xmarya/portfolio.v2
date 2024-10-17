@@ -12,6 +12,7 @@ const projects = [
         {
           descriptionTitle: "Overview",
           description: [
+            "The Client request was to re-design the old company's website and re-building it.",
             "I designed the website with a clean colour palette, using basic tones for text and background, and the brand's colours strategically to highlight key elements. The animations were kept simple and subtle to enhance rather than distract from the content.",
             "All pages have the same footer containing links to all website pages, the company's social media accounts, and the logo.",
             "After collaborating with the client to finalise the design, I built the website with a focus on functionality and user experience.",
@@ -89,7 +90,8 @@ const projects = [
         {
           descriptionTitle: "نظرة عامة",
           description: [
-            "قمت باختيار الألوان الأساسية للنصوص والخلفيات بينما جعلت ألوان العلامة التجارية للعناصر التي أردت تسليط الضوء عليها وجعلها جاذبة للانتباه. النتيجة كانت ألوان زاهية و مريحة للنظر.",
+            "في هذا المشروع كان طلب العميل إعادة تصميم و بناء موقع الشركة القديم",
+            "في مرحلة التصميم قمت باختيار الألوان الأساسية للنصوص والخلفيات بينما جعلت ألوان العلامة التجارية للعناصر التي أردت تسليط الضوء عليها وجعلها جاذبة للانتباه. النتيجة كانت ألوان زاهية و مريحة للنظر.",
             "بالنسبة للعناصر المتحركة (Animation) حرصت على أن تكون بسيطة تعزز المحتوى وتضيف لمسة ممتعة للموقع ككل و ألا تشتت الانتباه عن المحتوى المهم.",
             "جميع الصفحات لديها نفس التذييل، حيث يحتوي على روابط سريعة لجميع الصفحات، بالإضافة إلى شعار الشركة وحساباتها على وسائل التواصل.",
             "بعد التشاور مع العميل حول التصميم و الحصول على موافقته، بدأت عملية البرمجة مع التركيز على وظائف التطبيق و تجربة المستخدم.",

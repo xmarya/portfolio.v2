@@ -14,7 +14,7 @@ const CardsBox = styled.div`
   max-height: 50svh;
   display: flex;
   gap: 2.5rem;
-  margin-bottom: 6rem;
+  margin-block: 6rem;
   box-shadow: var(--colour-grey-50);
 
   @media (max-width: 50em) {
@@ -92,7 +92,6 @@ const childVariants = {
 
 export default function Offer({language}) {
   const {offers, button} = dictionary;
-
   const viewRef = useRef(null);
   const isInView = useInView(viewRef, { once: true, amount: 0.2 });
   const [activeTarget, setActiveTarget] = useState(-1); // means nothing is active
@@ -197,6 +196,14 @@ return (
         <SectionHeading language={language}>{offers.sectionHeading[language]}</SectionHeading>
       </AnimatedWrapper>
 
+      {
+        offers.paragraph[language].map((parg, index) =>
+          <AnimatedWrapper key={index}>
+            <p>{parg}</p>
+          </AnimatedWrapper>
+        )
+      }
+
       <CardsBox>
         {
           offers.offersData[language].map((offer, index) =>
@@ -217,9 +224,7 @@ return (
           animate={isInView ? "animate" : ""}
         >
           <p>
-            {/* So don’t hesitate to reach out&mdash;you’re one step away from your
-            web application. */}
-            {offers.paragraph[language]}
+            {offers.ctaParagraph[language]}
           </p>
           <Button onClick={() => navigateToSection("contact-me")}>{button[language]}</Button>
         </OfferCTA>
